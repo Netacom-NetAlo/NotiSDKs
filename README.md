@@ -21,7 +21,7 @@ def notification_pods
   database_pods
   rx_swift_pods
   resolver
-  pod 'NetaloSDKs', :git => 'http://gitlab.ecdc.vn/hieubui/NetaloSDKs', branch: 'dev'
+  pod 'NotificationSDK', :git => 'http://gitlab.ecdc.vn/hieubui/NotificationSDK', branch: 'dev'
   pod 'Localize-Swift', :git => 'http://gitlab.ecdc.vn/hieubui/nt-Localize-Swift'
 end
 
