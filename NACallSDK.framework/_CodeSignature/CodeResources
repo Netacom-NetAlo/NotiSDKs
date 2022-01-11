@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>.DS_Store</key>
-		<data>
-		e72YFRkYSqy5Rl8n5HBEaUL1kr4=
-		</data>
 		<key>Headers/NACallSDK-Swift.h</key>
 		<data>
 		UEjiya8yTQLdldEVGuKnF11VQz8=
@@ -18,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		9Bych/6vnDgzb/N8cJ47F+LNiIs=
+		sie1t6ymL/jM0qws2nCdjKFQvrg=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		9uWkFZDi2rmfh3SaV9wvSbox5wY=
+		X5Vx/8HTEo3Cr/h+G1I5DEkBEBE=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		9uWkFZDi2rmfh3SaV9wvSbox5wY=
+		X5Vx/8HTEo3Cr/h+G1I5DEkBEBE=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -34,7 +30,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		MpEx6ZeV2tgNXiQrfkdbUEbx2aM=
+		peoLPnwmxUKV9pGgrxla6fiYGU0=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -42,7 +38,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		MpEx6ZeV2tgNXiQrfkdbUEbx2aM=
+		peoLPnwmxUKV9pGgrxla6fiYGU0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -77,22 +73,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9uWkFZDi2rmfh3SaV9wvSbox5wY=
+			X5Vx/8HTEo3Cr/h+G1I5DEkBEBE=
 			</data>
 			<key>hash2</key>
 			<data>
-			PrQLOSXtCgEYumUP742VpmrW5YVydoCMBvPPNyhVeY0=
+			QWapzsuc25Gctn5YcWEfd1UhwSi8PThn3TJgQgAt4sI=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9uWkFZDi2rmfh3SaV9wvSbox5wY=
+			X5Vx/8HTEo3Cr/h+G1I5DEkBEBE=
 			</data>
 			<key>hash2</key>
 			<data>
-			PrQLOSXtCgEYumUP742VpmrW5YVydoCMBvPPNyhVeY0=
+			QWapzsuc25Gctn5YcWEfd1UhwSi8PThn3TJgQgAt4sI=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -110,11 +106,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MpEx6ZeV2tgNXiQrfkdbUEbx2aM=
+			peoLPnwmxUKV9pGgrxla6fiYGU0=
 			</data>
 			<key>hash2</key>
 			<data>
-			g0MTUGfSuQ+2dt/4oPrDmZgVuU5tKkCk46LZKbgSPO8=
+			JDCC7N8F9mhGPbRf+sbVXoWWM3dqeWkI2NUz7UbiNHU=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/arm64.swiftdoc</key>
@@ -132,11 +128,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MpEx6ZeV2tgNXiQrfkdbUEbx2aM=
+			peoLPnwmxUKV9pGgrxla6fiYGU0=
 			</data>
 			<key>hash2</key>
 			<data>
-			g0MTUGfSuQ+2dt/4oPrDmZgVuU5tKkCk46LZKbgSPO8=
+			JDCC7N8F9mhGPbRf+sbVXoWWM3dqeWkI2NUz7UbiNHU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
