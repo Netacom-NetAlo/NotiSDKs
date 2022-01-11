@@ -136,6 +136,6 @@ Pod::Spec.new do |spec|
 
   # spec.requires_arc = true
   
-    spec.ios.vendored_frameworks = "NotificationComponent.framework", "NALocalization.framework", "NetAloLite.framework", "NARealmPlatform.framework", "NANetworkPlatform.framework", "NADomain.framework", "NACoreUtils.framework", "NASocketPlatform.framework"
+    spec.ios.vendored_frameworks = "NotificationComponent.framework", "NALocalization.framework", "NetAloLite.framework", "NARealmPlatform.framework", "NANetworkPlatform.framework", "NADomain.framework", "NACoreUtils.framework", "NASocketPlatform.framework", "NACallSDK.framework"
     
 end
