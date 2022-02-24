@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		9Bych/6vnDgzb/N8cJ47F+LNiIs=
+		rVC4lmSrEL56mf/c7yuyf0s04fk=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		GjlI1EzAQQ+Tye3CVarsZCUGVv0=
+		bXQh89LFcqp9ZcMYPV/37CYHCiA=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		GjlI1EzAQQ+Tye3CVarsZCUGVv0=
+		bXQh89LFcqp9ZcMYPV/37CYHCiA=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		aibZFBgCvWrIFW6+s8BxFIS5xdI=
+		QdjmD06Q0DAXI18leKSnJkk9ols=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		aibZFBgCvWrIFW6+s8BxFIS5xdI=
+		QdjmD06Q0DAXI18leKSnJkk9ols=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -73,22 +73,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GjlI1EzAQQ+Tye3CVarsZCUGVv0=
+			bXQh89LFcqp9ZcMYPV/37CYHCiA=
 			</data>
 			<key>hash2</key>
 			<data>
-			gfYqDFBJPymUqDnjvLJvcwUqrF4zdVq5B1Fqpbc/eRA=
+			SFYxPPpvxNzDVBNFXHGP0kEfQKHMV8JWyXUyGHJuD1M=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			GjlI1EzAQQ+Tye3CVarsZCUGVv0=
+			bXQh89LFcqp9ZcMYPV/37CYHCiA=
 			</data>
 			<key>hash2</key>
 			<data>
-			gfYqDFBJPymUqDnjvLJvcwUqrF4zdVq5B1Fqpbc/eRA=
+			SFYxPPpvxNzDVBNFXHGP0kEfQKHMV8JWyXUyGHJuD1M=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -106,11 +106,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aibZFBgCvWrIFW6+s8BxFIS5xdI=
+			QdjmD06Q0DAXI18leKSnJkk9ols=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uu2yMyi+AypvpafHGG7/pugwGZRWkZC4XDN4sumwcgM=
+			bfRlsItbCHp+EjPj4+CFCJg7Wnfv3w282JKqVsz4SUc=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/arm64.swiftdoc</key>
@@ -128,11 +128,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aibZFBgCvWrIFW6+s8BxFIS5xdI=
+			QdjmD06Q0DAXI18leKSnJkk9ols=
 			</data>
 			<key>hash2</key>
 			<data>
-			Uu2yMyi+AypvpafHGG7/pugwGZRWkZC4XDN4sumwcgM=
+			bfRlsItbCHp+EjPj4+CFCJg7Wnfv3w282JKqVsz4SUc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
