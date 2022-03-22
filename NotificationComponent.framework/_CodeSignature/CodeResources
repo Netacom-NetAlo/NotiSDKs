@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		7fdwZjS2YphFy2ulBfsMCC2g4YE=
+		zuXhnF/h5nmkeXpJBMubsVn5mNM=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		/MGar4PKQ/bZ1Bi7TyHNxkI5hHY=
+		Fdx/QRW/dxzWlmepJL0HDT2cy+g=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		/MGar4PKQ/bZ1Bi7TyHNxkI5hHY=
+		Fdx/QRW/dxzWlmepJL0HDT2cy+g=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		a5qQDEvK8P5aRg/EWqzMWt0nf74=
+		uXDdnk0ZWYXWmlVjQ9UkaLElCcs=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		a5qQDEvK8P5aRg/EWqzMWt0nf74=
+		uXDdnk0ZWYXWmlVjQ9UkaLElCcs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -73,22 +73,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/MGar4PKQ/bZ1Bi7TyHNxkI5hHY=
+			Fdx/QRW/dxzWlmepJL0HDT2cy+g=
 			</data>
 			<key>hash2</key>
 			<data>
-			DEgRc3HJK8s7dchg9ehY6tEfjKkb0I5pjK2ng8Y/vCw=
+			ByDUn2eKJOGsMB6OOXqtPyES2jSN9Lp+i9Xcg8oDAmA=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			/MGar4PKQ/bZ1Bi7TyHNxkI5hHY=
+			Fdx/QRW/dxzWlmepJL0HDT2cy+g=
 			</data>
 			<key>hash2</key>
 			<data>
-			DEgRc3HJK8s7dchg9ehY6tEfjKkb0I5pjK2ng8Y/vCw=
+			ByDUn2eKJOGsMB6OOXqtPyES2jSN9Lp+i9Xcg8oDAmA=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -106,11 +106,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a5qQDEvK8P5aRg/EWqzMWt0nf74=
+			uXDdnk0ZWYXWmlVjQ9UkaLElCcs=
 			</data>
 			<key>hash2</key>
 			<data>
-			oAPPM6j0eP8FYf8zh7UrsrzZIM0hPlqWo6KzrLhBoIA=
+			3WDLc0L/beNBC/vk5D1pwG5JHkDdNCuy0orjW4ked8k=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/arm64.swiftdoc</key>
@@ -128,11 +128,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			a5qQDEvK8P5aRg/EWqzMWt0nf74=
+			uXDdnk0ZWYXWmlVjQ9UkaLElCcs=
 			</data>
 			<key>hash2</key>
 			<data>
-			oAPPM6j0eP8FYf8zh7UrsrzZIM0hPlqWo6KzrLhBoIA=
+			3WDLc0L/beNBC/vk5D1pwG5JHkDdNCuy0orjW4ked8k=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
