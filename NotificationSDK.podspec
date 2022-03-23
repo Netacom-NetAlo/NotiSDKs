@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   #   * Finally, don't worry about the indent, CocoaPods strips it!
     spec.description  = "Demo is SDK included for CallSDK, ChatSDK, UISDK support SDK for user app"
 
-  spec.homepage     = "http://EXAMPLE/NotificationSDK"
+  spec.homepage     = "https://github.com/Netacom-NetAlo/NotiSDKs-iOS"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -84,7 +84,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/hieunetacom/NotificationSDK.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/Netacom-NetAlo/NotiSDKs-iOS.git", :branch => "vnd/sdk_noti_universal" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -135,7 +135,27 @@ Pod::Spec.new do |spec|
   #  you can include multiple dependencies to ensure it works.
 
   # spec.requires_arc = true
+  # spec.dependency 'RxSwift', '~> 6.2.0'
+  # spec.dependency 'RxCocoa', '~> 6.2.0'
+  # spec.dependency 'RxRelay', '~> 6.2.0'
+  # spec.dependency 'RxGesture', '~> 4.0.2'
+  # spec.dependency 'RealmSwift', '10.12.0'
+  # spec.dependency 'XCoordinator', '~> 2.0'
+  # spec.dependency 'ZIPFoundation', '~> 0.9'
+  # spec.dependency 'Socket.IO-Client-Swift', '14.0.0'
+  # spec.dependency 'Carbon', '~> 1.0.0-rc.6'
+  # spec.dependency 'Kingfisher', '6.1.1'
   
+  # spec.dependency 'Resolver', 'https://github.com/thanhphong-tran/Resolver', '1.4.'
+  # spec.dependency 'Localize-Swift', 'http://gitlab.ecdc.vn/hieubui/nt-Localize-Swift'
+  # spec.dependency 'SignalCoreKit', 'https://github.com/signalapp/SignalCoreKit.git' , 'eea6884e55261bf157ad6054c72c3c51d7788d4c'
+  # spec.dependency 'AxolotlKit', 'https://github.com/signalapp/SignalProtocolKit.git' ,
+  # spec.dependency 'HKDFKit', 'https://github.com/signalapp/HKDFKit.git'
+  # spec.dependency 'Curve25519Kit', 'https://github.com/signalapp/Curve25519Kit'
+  # spec.dependency 'GRKOpenSSLFramework', 'https://github.com/signalapp/GRKOpenSSLFramework' , 'mkirk/1.0.2t'
+  # spec.dependency 'JitsiMeetSDK', 'https://github.com/Netacom-NetAlo/JitsiSDK-iOS.git' , 'dev_VND_1.1'
+
+
     spec.ios.vendored_frameworks = "NotificationComponent.framework", "NALocalization.framework", "NetAloLite.framework", "NARealmPlatform.framework", "NANetworkPlatform.framework", "NADomain.framework", "NACoreUtils.framework", "NASocketPlatform.framework", "NACallSDK.framework"
     
 end
