@@ -1,4 +1,8 @@
 
+#V5
+
+- Hide location feature
+
 #V4
 
 - Show group chat with groupID 

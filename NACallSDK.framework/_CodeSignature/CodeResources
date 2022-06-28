@@ -18,7 +18,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		EW50RVfCh/72tCEIosDNDDHr388=
+		rX8pPiDL7RquIgUKDX67KmV1H9M=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		FyUVnZH7BsQQYBvvXtJi4GVaTnM=
+		WlbgrlMijcenTDn61B/JPo8VjsU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,11 +61,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EW50RVfCh/72tCEIosDNDDHr388=
+			rX8pPiDL7RquIgUKDX67KmV1H9M=
 			</data>
 			<key>hash2</key>
 			<data>
-			75ZlBeD3JtFT5L/tD12YxJr7wgsDhg36GCBBOj+/0jw=
+			N538i813r4ghjFSXY2eS+wzABu5eVHYf90Qcff+wDYk=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -83,11 +83,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FyUVnZH7BsQQYBvvXtJi4GVaTnM=
+			WlbgrlMijcenTDn61B/JPo8VjsU=
 			</data>
 			<key>hash2</key>
 			<data>
-			HI5rogbl2gQmUOKxgMvoUYW4NyUmiH2fqvKuuO262kc=
+			q309aLi48w75ifAM3Oge7q8VOGTBu6Dzl3/VgwlcpuY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

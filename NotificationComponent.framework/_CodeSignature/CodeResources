@@ -18,7 +18,7 @@
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		UHCSzTWqnV8JMsKIrBgdGDkMN+E=
+		VenoiN4cGdrj8gyng/D3bT2hLBU=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		Se9kqejKyeu6awqDZrJH5lF32aY=
+		6MH8j4ro6s/gujg45dD3CRPQCDc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,11 +61,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UHCSzTWqnV8JMsKIrBgdGDkMN+E=
+			VenoiN4cGdrj8gyng/D3bT2hLBU=
 			</data>
 			<key>hash2</key>
 			<data>
-			y33BP+UNjiOgjwCs7Pj15UFx3ztVoeyJ5V4Q5e23l8k=
+			TZZOOa8aG1tUjeYae4633TmUAHPK7oj8unJ0OWChmfI=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -83,11 +83,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Se9kqejKyeu6awqDZrJH5lF32aY=
+			6MH8j4ro6s/gujg45dD3CRPQCDc=
 			</data>
 			<key>hash2</key>
 			<data>
-			A3Lh6ZyBhG9HLy1Xp+6HpUKW1zhcy1jxiEIvJXmqaJY=
+			NZFlkgyHHVVlAwu0OTSBdmd2MgxACBmCh2ai/IU1nQg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
