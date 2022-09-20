@@ -6,6 +6,6 @@ framework module NotificationComponent {
 }
 
 module NotificationComponent.Swift {
-    header "NotificationComponent-Swift.h"
-    requires objc
+  header "NotificationComponent-Swift.h"
+  requires objc
 }

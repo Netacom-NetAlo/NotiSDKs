@@ -6,6 +6,6 @@ framework module NACoreUtils {
 }
 
 module NACoreUtils.Swift {
-    header "NACoreUtils-Swift.h"
-    requires objc
+  header "NACoreUtils-Swift.h"
+  requires objc
 }

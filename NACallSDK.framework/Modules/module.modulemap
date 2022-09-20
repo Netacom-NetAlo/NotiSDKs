@@ -6,6 +6,6 @@ framework module NACallSDK {
 }
 
 module NACallSDK.Swift {
-    header "NACallSDK-Swift.h"
-    requires objc
+  header "NACallSDK-Swift.h"
+  requires objc
 }

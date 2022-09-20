@@ -6,6 +6,6 @@ framework module NALocalization {
 }
 
 module NALocalization.Swift {
-    header "NALocalization-Swift.h"
-    requires objc
+  header "NALocalization-Swift.h"
+  requires objc
 }

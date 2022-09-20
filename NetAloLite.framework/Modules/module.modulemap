@@ -6,6 +6,6 @@ framework module NetAloLite {
 }
 
 module NetAloLite.Swift {
-    header "NetAloLite-Swift.h"
-    requires objc
+  header "NetAloLite-Swift.h"
+  requires objc
 }

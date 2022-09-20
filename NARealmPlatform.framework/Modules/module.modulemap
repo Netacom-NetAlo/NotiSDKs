@@ -6,6 +6,6 @@ framework module NARealmPlatform {
 }
 
 module NARealmPlatform.Swift {
-    header "NARealmPlatform-Swift.h"
-    requires objc
+  header "NARealmPlatform-Swift.h"
+  requires objc
 }
