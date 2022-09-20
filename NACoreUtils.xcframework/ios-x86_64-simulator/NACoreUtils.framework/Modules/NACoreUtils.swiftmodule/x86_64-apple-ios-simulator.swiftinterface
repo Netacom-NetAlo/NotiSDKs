@@ -1,0 +1,323 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NACoreUtils
+import CommonCrypto
+import Foundation
+@_exported import NACoreUtils
+import RxSwift
+import Swift
+import UIKit
+import _Concurrency
+public protocol OptionalType {
+  associatedtype Wrapped
+  var value: Self.Wrapped? { get }
+}
+extension Swift.Optional : NACoreUtils.OptionalType {
+  public var value: Wrapped? {
+    get
+  }
+}
+extension RxSwift.Observable where Element : NACoreUtils.OptionalType {
+  public func filterNil() -> RxSwift.Observable<Element.Wrapped>
+  public func skipNil() -> RxSwift.Observable<Element.Wrapped>
+  public func filterNilKeepOptional() -> RxSwift.Observable<Element>
+  public func replaceNil(with nilValue: Element.Wrapped) -> RxSwift.Observable<Element.Wrapped>
+}
+public protocol BooleanType {
+  var boolValue: Swift.Bool { get }
+}
+extension Swift.Bool : NACoreUtils.BooleanType {
+  public var boolValue: Swift.Bool {
+    get
+  }
+}
+extension RxSwift.Observable where Element : NACoreUtils.BooleanType {
+  public func not() -> RxSwift.Observable<Swift.Bool>
+}
+extension RxSwift.Observable where Element : Swift.Equatable {
+  public func ignore(value: Element) -> RxSwift.Observable<Element>
+}
+extension RxSwift.ObservableType where Self.Element == Swift.Bool {
+  public func not() -> RxSwift.Observable<Swift.Bool>
+}
+extension RxSwift.ObservableType {
+  public func catchErrorJustComplete() -> RxSwift.Observable<Self.Element>
+  public func mapToVoid() -> RxSwift.Observable<Swift.Void>
+  public var firstValue: (value: Self.Element?, dispose: RxSwift.Disposable) {
+    get
+  }
+}
+public protocol ResponseIdentifier {
+}
+extension NACoreUtils.ResponseIdentifier {
+  public var identifierString: Swift.String {
+    get
+  }
+  public static var identifierString: Swift.String {
+    get
+  }
+}
+extension ObjectiveC.NSObject : NACoreUtils.ResponseIdentifier {
+}
+extension ObjectiveC.NSObject {
+  public class var identifier: Swift.String {
+    get
+  }
+  public var propertyNames: [Swift.String] {
+    get
+  }
+  public var toDictionary: [Swift.String : Any] {
+    get
+  }
+}
+extension Swift.Dictionary {
+  public var toJsonString: Swift.String? {
+    get
+  }
+}
+extension Foundation.Data {
+  public var toJsonString: Swift.String? {
+    get
+  }
+}
+extension Swift.KeyedDecodingContainer {
+  public func decodex<T>(key: K, defaultValue: T) -> T where T : Swift.Decodable
+}
+extension Foundation.Bundle {
+  public var releaseVersionNumber: Swift.String {
+    get
+  }
+  public var buildVersionNumber: Swift.String {
+    get
+  }
+}
+public protocol EventPublisherType {
+  associatedtype Event
+  var eventPublisher: RxSwift.PublishSubject<Self.Event> { get }
+}
+extension Swift.Double {
+  public func stringFromTimeInterval() -> Swift.String
+  public func format(using units: Foundation.NSCalendar.Unit) -> Swift.String?
+}
+extension Foundation.FileManager {
+  public static func fileExists(at path: Foundation.URL) -> Swift.Bool
+  public static func getPath(folderName: Swift.String) -> Foundation.URL?
+  public static func getStickerPath(category: Swift.String, name: Swift.String?) -> Foundation.URL?
+  public static func createFolder(folderName: Swift.String) -> Foundation.URL?
+  public static func deleteFolder(by url: Foundation.URL?)
+}
+extension Swift.Array where Element : Swift.Hashable {
+  public mutating func appendDistinct(contentsOf elements: [Element])
+  public mutating func remove(contentsOf elements: [Element])
+}
+extension Swift.Array {
+  public func chunked(into size: Swift.Int) -> [[Element]]
+  public func chunked(by chunkSize: Swift.Int) -> [[Element]]
+}
+extension Swift.String {
+  public func subString(offsetBy: Swift.Int) -> Swift.String
+}
+extension Swift.Array where Element : Swift.Equatable {
+  public func removeDuplicates() -> [Element]
+}
+extension Swift.Array where Element : Swift.Hashable {
+  public func difference(from other: [Element]) -> [Element]
+}
+extension Swift.Bool {
+  public func intValue() -> Swift.Int
+}
+public enum PlayerState {
+  case playing
+  case pause
+  case stopped
+  public static func == (a: NACoreUtils.PlayerState, b: NACoreUtils.PlayerState) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ViewModelType {
+  associatedtype Input
+  associatedtype Output
+  func transform(input: Self.Input) -> Self.Output
+}
+public protocol Injectable {
+  associatedtype Dependencies
+  init(dependencies: Self.Dependencies)
+}
+extension Swift.Int {
+  public func toString() -> Swift.String
+  public var megaBytes: Swift.Double {
+    get
+  }
+  public func formatUsingAbbrevation() -> Swift.String
+}
+extension Swift.Int64 {
+  public func toString() -> Swift.String
+}
+extension Swift.Double {
+  public func toString() -> Swift.String
+}
+public enum RegexPatterns : Swift.String {
+  case url
+  case mentionedUserId
+  case mentionedAll
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public var escapedString: Swift.String {
+    get
+  }
+  public var unescapeString: Swift.String {
+    get
+  }
+  public var replaceSpecialCharacters: Swift.String {
+    get
+  }
+  public var isValidURL: Swift.Bool {
+    get
+  }
+  public var containsURL: Swift.Bool {
+    get
+  }
+  public func getFirstUrlInText() -> Swift.String?
+  public func indexOfCharacter(_ char: Swift.Character) -> Swift.Int?
+  public var pathExtension: Swift.String {
+    get
+  }
+  public var length: Swift.Int {
+    get
+  }
+  public var uppercase: Swift.String {
+    get
+  }
+  public var lowercase: Swift.String {
+    get
+  }
+  public var clearUrlPrefix: Swift.String {
+    get
+  }
+  public var clearFilePathPrefix: Swift.String {
+    get
+  }
+  public var isJsonFile: Swift.Bool {
+    get
+  }
+  public subscript(i: Swift.Int) -> Swift.String {
+    get
+  }
+  public var toFloat: Swift.Float {
+    get
+  }
+  public var toInt: Swift.Int? {
+    get
+  }
+  public var toNumber: Foundation.NSNumber? {
+    get
+  }
+  public var groupThousandNumber: Swift.String {
+    get
+  }
+  public func contains(_ other: Swift.String) -> Swift.Bool
+  public func containsIgnoreCase(_ other: Swift.String) -> Swift.Bool
+  public var capitalizeFirst: Swift.String {
+    get
+  }
+  public func replaceBeginsWithZeroToCountryCode() -> Swift.String
+  public func stripHTML() -> Swift.String
+  public func replace(_ target: Swift.String, withString: Swift.String) -> Swift.String
+  public subscript(i: Swift.Int) -> Swift.Character {
+    get
+  }
+  public subscript(r: Swift.Range<Swift.Int>) -> Swift.String {
+    get
+  }
+  public func convertToDateUTC(type: Swift.String) -> Foundation.Date?
+  public var linesArray: [Swift.String] {
+    get
+  }
+  public func checkValidUrl() -> Swift.Bool
+  public func validateImageUrl() -> Swift.Bool
+  public func indices(of occurrence: Swift.String) -> [Swift.Int]
+  public func lastIndexOf(_ input: Swift.String) -> Swift.Int?
+  public func trim() -> Swift.String
+  public func isNumber() -> Swift.Bool
+  public func phoneNumberWithoutSpecialCharacters() -> Swift.String
+  public func isValidPhone() -> Swift.Bool
+  public var containsMentionText: Swift.Bool {
+    get
+  }
+  public func matches(for regex: Swift.String) -> [Swift.String]
+  public func firstMatch(for regex: Swift.String) -> Swift.String
+  public func replaceCountrycode(countryCode: Swift.String = "", isReplace: Swift.Bool) -> Swift.String
+  public func validString() -> Swift.String
+  public func isPhoneNumber() -> Swift.Bool
+  public func isAllDigits() -> Swift.Bool
+  public func toDictionary() -> [Swift.String : Any]?
+  public func isValidEmail() -> Swift.Bool
+  public func toJSONString() -> Any?
+  public func index(at position: Swift.Int, from start: Swift.String.Index? = nil) -> Swift.String.Index?
+  public func character(at position: Swift.Int) -> Swift.Character?
+  public func hmac(key: Swift.String) -> Swift.String
+  public func getShortName() -> Swift.String
+  public func createAttributedString(textToStyle: Swift.String, attributes: [Foundation.NSAttributedString.Key : Any], styledAttributes: [Foundation.NSAttributedString.Key : Any]) -> Foundation.NSMutableAttributedString
+}
+extension Foundation.NSMutableAttributedString {
+  @discardableResult
+  public func customAddAttributes(_ attributes: [Foundation.NSAttributedString.Key : Any], text: Swift.String) -> [Foundation.NSRange]
+}
+extension Swift.ClosedRange where Bound == Swift.Unicode.Scalar {
+  public var representationRange: Swift.ClosedRange<Swift.UInt32> {
+    get
+  }
+  public var scalars: [Swift.Unicode.Scalar] {
+    get
+  }
+}
+extension Swift.ClosedRange where Bound == Swift.Character {
+  public var scalars: [Swift.Unicode.Scalar]? {
+    get
+  }
+  public var all: [Swift.Character]? {
+    get
+  }
+}
+extension Swift.ClosedRange where Bound == Swift.String {
+  public var scalars: [Swift.Unicode.Scalar]? {
+    get
+  }
+  public var all: [Swift.String]? {
+    get
+  }
+}
+public enum LogLevel : Swift.String {
+  case debug
+  case info
+  case warning
+  case error
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class NALog {
+  public static let TAG: Swift.String
+  public static func d(_ object: Any?, tag: Swift.String? = nil, file: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
+  public static func i(_ object: Any?, tag: Swift.String? = nil, file: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
+  public static func w(_ object: Any?, tag: Swift.String? = nil, file: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
+  public static func e(_ object: Any?, tag: Swift.String? = nil, file: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
+  @objc deinit
+}
+extension NACoreUtils.PlayerState : Swift.Equatable {}
+extension NACoreUtils.PlayerState : Swift.Hashable {}
+extension NACoreUtils.RegexPatterns : Swift.Equatable {}
+extension NACoreUtils.RegexPatterns : Swift.Hashable {}
+extension NACoreUtils.RegexPatterns : Swift.RawRepresentable {}
+extension NACoreUtils.LogLevel : Swift.Equatable {}
+extension NACoreUtils.LogLevel : Swift.Hashable {}
+extension NACoreUtils.LogLevel : Swift.RawRepresentable {}

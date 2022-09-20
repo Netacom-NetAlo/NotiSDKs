@@ -1,0 +1,40 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NotificationComponent
+import Foundation
+import NACoreUtils
+import NADomain
+import NALocalization
+import NANetworkPlatform
+import NARealmPlatform
+import NetAloLite
+@_exported import NotificationComponent
+import Resolver
+import RxSwift
+import Swift
+import UIKit
+import UserNotifications
+import _Concurrency
+public protocol NotificationComponentProtocol {
+  func initialize()
+  func replace(oldContent: UserNotifications.UNMutableNotificationContent) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+  func expired(oldContent: UserNotifications.UNMutableNotificationContent) -> UserNotifications.UNNotificationContent
+  func convert(message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+  func convert(group: NADomain.NAGroup, message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+}
+public class NotificationComponentImpl : NotificationComponent.NotificationComponentProtocol {
+  public init(enviroment: NetAloLite.EnvironmentType? = nil, appGroupId: Swift.String? = nil)
+  public func initialize()
+  public func replace(oldContent: UserNotifications.UNMutableNotificationContent) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+  public func expired(oldContent: UserNotifications.UNMutableNotificationContent) -> UserNotifications.UNNotificationContent
+  public func convert(message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+  public func convert(group: NADomain.NAGroup, message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+  @objc deinit
+}
+public enum NANotificationType {
+  case personal(senderName: Swift.String)
+  case group(groupName: Swift.String, senderName: Swift.String, groupType: NADomain.NAGroup.GroupType)
+}
+public struct Constants {
+  public static let messageKey: Swift.String
+}

@@ -1,0 +1,334 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NASocketPlatform
+import Foundation
+import NACoreUtils
+import NADomain
+@_exported import NASocketPlatform
+import RxRelay
+import RxSwift
+import SocketIO
+import Swift
+import _Concurrency
+public struct NTSecretChatResponse : Swift.Codable {
+  public let result: Swift.Int
+  public let group: NASocketPlatform.NTGroup
+  public func codeCheck() -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol NASocketDelegate : AnyObject {
+  func didReceive(_ message: NADomain.NAMessage)
+  func didConnect()
+  func didDisconnect()
+  func didReceiveGroupEvent(_ event: NADomain.NAGroupEvent)
+  func didUpdateUserStatus(_ userStatus: [NADomain.NAUserStatus])
+  func didReceiveNewGroup(_ group: NADomain.NAGroup)
+  func didUpdateGroup(_ group: NADomain.NAGroupUpdate)
+  func didDeleteGroup(_ groupID: Swift.String)
+  func didReceiveError(_ error: NADomain.NAError)
+  func didReceiveCall(event: NADomain.NACallEvent)
+  func didDeleteConversation(conversationId: Swift.String)
+  func didStartSecretChat(info: NADomain.NAStartSecretChat)
+  func didAcceptSecretChat(info: NADomain.NAStartSecretChat)
+  func didDeleteSecretChat(info: NADomain.NADeleteSecretChat)
+  func didBlockContact(_ block: NADomain.NABlock)
+  func didUnblockContact(_ block: NADomain.NABlock)
+  func didPinMessage(_ message: NADomain.NAMessage, groupID: Swift.String)
+  func didUnpinMessage(_ message: NADomain.NAMessage)
+  func didUnpinAllMessage(_ messages: [NADomain.NAMessage], groupID: Swift.String)
+  func didReceiveNewUserRegistered(_ userID: Swift.String, group: NADomain.NAGroup)
+  func didReceiveLiveLocationMessage(_ message: NADomain.NAMessage)
+  func didReceiveGroupCall(event: NADomain.NAGroupCallEvent)
+}
+extension NASocketPlatform.NASocketDelegate {
+  public func didReceive(_ message: NADomain.NAMessage)
+  public func didConnect()
+  public func didDisconnect()
+  public func didReceiveGroupEvent(_ event: NADomain.NAGroupEvent)
+  public func didUpdateUserStatus(_ userStatus: [NADomain.NAUserStatus])
+  public func didReceiveNewGroup(_ group: NADomain.NAGroup)
+  public func didUpdateGroup(_ group: NADomain.NAGroupUpdate)
+  public func didDeleteGroup(_ groupID: Swift.String)
+  public func didReceiveError(_ error: NADomain.NAError)
+  public func didReceiveCall(event: NADomain.NACallEvent)
+  public func didDeleteConversation(conversationId: Swift.String)
+  public func didStartSecretChat(info: NADomain.NAStartSecretChat)
+  public func didAcceptSecretChat(info: NADomain.NAStartSecretChat)
+  public func didDeleteSecretChat(info: NADomain.NADeleteSecretChat)
+  public func didBlockContact(_ block: NADomain.NABlock)
+  public func didUnblockContact(_ block: NADomain.NABlock)
+  public func didPinMessage(_ message: NADomain.NAMessage, groupID: Swift.String)
+  public func didUnpinMessage(_ message: NADomain.NAMessage)
+  public func didUnpinAllMessage(_ messages: [NADomain.NAMessage], groupID: Swift.String)
+  public func didReceiveNewUserRegistered(_ userID: Swift.String, group: NADomain.NAGroup)
+  public func didReceiveLiveLocationMessage(_ message: NADomain.NAMessage)
+  public func didReceiveGroupCall(event: NADomain.NAGroupCallEvent)
+}
+public struct NTMessage : Swift.Codable {
+  public var groupAvatar: Swift.String, senderName: Swift.String, senderAvatar: Swift.String
+  public var groupID: Swift.String
+  public var status: Swift.Int
+  public var seenUins: [Swift.String]
+  public var receivedUins: [Swift.String]
+  public var mentionedUins: [Swift.String]
+  public var mentionedAll: Swift.Bool
+  public var messageID: Swift.String, createdAt: Swift.String, senderUin: Swift.String
+  public var message: Swift.String
+  public var recipientUins: [Swift.String]
+  public var updatedAt: Swift.UInt64
+  public var deletedUins: [Swift.String]
+  public var groupName: Swift.String
+  public var type: Swift.Int
+  public var attachments: Swift.String
+  public var version: Swift.Int
+  public var isEncrypted: Swift.Bool
+  public var pinnedAt: Swift.String
+  public var orderID: Swift.String
+  public var kind: NASocketPlatform.NTMessageKind?
+  public var messageType: NASocketPlatform.NTMessageType {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func _toString() -> Swift.String
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NASocketPlatform.NTMessage : NADomain.DomainConvertibleType {
+  public func asDomain() -> NADomain.NAMessage?
+  public init(message: NADomain.NAMessage, parseAttachment: Swift.Bool = true)
+  public typealias DomainType = NADomain.NAMessage
+}
+public enum NTMessageType : Swift.Int {
+  case text
+  case call
+  case images
+  case audio
+  case video
+  case firstMessage
+  case groupUpdate
+  case leaveGroup
+  case reply
+  case forward
+  case sticker
+  case file
+  case screenshot
+  case location
+  case liveLocation
+  public var typeName: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+indirect public enum NTMessageKind : Swift.Codable {
+  case reply(Swift.String, NASocketPlatform.NTMessage)
+  case forward(Swift.String, NASocketPlatform.NTMessage)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public func toString() -> Swift.String
+}
+public struct NTMessageList : Swift.Codable {
+  public let groupID: Swift.String
+  public let result: Swift.Int
+  public let pageSize: Swift.Int
+  public let page: Swift.Int
+  public let lastMessageID: Swift.String
+  public var messages: [NASocketPlatform.NTMessage]
+  public func codeCheck() -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NTMessageResponse : Swift.Codable {
+  public let result: Swift.Int
+  public let message: NASocketPlatform.NTMessage?
+  public let errorMessage: Swift.String?
+  public func codeCheck() -> Swift.Bool
+  public func duplicateCode() -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol UseCaseProvider {
+  func makeSocketUseCase() -> NASocketPlatform.SocketUseCase
+}
+final public class UseCaseProviderImpl : NASocketPlatform.UseCaseProvider {
+  public init(config: NASocketPlatform.BuildConfig)
+  final public func makeSocketUseCase() -> NASocketPlatform.SocketUseCase
+  @objc deinit
+}
+public typealias NATask = (Swift.Bool) -> ()
+public protocol SocketUseCase {
+  func connect(token: Swift.String, uin: Swift.Int64, deviceId: Swift.String, isNew: Swift.Bool)
+  func runNowOrWhenReady(task: @escaping NASocketPlatform.NATask)
+  func clean()
+  func reconnectIfNeed()
+  func disconnect()
+  var isConnected: Swift.Bool { get }
+  func createCall(event: NADomain.NACallEvent) -> RxSwift.Single<NADomain.NACallEvent>
+  func checkCall(groupId: Swift.Int64, callId: Swift.Int64) -> RxSwift.Single<Swift.Bool>
+  func send(event: NADomain.NACallEvent, for callId: Swift.String, groupId: Swift.String, senderUin: Swift.String, receiverUin: Swift.String) -> RxSwift.Single<NADomain.NACallEvent>
+  func addDelegate(_ delegate: NASocketPlatform.NASocketDelegate)
+  func removeDelegate(_ delegate: NASocketPlatform.NASocketDelegate)
+  func registerFCMToken(uin: Swift.Int64, token: Swift.String, type: NADomain.NADefines.TokenType, deviceId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func unregisterFCMToken(uin: Swift.Int64, token: Swift.String, type: NADomain.NADefines.TokenType) -> RxSwift.Single<Swift.Void>
+  func getListGroup(uin: Swift.Int64, page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[NADomain.NAGroup]>
+  func createGroup(group: NADomain.NAGroup, senderName: Swift.String, senderAvatar: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func updateGroup(group: NADomain.NAGroupUpdate) -> RxSwift.Single<NADomain.NAGroup>
+  func deleteGroup(groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  func deleteConversation(groupID: Swift.String, isSecret: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func leaveGroup(groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  func getListMessage(groupID: Swift.String, lastMessageID: Swift.String, page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[NADomain.NAMessage]>
+  func sendMessage(_ message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAMessage>
+  func updateMessageStatus(message: NADomain.NAMessage, status: Swift.Int) -> RxSwift.Single<NADomain.NAMessage>
+  func deleteMessage(messageID: Swift.String, groupID: Swift.String, isDeleteAll: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func sendGroupEvent(senderID: Swift.String, event: NADomain.NAGroupEvent) -> RxSwift.Single<Swift.Void>
+  func muteGroup(groupID: Swift.String, isMute: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  func togglePin(groupID: Swift.String, isPin: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  func togglePin(messageID: Swift.String, groupID: Swift.String, isPin: Swift.Bool, order: Swift.Int?) -> RxSwift.Single<Swift.Bool>
+  func unpinAllMessages(groupID: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getListPinnedMessages(groupID: Swift.String) -> RxSwift.Single<[NADomain.NAMessage]>
+  func syncGroup(uin: Swift.Int64, pageIndex: Swift.Int, pageSize: Swift.Int, lastUpdate: Swift.Double?) -> RxSwift.Single<NADomain.NASyncGroupResponse?>
+  func checkGroup(groupType: Swift.Int, userIds: [Swift.String]) -> RxSwift.Single<NADomain.NAGroup?>
+  func startSecretChat(senderId: Swift.Int64, receiverId: Swift.Int64, deviceId: Swift.String, identityKey: Swift.String, baseKey: Swift.String, oneTimePreKey: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func acceptSecretChat(acceptId: Swift.Int64, groupId: Swift.String, deviceId: Swift.String, identityKey: Swift.String, baseKey: Swift.String, oneTimePreKey: Swift.String) -> RxSwift.Single<Swift.Void>
+  func sendLogoutEvent(uin: Swift.Int64, version: Swift.Int) -> RxSwift.Single<Swift.Void>
+  func handleBlockOrUnblockContact(blockedID: Swift.String, groupID: Swift.String, isBlock: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  func createJoinGroupLink(groupID: Swift.String) -> RxSwift.Single<Swift.String>
+  func joinGroupWithLink(token: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func disableJoinGroupLink(_ token: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getListGroupLink(groupID: Swift.String, pageIndex: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[Swift.String]>
+  func getGroupInfo(token: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func getBlockContactList(userID: Swift.String) -> RxSwift.Single<[NADomain.NABlockContact]>
+  func moveMember(groupID: Swift.String, distGroupId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func stopLiveLocation(liveLocation: NADomain.NALiveLocation) -> RxSwift.Single<NADomain.NAMessage>
+  func startLiveLocation(liveLocation: NADomain.NALiveLocation) -> RxSwift.Single<NADomain.NAMessage>
+  func sendUpdateMultiLiveLocations(liveLocations: [NADomain.NALiveLocation]) -> RxSwift.Single<Swift.Void>
+  func createGroupCall(groupID: Swift.String, type: Swift.Int) -> RxSwift.Single<NADomain.NAGroupCall>
+  func joinGroupCall(event: NADomain.NAGroupCallEvent) -> RxSwift.Single<NADomain.NAGroupCall>
+  func sendGroupCallEvent(event: NADomain.NAGroupCallEvent) -> RxSwift.Single<NADomain.NAGroupCallEvent>
+  func checkGroupCall(groupID: Swift.String, messageId: Swift.String) -> RxSwift.Single<NADomain.NAGroupCall>
+  func updateAdminsGroup(group: NADomain.NAGroupUpdate, isAddAdmins: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  func getListUserStatus(related currentId: Swift.Int64) -> RxSwift.Single<Swift.Void>
+}
+final public class SocketUseCaseImpl : NASocketPlatform.SocketUseCase {
+  public init()
+  final public func connect(token: Swift.String, uin: Swift.Int64, deviceId: Swift.String, isNew: Swift.Bool)
+  final public func runNowOrWhenReady(task: @escaping NASocketPlatform.NATask)
+  final public func clean()
+  final public func reconnectIfNeed()
+  final public func disconnect()
+  final public var isConnected: Swift.Bool {
+    get
+  }
+  final public func createCall(event: NADomain.NACallEvent) -> RxSwift.Single<NADomain.NACallEvent>
+  final public func checkCall(groupId: Swift.Int64, callId: Swift.Int64) -> RxSwift.Single<Swift.Bool>
+  final public func send(event: NADomain.NACallEvent, for callId: Swift.String, groupId: Swift.String, senderUin: Swift.String, receiverUin: Swift.String) -> RxSwift.Single<NADomain.NACallEvent>
+  final public func addDelegate(_ delegate: NASocketPlatform.NASocketDelegate)
+  final public func removeDelegate(_ delegate: NASocketPlatform.NASocketDelegate)
+  final public func registerFCMToken(uin: Swift.Int64, token: Swift.String, type: NADomain.NADefines.TokenType, deviceId: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func unregisterFCMToken(uin: Swift.Int64, token: Swift.String, type: NADomain.NADefines.TokenType) -> RxSwift.Single<Swift.Void>
+  final public func getListUserStatus(related currentId: Swift.Int64) -> RxSwift.Single<Swift.Void>
+  final public func getListGroup(uin: Swift.Int64, page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[NADomain.NAGroup]>
+  final public func createGroup(group: NADomain.NAGroup, senderName: Swift.String, senderAvatar: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  final public func updateGroup(group: NADomain.NAGroupUpdate) -> RxSwift.Single<NADomain.NAGroup>
+  final public func deleteGroup(groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func deleteConversation(groupID: Swift.String, isSecret: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  final public func leaveGroup(groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func getListMessage(groupID: Swift.String, lastMessageID: Swift.String, page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[NADomain.NAMessage]>
+  final public func startLiveLocation(liveLocation: NADomain.NALiveLocation) -> RxSwift.Single<NADomain.NAMessage>
+  final public func sendUpdateMultiLiveLocations(liveLocations: [NADomain.NALiveLocation]) -> RxSwift.Single<Swift.Void>
+  final public func stopLiveLocation(liveLocation: NADomain.NALiveLocation) -> RxSwift.Single<NADomain.NAMessage>
+  final public func sendMessage(_ message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAMessage>
+  final public func updateMessageStatus(message: NADomain.NAMessage, status: Swift.Int) -> RxSwift.Single<NADomain.NAMessage>
+  final public func deleteMessage(messageID: Swift.String, groupID: Swift.String, isDeleteAll: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  final public func sendGroupEvent(senderID: Swift.String, event: NADomain.NAGroupEvent) -> RxSwift.Single<Swift.Void>
+  final public func muteGroup(groupID: Swift.String, isMute: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  final public func togglePin(groupID: Swift.String, isPin: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  final public func togglePin(messageID: Swift.String, groupID: Swift.String, isPin: Swift.Bool, order: Swift.Int?) -> RxSwift.Single<Swift.Bool>
+  final public func unpinAllMessages(groupID: Swift.String) -> RxSwift.Single<Swift.Bool>
+  final public func getListPinnedMessages(groupID: Swift.String) -> RxSwift.Single<[NADomain.NAMessage]>
+  final public func syncGroup(uin: Swift.Int64, pageIndex: Swift.Int, pageSize: Swift.Int, lastUpdate: Swift.Double?) -> RxSwift.Single<NADomain.NASyncGroupResponse?>
+  final public func checkGroup(groupType: Swift.Int, userIds: [Swift.String]) -> RxSwift.Single<NADomain.NAGroup?>
+  final public func startSecretChat(senderId: Swift.Int64, receiverId: Swift.Int64, deviceId: Swift.String, identityKey: Swift.String, baseKey: Swift.String, oneTimePreKey: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  final public func acceptSecretChat(acceptId: Swift.Int64, groupId: Swift.String, deviceId: Swift.String, identityKey: Swift.String, baseKey: Swift.String, oneTimePreKey: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func sendLogoutEvent(uin: Swift.Int64, version: Swift.Int) -> RxSwift.Single<Swift.Void>
+  final public func handleBlockOrUnblockContact(blockedID: Swift.String, groupID: Swift.String, isBlock: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  final public func createJoinGroupLink(groupID: Swift.String) -> RxSwift.Single<Swift.String>
+  final public func joinGroupWithLink(token: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  final public func disableJoinGroupLink(_ token: Swift.String) -> RxSwift.Single<Swift.Bool>
+  final public func getListGroupLink(groupID: Swift.String, pageIndex: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[Swift.String]>
+  final public func getGroupInfo(token: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  final public func getBlockContactList(userID: Swift.String) -> RxSwift.Single<[NADomain.NABlockContact]>
+  final public func updateAdminsGroup(group: NADomain.NAGroupUpdate, isAddAdmins: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  final public func moveMember(groupID: Swift.String, distGroupId: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func createGroupCall(groupID: Swift.String, type: Swift.Int) -> RxSwift.Single<NADomain.NAGroupCall>
+  final public func joinGroupCall(event: NADomain.NAGroupCallEvent) -> RxSwift.Single<NADomain.NAGroupCall>
+  final public func sendGroupCallEvent(event: NADomain.NAGroupCallEvent) -> RxSwift.Single<NADomain.NAGroupCallEvent>
+  final public func checkGroupCall(groupID: Swift.String, messageId: Swift.String) -> RxSwift.Single<NADomain.NAGroupCall>
+  @objc deinit
+}
+public struct NTGroupUpdate : Swift.Codable {
+  public let name: Swift.String, avatarUrl: Swift.String, ownerUin: Swift.String, groupID: Swift.String, description: Swift.String
+  public let removedUins: [Swift.String], addedUins: [Swift.String], blockedAll: [Swift.String], unblockedAll: [Swift.String], addedAdminAll: [Swift.String], deletedAdminAll: [Swift.String]
+  public let background: NADomain.NAGroupBackground?
+  public let pinnedMessage: NASocketPlatform.NTMessage?
+  public let unpinnedMessageAll: [NASocketPlatform.NTMessage]?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NASocketPlatform.NTGroupUpdate : NADomain.DomainConvertibleType {
+  public func asDomain() -> NADomain.NAGroupUpdate?
+  public typealias DomainType = NADomain.NAGroupUpdate
+}
+public struct NTGroup : Swift.Codable {
+  public var occupantsUins: [Swift.String], blockedUins: [Swift.String], mutedUins: [Swift.String]
+  public var receivedList: [Swift.String : Swift.String], seenList: [Swift.String : Swift.String]
+  public var seenUins: [NADomain.NAGroupMessageStatus], receivedUins: [NADomain.NAGroupMessageStatus]
+  public var groupID: Swift.String, createdAt: Swift.String, avatarUrl: Swift.String, description: Swift.String
+  public var type: Swift.Int
+  public var updatedAt: Swift.String, name: Swift.String
+  public var ownerUin: Swift.String, creatorUin: Swift.String
+  public var adminUins: [Swift.String]
+  public var removedUins: [Swift.String]
+  public var lastMessage: NASocketPlatform.NTMessage?
+  public var statusList: [NADomain.NAUserStatus]
+  public var pinnedUins: [Swift.String]
+  public var secrets: [NADomain.NASecretChat]
+  public var lastActiveMessages: [NADomain.NALastActiveMessage]
+  public var background: NADomain.NAGroupBackground?
+  public var currentGroupCall: NADomain.NAGroupCall?
+  public init(from decoder: Swift.Decoder) throws
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NASocketPlatform.NTGroup : NADomain.DomainConvertibleType {
+  public func asDomain() -> NADomain.NAGroup?
+  public typealias DomainType = NADomain.NAGroup
+}
+public struct NTGroupList : Swift.Codable {
+  public let result: Swift.Int
+  public let pageSize: Swift.Int?
+  public let page: Swift.Int?
+  public let conversations: [NASocketPlatform.NTGroup]
+  public func codeCheck() -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NTGroupResponse : Swift.Codable {
+  public let result: Swift.Int
+  public let conversation: NASocketPlatform.NTGroup?
+  public func codeCheck() -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct BuildConfig {
+  public var baseURL: Foundation.URL
+  public var token: Swift.String?
+  public init(baseURL: Foundation.URL, token: Swift.String? = nil)
+}
+extension NASocketPlatform.NTMessageType : Swift.Equatable {}
+extension NASocketPlatform.NTMessageType : Swift.Hashable {}
+extension NASocketPlatform.NTMessageType : Swift.RawRepresentable {}

@@ -1,0 +1,324 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NARealmPlatform
+import Foundation
+import NACoreUtils
+import NADomain
+@_exported import NARealmPlatform
+import Realm
+import RealmSwift
+import RxSwift
+import Swift
+import _Concurrency
+public protocol RecentSearchResultUseCase {
+  func getTopRecentContacts(numberOfItems: Swift.Int, userID: Swift.String?) -> RxSwift.Single<[NADomain.NAContact]>
+  func getTopRecentSearchResults(numberOfItems: Swift.Int) -> RxSwift.Single<[(NADomain.NAContact?, NADomain.NAGroup?)]>
+  func getTopRecentSearchResults(numberOfItems: Swift.Int) -> RxSwift.Single<[NADomain.NARecentSearchResult]>
+  func getRecentSearchResultsSortedBySearchTime() -> RxSwift.Single<[NADomain.NARecentSearchResult]>
+  func getRecentSearchResult(byId id: Swift.String) -> RxSwift.Single<NADomain.NARecentSearchResult?>
+  func saveRecentSearchResult(_ recentResult: NADomain.NARecentSearchResult) -> RxSwift.Single<Swift.Void>
+  func delete(_ searchResult: NADomain.NARecentSearchResult) -> RxSwift.Single<Swift.Void>
+  func delete(_ searchResults: [NADomain.NARecentSearchResult]) -> RxSwift.Single<Swift.Void>
+}
+public protocol ContactUseCase {
+  func getAllContacts(ids: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func getAllContacts(excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func getTotalOfContact(searchText: Swift.String) -> RxSwift.Single<Swift.Int>
+  func getContact(byPhone phone: Swift.String, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
+  func getContact(id: Swift.Int64) -> RxSwift.Single<NADomain.NAContact?>
+  func getContact(byPhone phone: Swift.String) -> RxSwift.Single<NADomain.NAContact?>
+  func getContact(byId id: Swift.Int64?, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
+  func getContact(byPhone phone: Swift.String, displayNameDifference: Swift.String, isFriend: Swift.Bool) -> RxSwift.Single<NADomain.NAContact?>
+  func getContacts(searchText: Swift.String, sortType: NADomain.ContactSortType, page: Swift.Int, pageSize: Swift.Int, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func searchContact(byKeyword keyword: Swift.String, excludeIds: [Swift.Int64]?) -> RxSwift.Single<[NADomain.NAContact]>
+  func saveContact(contacts: [NADomain.NAContact], overrideFriend: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func saveContact(contact: NADomain.NAContact, isFriend: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func saveFriendContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func updateUserStatus(userStatus: [NADomain.NAUserStatus]) -> RxSwift.Single<Swift.Void>
+  func getContacts(searchText: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func resetFriendContact(excludeIds: [Swift.Int64]) -> RxSwift.Single<Swift.Void>
+}
+public protocol FileUseCase {
+  func save(file: NADomain.NAFile) -> RxSwift.Single<Swift.Void>
+  func getFile(with url: Swift.String) -> RxSwift.Single<NADomain.NAFile?>
+}
+public protocol BlockContactUseCase {
+  func getBlockContactList() -> RxSwift.Single<[NADomain.NABlockContact]>
+  func getBlockContactWith(conversationID: Swift.String) -> RxSwift.Single<NADomain.NABlockContact?>
+  func getBlockContactWith(userID: Swift.String) -> RxSwift.Single<NADomain.NABlockContact?>
+  func save(blockContactList: [NADomain.NABlockContact]) -> RxSwift.Single<Swift.Void>
+  func save(blockContact: NADomain.NABlockContact) -> RxSwift.Single<Swift.Void>
+  func deleteBlockContact(blockContact: NADomain.NABlockContact) -> RxSwift.Single<Swift.Void>
+  func deleteAll() -> RxSwift.Single<Swift.Void>
+}
+public protocol StickerInfoUseCase {
+  func saveListServerStickersInfo(stickerInfo: [NADomain.NAStickerInfo]) -> RxSwift.Single<Swift.Void>
+  func getAllStickerInfo(forYou: Swift.Bool, ids: [Swift.Int]) -> RxSwift.Single<[NADomain.NAStickerInfo]>
+  func getStickerInfo(by name: Swift.String) -> RxSwift.Single<NADomain.NAStickerInfo?>
+  func save(sticker: NADomain.NAStickerInfo) -> RxSwift.Single<Swift.Void>
+  func remove(sticker: NADomain.NAStickerInfo) -> RxSwift.Single<Swift.Void>
+}
+public protocol UseCaseProvider {
+  func compactIfNeed() -> RxSwift.Single<Swift.Void>
+  func makeLocalContactUseCase() -> NARealmPlatform.LocalContactUseCase
+  func makeContactUseCase() -> NARealmPlatform.ContactUseCase
+  func makeSticerkCategoryUseCase() -> NARealmPlatform.StickerCategoryUseCase
+  func makeStickerUseCase() -> NARealmPlatform.StickerUserCase
+  func makeRecentSearchResultUseCase() -> NARealmPlatform.RecentSearchResultUseCase
+  func makeBlockContactUseCase() -> NARealmPlatform.BlockContactUseCase
+  func makeMessageUseCase() -> NARealmPlatform.MessageUseCase
+  func makeTempMessageUseCase() -> NARealmPlatform.TempMessageUseCase
+  func makeSecretStoreUseCase() -> NARealmPlatform.SecretStoreUseCase
+  func makeGroupUseCase() -> NARealmPlatform.GroupUseCase
+  func makeAudioUseCase() -> NARealmPlatform.AudioUseCase
+  func makeFileUseCase() -> NARealmPlatform.FileUseCase
+  func makeVideoUseCase() -> NARealmPlatform.VideoUseCase
+  func clean()
+  func makeHistoryCallUseCase() -> NARealmPlatform.HistoryCallUseCase
+  func makeUserStatusUseCase() -> NARealmPlatform.UserStatusUseCase
+  func makeBackgroundUseCase() -> NARealmPlatform.BackgroundUseCase
+  func makeLogUseCase() -> NARealmPlatform.LogUseCase
+  func makeStickerInfoUseCase() -> NARealmPlatform.StickerInfoUseCase
+}
+final public class UseCaseProviderImpl : NARealmPlatform.UseCaseProvider {
+  public static let defaultExcuteQueue: Dispatch.DispatchQueue
+  public init(appGroup: Swift.String, databaseIdentifier: Swift.String, schemaVersion: Swift.UInt64, excutionQueue: Dispatch.DispatchQueue = defaultExcuteQueue, isInExtensionContext: Swift.Bool = false)
+  final public func makeLocalContactUseCase() -> NARealmPlatform.LocalContactUseCase
+  final public func makeContactUseCase() -> NARealmPlatform.ContactUseCase
+  final public func makeBlockContactUseCase() -> NARealmPlatform.BlockContactUseCase
+  final public func makeSticerkCategoryUseCase() -> NARealmPlatform.StickerCategoryUseCase
+  final public func makeStickerUseCase() -> NARealmPlatform.StickerUserCase
+  final public func makeStickerInfoUseCase() -> NARealmPlatform.StickerInfoUseCase
+  final public func makeRecentSearchResultUseCase() -> NARealmPlatform.RecentSearchResultUseCase
+  final public func makeMessageUseCase() -> NARealmPlatform.MessageUseCase
+  final public func makeTempMessageUseCase() -> NARealmPlatform.TempMessageUseCase
+  final public func makeSecretStoreUseCase() -> NARealmPlatform.SecretStoreUseCase
+  final public func makeGroupUseCase() -> NARealmPlatform.GroupUseCase
+  final public func makeAudioUseCase() -> NARealmPlatform.AudioUseCase
+  final public func makeFileUseCase() -> NARealmPlatform.FileUseCase
+  final public func makeVideoUseCase() -> NARealmPlatform.VideoUseCase
+  final public func clean()
+  final public func makeHistoryCallUseCase() -> NARealmPlatform.HistoryCallUseCase
+  final public func makeUserStatusUseCase() -> NARealmPlatform.UserStatusUseCase
+  final public func makeBackgroundUseCase() -> NARealmPlatform.BackgroundUseCase
+  final public func makeLogUseCase() -> NARealmPlatform.LogUseCase
+  final public func compactIfNeed() -> RxSwift.Single<Swift.Void>
+  @objc deinit
+}
+public protocol AudioUseCase {
+  func save(audio: NADomain.NAAudio) -> RxSwift.Single<Swift.Void>
+  func getAudio(with url: Swift.String) -> RxSwift.Single<NADomain.NAAudio?>
+}
+@objc @_inheritsConvenienceInitializers public class RMSessionRecord : RealmSwift.Object {
+  @objc dynamic public var sessionIdentifier: Swift.String
+  @objc dynamic public var deviceId: Swift.Int
+  @objc dynamic public var sessionRecord: Foundation.Data
+  @objc dynamic public var compoundKey: Swift.String?
+  @objc override public static func primaryKey() -> Swift.String?
+  convenience public init(sessionIdentifier: Swift.String, deviceId: Swift.Int, sessionRecord: Foundation.Data)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RMPreKey : RealmSwift.Object {
+  @objc dynamic public var prekeyId: Swift.Int
+  @objc dynamic public var prekeyRecord: Foundation.Data
+  @objc dynamic public var isSignPreKey: Swift.Bool
+  @objc override public static func primaryKey() -> Swift.String?
+  convenience public init(prekeyId: Swift.Int, prekeyRecord: Foundation.Data, isSignPreKey: Swift.Bool = false)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RMTrustedKey : RealmSwift.Object {
+  @objc dynamic public var receipientId: Swift.String
+  @objc dynamic public var keyData: Foundation.Data
+  @objc override public static func primaryKey() -> Swift.String?
+  convenience public init(receipientId: Swift.String, keyData: Foundation.Data)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RMKeyPair : RealmSwift.Object {
+  @objc dynamic public var publicKey: Foundation.Data
+  @objc dynamic public var privateKey: Foundation.Data
+  convenience public init(publicKey: Foundation.Data, privateKey: Foundation.Data)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RMLocalSession : RealmSwift.Object {
+  @objc dynamic public var identifier: Swift.String
+  @objc dynamic public var localRegistrationId: Swift.Int
+  @objc dynamic public var identityKeyPair: NARealmPlatform.RMKeyPair?
+  @objc dynamic public var baseKeyPair: NARealmPlatform.RMKeyPair?
+  @objc dynamic public var oneTimePreKeyPair: NARealmPlatform.RMKeyPair?
+  @objc override public static func primaryKey() -> Swift.String?
+  convenience public init(identifier: Swift.String, localRegistrationId: Swift.Int, identityKeyPair: NARealmPlatform.RMKeyPair, baseKeyPair: NARealmPlatform.RMKeyPair, oneTimePreKeyPair: NARealmPlatform.RMKeyPair)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RMRemoteSession : RealmSwift.Object {
+  @objc dynamic public var sessionIdentifier: Swift.String
+  @objc dynamic public var identityKey: Foundation.Data
+  @objc dynamic public var baseKey: Foundation.Data
+  @objc dynamic public var oneTimePreKey: Foundation.Data
+  @objc override public static func primaryKey() -> Swift.String?
+  convenience public init(identifier: Swift.String, identityKey: Foundation.Data, baseKey: Foundation.Data, oneTimePreKey: Foundation.Data)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class RMLog : RealmSwift.Object {
+  @objc dynamic public var level: Swift.String
+  @objc dynamic public var traceid: Swift.String
+  @objc dynamic public var msg: Swift.String
+  convenience public init(level: Swift.String, traceid: Swift.String, msg: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol LogUseCase {
+  func save(log: NARealmPlatform.RMLog)
+  func getLogs(traceid: Swift.String) -> RxSwift.Single<[NARealmPlatform.RMLog]>
+  func removeLogWith(traceid: Swift.String) -> RxSwift.Single<Swift.Void>
+}
+public protocol HistoryCallUseCase {
+  func saveHistoriesCall(calls: [NADomain.NACall])
+  func getHistoryCall() -> RxSwift.Single<[NADomain.NACall]>
+  func deleteAllHistoryCall()
+  func deleteHistoryCall(calls: [NADomain.NACall]) -> RxSwift.Single<Swift.Void>
+}
+public protocol StickerCategoryUseCase {
+  func getCategories(excludeNames: [Swift.String]) -> RxSwift.Single<[NADomain.NAStickerCategory]>
+  func deleteCategory(byName name: Swift.String) -> RxSwift.Single<Swift.Void>
+  func getCategory(byName name: Swift.String) -> RxSwift.Single<NADomain.NAStickerCategory?>
+  func getCategoriesOfUser(ids: [Swift.String]) -> RxSwift.Single<[NADomain.NAStickerCategory]>
+}
+public protocol VideoUseCase {
+  func save(video: NADomain.NAVideo) -> RxSwift.Single<Swift.Void>
+  func getVideo(with url: Swift.String) -> RxSwift.Single<NADomain.NAVideo?>
+}
+public protocol StickerUserCase {
+  func saveStickers(_ stickers: [NADomain.NAStickerItem]) -> RxSwift.Single<Swift.Void>
+  func saveSticker(_ sticker: NADomain.NAStickerItem) -> RxSwift.Completable
+  func getStickers(byCategoryName categoryName: Swift.String) -> RxSwift.Single<[NADomain.NAStickerItem]>
+  func getSticker(byId id: Swift.String) -> RxSwift.Single<NADomain.NAStickerItem?>
+  func getRecentStickers() -> RxSwift.Single<[NADomain.NAStickerItem]>
+  func deleteStickers(_ stickers: [NADomain.NAStickerItem]) -> RxSwift.Single<Swift.Void>
+  func saveRecentSticker(_ sticker: NADomain.NAStickerItem) -> RxSwift.Single<Swift.Void>
+}
+public protocol SecretStoreUseCase {
+  func getSession(identifier: Swift.String, deviceId: Swift.Int) -> NARealmPlatform.RMSessionRecord?
+  func saveSession(sessionRecord: NARealmPlatform.RMSessionRecord)
+  func deleteSession(identifier: Swift.String, deviceId: Swift.Int?)
+  func getSubDeviceSessions(identifier: Swift.String) -> [Swift.Int]
+  func getPreKeys(isSignPreKey: Swift.Bool) -> [NARealmPlatform.RMPreKey]
+  func getPreKey(preKeyId: Swift.Int, isSignPreKey: Swift.Bool) -> NARealmPlatform.RMPreKey?
+  func savePreKey(preKey: NARealmPlatform.RMPreKey)
+  func deletePreKey(preKeyId: Swift.Int, isSignPreKey: Swift.Bool)
+  func getTrustedKey(recipientId: Swift.String) -> NARealmPlatform.RMTrustedKey?
+  func saveTrustedKey(trustedKey: NARealmPlatform.RMTrustedKey)
+  func getLocalSession() -> NARealmPlatform.RMLocalSession?
+  func saveLocalSession(localSession: NARealmPlatform.RMLocalSession)
+  func getRemoteSession(identifier: Swift.String) -> NARealmPlatform.RMRemoteSession?
+  func saveRemoteSession(remoteSession: NARealmPlatform.RMRemoteSession)
+}
+public protocol LocalContactUseCase {
+  func getLocalContact(by phone: Swift.String) -> RxSwift.Single<NADomain.NALocalContact?>
+  func getLocalContacts(excludePhones: [Swift.String]?) -> RxSwift.Single<[NADomain.NALocalContact]>
+  func saveLocalContacts(_ localContacts: [NADomain.NALocalContact]) -> RxSwift.Single<Swift.Void>
+  func saveLocalContact(_ localContact: NADomain.NALocalContact) -> RxSwift.Single<Swift.Void>
+}
+public protocol UserStatusUseCase {
+  func save(status: [NADomain.NAUserStatus]) -> RxSwift.Single<Swift.Void>
+  func getStatus(with userId: Swift.String) -> RxSwift.Single<NADomain.NAUserStatus?>
+}
+@objc @_inheritsConvenienceInitializers public class RMChatBackground : RealmSwift.Object {
+  @objc override public static func primaryKey() -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension NARealmPlatform.RMChatBackground : NADomain.DomainConvertibleType {
+  public func asDomain() -> NADomain.NAGroupBackground?
+  public typealias DomainType = NADomain.NAGroupBackground
+}
+public protocol BackgroundUseCase {
+  func save(background: NADomain.NAGroupBackground)
+  func getChatBackground(groupID: Swift.String) -> RxSwift.Single<NADomain.NAGroupBackground?>
+  func deleteChatBackground(groupID: Swift.String)
+}
+public protocol GroupUseCase {
+  func saveGroups(_ groups: [NADomain.NAGroup], saveLastMessage: Swift.Bool)
+  func saveGroupsSync(_ groups: [NADomain.NAGroup], saveLastMessage: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func getGroup(by idStrings: [Swift.String], type: NADomain.NAGroup.GroupType) -> RxSwift.Single<NADomain.NAGroup?>
+  func getGroup(by idStrings: [Swift.String], notType: NADomain.NAGroup.GroupType) -> RxSwift.Single<NADomain.NAGroup?>
+  func getGroup(by id: Swift.String) -> RxSwift.Single<NADomain.NAGroup?>
+  func getGroups(page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[NADomain.NAGroup]>
+  func getGroups(contain userId: Swift.String) -> RxSwift.Single<[NADomain.NAGroup]>
+  func updateGroup(by id: Swift.String, blockId: Swift.String)
+  func updateGroup(by id: Swift.String, unblockId: Swift.String)
+  func deleteGroups(page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<Swift.Void>
+  func deleteGroup(with groupId: Swift.String)
+  func deleteGroupSync(with groupId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func findGroup(by id: Swift.String?, type: Swift.String?, userId: Swift.String?, userName: Swift.String?) -> RxSwift.Single<NADomain.NAGroup?>
+  func saveReceiverMessageTimeToLive(groupId: Swift.String, messageTimeToLive: Swift.Double)
+  func getReceiverMessageTimeToLive(groupId: Swift.String) -> RxSwift.Single<Swift.Double>
+  func saveSenderMessageTimeToLive(groupId: Swift.String, messageTimeToLive: Swift.Double)
+  func getSenderMessageTimeToLive(groupId: Swift.String) -> RxSwift.Single<Swift.Double>
+  func updateUserStatus(userStatus: [NADomain.NAUserStatus]) -> RxSwift.Single<Swift.Void>
+  func searchGroup(byName name: Swift.String, contactResults: [NADomain.NAContact]) -> RxSwift.Single<[NADomain.NAGroup]>
+  func searchGroupCreated(by ownerUser: NADomain.NAUser, userIds: [Swift.String], searchText: Swift.String) -> RxSwift.Single<[NADomain.NAGroup]>
+  func getUnreadConversationsAndMissedCalls(currentUserId: Swift.String) -> RxSwift.Single<Swift.Int>
+  func getUnreadConversationsAndMissedCalls(currentUserId: Swift.String, messages: [NADomain.NAMessage]) -> RxSwift.Single<Swift.Int>
+  func getDraffMessage(groupId: Swift.String) -> RxSwift.Single<Swift.String?>
+  func saveDraffMessage(_ message: Swift.String?, groupId: Swift.String)
+}
+public enum AddPolicy {
+  case add
+  case create
+  public static func == (a: NARealmPlatform.AddPolicy, b: NARealmPlatform.AddPolicy) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum PinnedMessagesSortType : Swift.String {
+  case pinndedAt
+  case createdAt
+  case orderID
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol MessageUseCase {
+  func save(messages: [NADomain.NAMessage])
+  func save(messages: [NADomain.NAMessage], realm: RealmSwift.Realm)
+  func replace(oldMessageId: Swift.String, message: NADomain.NAMessage)
+  func delete(messageId: Swift.String)
+  func deleteMessages(from groupId: Swift.String)
+  func getMessageBy(id: Swift.String) -> RxSwift.Single<NADomain.NAMessage?>
+  func getUnreadMessageCount(groupId: Swift.String, currentUserId: Swift.String) -> RxSwift.Single<Swift.Int>
+  @discardableResult
+  func updateMessageStatus(message: NADomain.NAMessage, status: NADomain.NAMessageStatus) -> RxSwift.Single<[NADomain.NAMessage]>
+  func getMessages(dialogID: Swift.String, page: Swift.Int, pageSize: Swift.Int, from messageId: Swift.String?) -> RxSwift.Single<[NADomain.NAMessage]>
+  func getScheduleRemovedMessages() -> RxSwift.Single<[NADomain.NAMessage]>
+  func updateMessage(_ message: NADomain.NAMessage)
+  func getLastMessage(by groupId: Swift.String) -> RxSwift.Single<NADomain.NAMessage?>
+  func replaceAllMessages(with status: NADomain.NAMessageStatus, by newStatus: NADomain.NAMessageStatus)
+  func getAllMessagesSendingFailed(dialogId: Swift.String, senderID: Swift.Int64) -> RxSwift.Single<[NADomain.NAMessage]>
+  func replaceAllMessagesSendFailed(with senderID: Swift.Int64)
+  func savePin(messages: [NADomain.NAMessage])
+  func getPinnedMessages(groupID: Swift.String, sortBy: NARealmPlatform.PinnedMessagesSortType) -> RxSwift.Single<[NADomain.NAMessage]>
+  func unpinMessage(messageID: Swift.String)
+  func unpinAllMessages(groupID: Swift.String)
+}
+public protocol TempMessageUseCase : NARealmPlatform.MessageUseCase {
+  func getMessage(from groupId: Swift.String) -> RxSwift.Observable<NADomain.NACollectionChange<NADomain.NAMessage>>
+  func getPinnedMessage(from groupId: Swift.String) -> RxSwift.Observable<NADomain.NACollectionChange<NADomain.NAMessage>>
+  func cleanAll()
+  func cleanTokenPinMessage()
+  func cleanTokenMessage()
+}
+extension NARealmPlatform.AddPolicy : Swift.Equatable {}
+extension NARealmPlatform.AddPolicy : Swift.Hashable {}
+extension NARealmPlatform.PinnedMessagesSortType : Swift.Equatable {}
+extension NARealmPlatform.PinnedMessagesSortType : Swift.Hashable {}
+extension NARealmPlatform.PinnedMessagesSortType : Swift.RawRepresentable {}

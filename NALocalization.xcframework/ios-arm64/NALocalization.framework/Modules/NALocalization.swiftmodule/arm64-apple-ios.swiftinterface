@@ -1,0 +1,603 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NALocalization
+import Foundation
+import Localize_Swift
+@_exported import NALocalization
+import RxRelay
+import RxSwift
+import Swift
+import _Concurrency
+extension Swift.String {
+  public var localized: Swift.String {
+    get
+  }
+  public func localizedFormat(_ arguments: Swift.CVarArg...) -> Swift.String
+  public func localizedPlural(_ argument: Swift.CVarArg) -> Swift.String
+}
+public enum SupportLanguage : Swift.String, Swift.CaseIterable {
+  case english
+  case vietnamese
+  public var displayName: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [NALocalization.SupportLanguage]
+  public typealias RawValue = Swift.String
+  public static var allCases: [NALocalization.SupportLanguage] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol NALocalizationProtocol {
+  var text: NALocalization.NAText { get }
+  var currentLanguage: NALocalization.SupportLanguage { get }
+  var currentLocale: Foundation.Locale { get }
+  var languageObserverble: RxSwift.Observable<NALocalization.NAText> { get }
+  func setCurrentLanguage(newLanguage: NALocalization.SupportLanguage)
+  func updateStandardStorage(identifier: Swift.String)
+}
+public protocol NAText {
+  var maximum_voice_message_length: Swift.String { get }
+  var stop_recording: Swift.String { get }
+  var record_file_too_short: Swift.String { get }
+  var cancel: Swift.String { get }
+  var later: Swift.String { get }
+  var update_title: Swift.String { get }
+  var send: Swift.String { get }
+  var create_group_failed: Swift.String { get }
+  var message: Swift.String { get }
+  var view_info: Swift.String { get }
+  var function_under_development: Swift.String { get }
+  var record_permission_denied: Swift.String { get }
+  var message_will_be_removed_after: Swift.String { get }
+  var seconds: Swift.String { get }
+  var reply: Swift.String { get }
+  var copy: Swift.String { get }
+  var share: Swift.String { get }
+  var delete: Swift.String { get }
+  var info: Swift.String { get }
+  var edit: Swift.String { get }
+  var edit_info: Swift.String { get }
+  var search_in_conversation: Swift.String { get }
+  var add_members: Swift.String { get }
+  var share_group_link: Swift.String { get }
+  var see_all: Swift.String { get }
+  var hide: Swift.String { get }
+  var group_owner: Swift.String { get }
+  var notifications: Swift.String { get }
+  var leave_group: Swift.String { get }
+  var disband_group: Swift.String { get }
+  var disband_channel: Swift.String { get }
+  var disband: Swift.String { get }
+  var delete_channel_message: Swift.String { get }
+  var member_list: Swift.String { get }
+  var this_is_you: Swift.String { get }
+  var create_new_group: Swift.String { get }
+  var name_the_group: Swift.String { get }
+  var search: Swift.String { get }
+  var you_have_no_friends: Swift.String { get }
+  var add_friends_from_contact: Swift.String { get }
+  var upload_photo_failed: Swift.String { get }
+  var create_a_group_chat: Swift.String { get }
+  var create_a_secret_chat: Swift.String { get }
+  var save_info_success: Swift.String { get }
+  var blocked_list: Swift.String { get }
+  var select_new_admin: Swift.String { get }
+  var save_info: Swift.String { get }
+  var phone_number: Swift.String { get }
+  var create_group: Swift.String { get }
+  var start_normal_chat: Swift.String { get }
+  var start_secret_chat: Swift.String { get }
+  var share_contact: Swift.String { get }
+  var block_user: Swift.String { get }
+  var unblock_user: Swift.String { get }
+  var add_contact: Swift.String { get }
+  var options: Swift.String { get }
+  var mark_as_read: Swift.String { get }
+  var turn_on_notification: Swift.String { get }
+  var turn_off_notification: Swift.String { get }
+  var pin_conversation: Swift.String { get }
+  var unpin_conversation: Swift.String { get }
+  var group_ownership: Swift.String { get }
+  var leave_group_alert_message: Swift.String { get }
+  var done: Swift.String { get }
+  var search_contacts: Swift.String { get }
+  var search_sticker: Swift.String { get }
+  var owner: Swift.String { get }
+  var new_group: Swift.String { get }
+  var type_group_name: Swift.String { get }
+  var new_message: Swift.String { get }
+  var group_chat: Swift.String { get }
+  var select_new_owner: Swift.String { get }
+  var you_are_the_owner_of_this_group_please_select_a_new_admin_before_leaving: Swift.String { get }
+  func members(_ value: Swift.String) -> Swift.String
+  func s_members(_ value: Swift.String) -> Swift.String
+  func followers(_ value: Swift.String) -> Swift.String
+  var followers: Swift.String { get }
+  var group_s_name: Swift.String { get }
+  var new_secret_chat: Swift.String { get }
+  var share_to: Swift.String { get }
+  var save_photo_success: Swift.String { get }
+  var save_photo_failed: Swift.String { get }
+  var copied: Swift.String { get }
+  var block_this_person: Swift.String { get }
+  var delete_message_failed_please_try_again_later: Swift.String { get }
+  var save_video_success: Swift.String { get }
+  var save_video_failed: Swift.String { get }
+  var downloading_video: Swift.String { get }
+  var send_video_success: Swift.String { get }
+  func send_d(_ d: Swift.Int) -> Swift.String
+  func s_message(_ s: Swift.String) -> Swift.String
+  var contact: Swift.String { get }
+  var invite_friend: Swift.String { get }
+  var close: Swift.String { get }
+  var recent_contact: Swift.String { get }
+  var recent_searches: Swift.String { get }
+  var conversations: Swift.String { get }
+  var search_results: Swift.String { get }
+  var delete_all: Swift.String { get }
+  var enter_search_information: Swift.String { get }
+  var full_name: Swift.String { get }
+  var confirm: Swift.String { get }
+  var sort_by_name: Swift.String { get }
+  var you_have_no_contacts_yet: Swift.String { get }
+  var can_not_create_the_group: Swift.String { get }
+  var save_information: Swift.String { get }
+  var edit_information: Swift.String { get }
+  var edit_contact_success: Swift.String { get }
+  var please_enter_correct_phone_number: Swift.String { get }
+  var yourself: Swift.String { get }
+  var you_have_chatted_with_this_contact_before_do_you_want_to_continue_chatting_or_not: Swift.String { get }
+  var reject: Swift.String { get }
+  var chat_now: Swift.String { get }
+  var do_you_want_to_chat_with_this_person: Swift.String { get }
+  var invalid_id: Swift.String { get }
+  func hey_i_m_using_netalo_to_chat_join_me_download_it_here(_ value: Swift.String) -> Swift.String
+  var unable_to_add_image_please_try_again: Swift.String { get }
+  var no_contact: Swift.String { get }
+  var this_phone_number_has_not_enabled_netalo_do_you_want_to_invite_this_person_to_use_netalo: Swift.String { get }
+  var from_your_phone: Swift.String { get }
+  var who_have_not_used_the_app: Swift.String { get }
+  var invited_to_use_the_app_now: Swift.String { get }
+  var please_enter_correct_name: Swift.String { get }
+  var sort_by: Swift.String { get }
+  var name: Swift.String { get }
+  var last_seen_time: Swift.String { get }
+  var only_invite_upto_20_friends: Swift.String { get }
+  var mention_all_text: Swift.String { get }
+  var edit_contact_username: Swift.String { get }
+  var edit_contact_delete: Swift.String { get }
+  func edit_contact_not_found_with(_ value: Swift.String) -> Swift.String
+  func delete_contact_alert_description(_ value: Swift.String) -> Swift.String
+  var member: Swift.String { get }
+  var write_a_message: Swift.String { get }
+  var created_this_group: Swift.String { get }
+  func begin_conversation_with(_ value: Swift.String) -> Swift.String
+  var someone_created_this_group: Swift.String { get }
+  var you_created_this_group: Swift.String { get }
+  func you_invited_to_join_a_secret_chat(_ value: Swift.String) -> Swift.String
+  func invited_you_to_join_a_secret_chat(_ value: Swift.String) -> Swift.String
+  var left_group: Swift.String { get }
+  var added: Swift.String { get }
+  var add: Swift.String { get }
+  var deleted: Swift.String { get }
+  var removed: Swift.String { get }
+  var renamed_group_to: Swift.String { get }
+  var updated_group_avatar: Swift.String { get }
+  var changed_the_group_image: Swift.String { get }
+  var updated_the_group_info: Swift.String { get }
+  var chose: Swift.String { get }
+  var as_new_group_admin: Swift.String { get }
+  func replied_to(_ value: Swift.String) -> Swift.String
+  var video_call: Swift.String { get }
+  var audio_call: Swift.String { get }
+  var missed: Swift.String { get }
+  var cancelled: Swift.String { get }
+  func message_will_be_removed_after_seconds(_ value: Swift.String) -> Swift.String
+  var no_connection: Swift.String { get }
+  func with(_ value: Swift.String) -> Swift.String
+  var changed_group_avatar: Swift.String { get }
+  var updated_group_info: Swift.String { get }
+  var promoted: Swift.String { get }
+  var to_group_owner: Swift.String { get }
+  var recent_conversations: Swift.String { get }
+  var all_contacts: Swift.String { get }
+  var forward_message: Swift.String { get }
+  func forwarded_a_message(_ value: Swift.String) -> Swift.String
+  var you_forwarded_a_message: Swift.String { get }
+  func forwarded_a_video(_ value: Swift.String) -> Swift.String
+  var you_forwarded_a_video: Swift.String { get }
+  var forward: Swift.String { get }
+  var remove_for_all: Swift.String { get }
+  var remove_for_you: Swift.String { get }
+  var message_has_been_removed: Swift.String { get }
+  var images_videos: Swift.String { get }
+  var documents: Swift.String { get }
+  var contacts: Swift.String { get }
+  var maximum_file_size_250mb: Swift.String { get }
+  var send_file_failed_nplease_try_again_later: Swift.String { get }
+  func sent_an_attachment(_ value: Swift.String) -> Swift.String
+  var downloading_file: Swift.String { get }
+  var videos: Swift.String { get }
+  var no_images_was_sent: Swift.String { get }
+  var no_videos_was_sent: Swift.String { get }
+  var no_files_was_sent: Swift.String { get }
+  var off: Swift.String { get }
+  var send_photo_success: Swift.String { get }
+  var send_video_failed_please_try_again_later: Swift.String { get }
+  var send_photos_failed_please_try_again_later: Swift.String { get }
+  var create_group_failed_please_try_again_later: Swift.String { get }
+  var phone_call: Swift.String { get }
+  var block_description: Swift.String { get }
+  func unblock_title(_ value: Swift.String) -> Swift.String
+  var unblock_description: Swift.String { get }
+  var report: Swift.String { get }
+  func took_a_screenshot(_ value: Swift.String) -> Swift.String
+  var invalid_video_url: Swift.String { get }
+  var no_results: Swift.String { get }
+  var change_background: Swift.String { get }
+  var blur: Swift.String { get }
+  var change_background_for_all: Swift.String { get }
+  func s_updated_group_background(s: Swift.String) -> Swift.String
+  var channel: Swift.String { get }
+  var create_channel: Swift.String { get }
+  var add_subscribers: Swift.String { get }
+  var create_new_channel: Swift.String { get }
+  var name_the_channel: Swift.String { get }
+  func maximum_group_members_alert_description(_ s: Swift.Int) -> Swift.String
+  func maximum_channel_followers_alert_description(_ s: Swift.Int) -> Swift.String
+  var this_group_has_been_removed: Swift.String { get }
+  var this_channel_has_been_removed: Swift.String { get }
+  var you_unfollowed_this_channel: Swift.String { get }
+  var very_sorry_this_is_a_private_channel: Swift.String { get }
+  func channel_first_message(_ s: Swift.String) -> Swift.String
+  func s_created_this_group(_ s: Swift.String) -> Swift.String
+  func s_took_a_screenshot(_ s: Swift.String) -> Swift.String
+  func s_turned_off_message_delete_timer(_ s: Swift.String) -> Swift.String
+  func s_set_message_delete_timer_to(_ s: Swift.String) -> Swift.String
+  func s_removed_s(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_added_s(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_updated_channel_info(_ s: Swift.String) -> Swift.String
+  func s_updated_group_info(_ s: Swift.String) -> Swift.String
+  func s_updated_channel_avatar(_ s: Swift.String) -> Swift.String
+  func s_updated_group_avatar(_ s: Swift.String) -> Swift.String
+  func s_renamed_channel_to_s(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_renamed_group_to_s(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_promoted_s_to_channel_administrator(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_promoted_s_to_group_owner(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_unfollowed_channel(_ s: Swift.String) -> Swift.String
+  func s_left_group(_ s: Swift.String) -> Swift.String
+  var unfollow_channel: Swift.String { get }
+  var are_you_sure_you_want_to_unfollow_the_channel_after_unfollowing_you_will_not_be_able_to_read_the_message_of_this_channel: Swift.String { get }
+  var channel_link_copied: Swift.String { get }
+  var unfollow: Swift.String { get }
+  var share_channel_link: Swift.String { get }
+  var channel_s_name: Swift.String { get }
+  var add_admins: Swift.String { get }
+  var admins_list: Swift.String { get }
+  var limit_add_admins: Swift.String { get }
+  var select_new_administrator: Swift.String { get }
+  var delete_channel: Swift.String { get }
+  var channel_s_description: Swift.String { get }
+  var administrator: Swift.String { get }
+  func s_added_s_to_group_admin_list(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_removed_s_from_group_admin_list(_ a: Swift.String, _ b: Swift.String) -> Swift.String
+  func s_unpinned_all_messages(_ s: Swift.String) -> Swift.String
+  func s_pinned_message(_ s: Swift.String) -> Swift.String
+  func s_unpinned_message(_ s: Swift.String) -> Swift.String
+  var do_you_want_to_unpin_this_msesage: Swift.String { get }
+  var unpin: Swift.String { get }
+  var message_pinned: Swift.String { get }
+  var message_unpinned: Swift.String { get }
+  var undo: Swift.String { get }
+  var pinned_messages: Swift.String { get }
+  var pin_message: Swift.String { get }
+  var unpin_message: Swift.String { get }
+  var pin_message_failed_please_try_again_later: Swift.String { get }
+  var unpin_message_failed_please_try_again_later: Swift.String { get }
+  func maximum_pinned_message_alert_description(_ s: Swift.Int) -> Swift.String
+  var unpin_all: Swift.String { get }
+  var sort_list_pin_description: Swift.String { get }
+  var do_you_want_to_unpin_all_messages: Swift.String { get }
+  func s_joined_group_with_link(_ s: Swift.String) -> Swift.String
+  func s_followed_the_channel_with_link(_ s: Swift.String) -> Swift.String
+  var delete_message: Swift.String { get }
+  var create_conversation_failed_please_try_again_later: Swift.String { get }
+  var create_secret_chat_failed_please_try_again_later: Swift.String { get }
+  var create_channhel_failed_please_try_again_later: Swift.String { get }
+  var sticker: Swift.String { get }
+  var group_call: Swift.String { get }
+  var group_audio_call_ended: Swift.String { get }
+  var group_video_call_ended: Swift.String { get }
+  var group_video_call_ended_alert_message: Swift.String { get }
+  var group_audio_call_ended_alert_message: Swift.String { get }
+  func group_call_ended(_ s: Swift.String) -> Swift.String
+  func d_members_joined(_ d: Swift.Int) -> Swift.String
+  var tap_to_join: Swift.String { get }
+  var group_audio_call: Swift.String { get }
+  var group_video_call: Swift.String { get }
+  func s_invited_you_to_join_a_groupcall(_ s: Swift.String) -> Swift.String
+  func s_invited_s(_ s1: Swift.String, s2: Swift.String) -> Swift.String
+  var edit_contact_failed: Swift.String { get }
+  var delete_contact_failed: Swift.String { get }
+  var conversation: Swift.String { get }
+  var no_conversation: Swift.String { get }
+  var new_conversation: Swift.String { get }
+  var error: Swift.String { get }
+  var could_not_leave_conversation_nplease_try_again_later: Swift.String { get }
+  var tapped_pin_conversation: Swift.String { get }
+  var id_not_valid: Swift.String { get }
+  var could_not_create_group: Swift.String { get }
+  var no_recent_calls_yet: Swift.String { get }
+  var get_started_with_a_new_call: Swift.String { get }
+  var call: Swift.String { get }
+  var video: Swift.String { get }
+  var voice_message: Swift.String { get }
+  var photos: Swift.String { get }
+  var camera: Swift.String { get }
+  var photo_library: Swift.String { get }
+  var images: Swift.String { get }
+  var canceled_voice_call: Swift.String { get }
+  var image: Swift.String { get }
+  var start_conversation: Swift.String { get }
+  var you: Swift.String { get }
+  var unknown: Swift.String { get }
+  func promoted_to_group_owner(_ value: Swift.String, _ value1: Swift.String) -> Swift.String
+  func d_days(_ value: Swift.Int) -> Swift.String
+  func d_hours(_ value: Swift.Int) -> Swift.String
+  func d_minutes(_ value: Swift.Int) -> Swift.String
+  func d_seconds(_ value: Swift.Int) -> Swift.String
+  var just_now: Swift.String { get }
+  func camera_of_was_off(_ value: Swift.String) -> Swift.String
+  var connecting: Swift.String { get }
+  var call_failed: Swift.String { get }
+  var call_ended: Swift.String { get }
+  var user_busy: Swift.String { get }
+  var ringing: Swift.String { get }
+  var are_you_sure_you_want_to_leave_the_group_after_leaving_the_group_you_will_not_read_the_message_of_this_group: Swift.String { get }
+  var reaching: Swift.String { get }
+  var record: Swift.String { get }
+  var first_message: Swift.String { get }
+  var end_call: Swift.String { get }
+  var online: Swift.String { get }
+  var offline: Swift.String { get }
+  var conversation_secret_block_on_deleted: Swift.String { get }
+  var conversation_secret_block_on_waiting: Swift.String { get }
+  var this_group_is_no_longer_available: Swift.String { get }
+  var create_group_link: Swift.String { get }
+  var create_channel_link: Swift.String { get }
+  var please_create_group_link_first: Swift.String { get }
+  var please_create_channel_link_first: Swift.String { get }
+  var instructions_to_add_admin: Swift.String { get }
+  var all: Swift.String { get }
+  var missed_call: Swift.String { get }
+  var call_logs: Swift.String { get }
+  var new_call: Swift.String { get }
+  var search_call: Swift.String { get }
+  var voice_call: Swift.String { get }
+  var missed_video: Swift.String { get }
+  var missed_voice: Swift.String { get }
+  var canceled_video: Swift.String { get }
+  var canceled_voice: Swift.String { get }
+  var incoming_video_call: Swift.String { get }
+  var outgoing_video_call: Swift.String { get }
+  var incoming_voice_call: Swift.String { get }
+  var outgoing_voice_call: Swift.String { get }
+  var no_call: Swift.String { get }
+  var start_new_call: Swift.String { get }
+  var could_not_delete_call_nplease_try_again_later: Swift.String { get }
+  var new_all: Swift.String { get }
+  var `continue`: Swift.String { get }
+  var confirm_otp: Swift.String { get }
+  var please_enter_the_otp_that_was_sent_to_your_phone_number: Swift.String { get }
+  var resend_code: Swift.String { get }
+  var resend_otp: Swift.String { get }
+  var change_phone_number: Swift.String { get }
+  var completing_this_step_means_you_agree_with_the_terms_of_use_of_netalo: Swift.String { get }
+  var notification: Swift.String { get }
+  var otp_does_not_match_please_enter_otp_again: Swift.String { get }
+  var otp_has_expired_please_resend_the_otp: Swift.String { get }
+  var update_information: Swift.String { get }
+  var skip: Swift.String { get }
+  var terms_of_use: Swift.String { get }
+  var completing_this_step_means_you_agree_with: Swift.String { get }
+  var of_netalo: Swift.String { get }
+  var resend_code_fail: Swift.String { get }
+  var update_fail_n_please_update_again: Swift.String { get }
+  var otp_send_to: Swift.String { get }
+  var please_resend_new_code_or_input_again: Swift.String { get }
+  var confirm_now: Swift.String { get }
+  var this_phone_number_is_already_in_the_contacts_list_do_you_want_to_chat_now: Swift.String { get }
+  var deny: Swift.String { get }
+  var countryCode: Swift.String { get }
+  var cancel_call: Swift.String { get }
+  var can_not_make_this_call: Swift.String { get }
+  var choose_album: Swift.String { get }
+  var all_photos: Swift.String { get }
+  var album: Swift.String { get }
+  var recents: Swift.String { get }
+  var favorites: Swift.String { get }
+  var live_photos: Swift.String { get }
+  var portrait: Swift.String { get }
+  var bursts: Swift.String { get }
+  var time_lapse: Swift.String { get }
+  var screenshots: Swift.String { get }
+  var slo_mo: Swift.String { get }
+  var selfies: Swift.String { get }
+  var choose_photo: Swift.String { get }
+  func d_of_d(_ value: Swift.Int, _ value1: Swift.Int) -> Swift.String
+  var save_photo: Swift.String { get }
+  var save_video: Swift.String { get }
+  var photos_access: Swift.String { get }
+  var we_need_photos_access_to_save_this_photo_please_enable_in_settings: Swift.String { get }
+  var other: Swift.String { get }
+  var system_error_please_try_again_later: Swift.String { get }
+  var wrong_image_format_please_select_another_image: Swift.String { get }
+  var normal_quality: Swift.String { get }
+  var high_quality: Swift.String { get }
+  var camera_not_available: Swift.String { get }
+  func max_media_selections_d(_ value: Swift.Int) -> Swift.String
+  var we_need_photos_access_to_send_photo_please_enable_in_settings: Swift.String { get }
+  var maximum_video_size_250mb: Swift.String { get }
+  var downloading_audio_record: Swift.String { get }
+  var take_a_picture: Swift.String { get }
+  var record_video: Swift.String { get }
+  var account: Swift.String { get }
+  var profile: Swift.String { get }
+  var setting_noti: Swift.String { get }
+  var block_list: Swift.String { get }
+  var question_asked: Swift.String { get }
+  var term_of_use: Swift.String { get }
+  var support: Swift.String { get }
+  var logout: Swift.String { get }
+  var confirm_logout: Swift.String { get }
+  var hidden_messages: Swift.String { get }
+  var privacy_and_security: Swift.String { get }
+  var fullname: Swift.String { get }
+  var update_now: Swift.String { get }
+  var enter_your_name: Swift.String { get }
+  var enter_your_phone: Swift.String { get }
+  var send_email: Swift.String { get }
+  var please_enter_the_missing_information: Swift.String { get }
+  var language: Swift.String { get }
+  var notification_settings: Swift.String { get }
+  var frequently_asked_questions: Swift.String { get }
+  var update: Swift.String { get }
+  var stranger: Swift.String { get }
+  var language_code: Swift.String { get }
+  var yes: Swift.String { get }
+  var no: Swift.String { get }
+  var switch_to_video_call: Swift.String { get }
+  var ok: Swift.String { get }
+  var end_to_end_encrypted: Swift.String { get }
+  var ask_question_url: Swift.String { get }
+  var term_of_use_url: Swift.String { get }
+  var account_referral_code_title: Swift.String { get }
+  var account_referral_code_sub_title: Swift.String { get }
+  var version: Swift.String { get }
+  var theme_title: Swift.String { get }
+  var theme_default_mode: Swift.String { get }
+  var theme_dark_mode: Swift.String { get }
+  var theme_colors: Swift.String { get }
+  var theme_base_on_system_title: Swift.String { get }
+  var see_more: Swift.String { get }
+  var invite_now: Swift.String { get }
+  var save: Swift.String { get }
+  var referral_title: Swift.String { get }
+  var referral_sub_title: Swift.String { get }
+  var referral_placeholder: Swift.String { get }
+  var referral_verify: Swift.String { get }
+  var referral_code_apply_successfully: Swift.String { get }
+  var referral_code_apply_failed: Swift.String { get }
+  func invite_d_contacts(_ value: Swift.Int) -> Swift.String
+  func block_alert_title(_ value: Swift.String) -> Swift.String
+  func block_alert_message(_ value: Swift.String) -> Swift.String
+  var block_alert_button: Swift.String { get }
+  var you_are_blocked: Swift.String { get }
+  func unblock_alert_title(_ value: Swift.String) -> Swift.String
+  func unblock_alert_message(_ value: Swift.String) -> Swift.String
+  var unblock_alert_button: Swift.String { get }
+  var cannot_block_message: Swift.String { get }
+  var group_link_copied: Swift.String { get }
+  var please_contact_group_owner_to_create_group_link: Swift.String { get }
+  var revoke_link: Swift.String { get }
+  var copy_link: Swift.String { get }
+  var everyone_can_join_your_group_through_this_link_you_can_revoke_this_link_at_any_time: Swift.String { get }
+  var block_list_title: Swift.String { get }
+  var block_list_block_user: Swift.String { get }
+  var block_list_description: Swift.String { get }
+  func add_d_block_contacts(_ value: Swift.Int) -> Swift.String
+  var join_group_failed: Swift.String { get }
+  func delete_contact_alert_description(_ s: Any) -> Swift.String
+  var set_timer: Swift.String { get }
+  var join: Swift.String { get }
+  var list_group: Swift.String { get }
+  var move_member: Swift.String { get }
+  var search_group: Swift.String { get }
+  var continue_: Swift.String { get }
+  var move_old_group_members_to_the_new_group: Swift.String { get }
+  var move_successful: Swift.String { get }
+  var all_members_have_been_moved_to_the_new_group: Swift.String { get }
+  var move_to: Swift.String { get }
+  var has_joined_netalo: Swift.String { get }
+  var move_member_failed: Swift.String { get }
+  var group_list: Swift.String { get }
+  var gps_information: Swift.String { get }
+  var location_screen_title: Swift.String { get }
+  var share_location: Swift.String { get }
+  var live_location: Swift.String { get }
+  var current_location: Swift.String { get }
+  var share_current_location: Swift.String { get }
+  var sharing_live_location: Swift.String { get }
+  var accurate_65_metres: Swift.String { get }
+  var updated_realtime_location: Swift.String { get }
+  var for_15_minutes: Swift.String { get }
+  var for_1_hour: Swift.String { get }
+  var for_8_hours: Swift.String { get }
+  var title_confirm_live_location: Swift.String { get }
+  var location_alert_message: Swift.String { get }
+  var constantly_updated: Swift.String { get }
+  var ended: Swift.String { get }
+  func s_is_sharing_live_location(_ value: Swift.String) -> Swift.String
+  func s_stopped_share_live_location(_ value: Swift.String) -> Swift.String
+  func s_reach_max_live_share_location(_ s: Swift.Int) -> Swift.String
+  var stop_share_live_location: Swift.String { get }
+  func updated_d_minute_ago(_ s: Swift.Int) -> Swift.String
+  func updated_d_hours_ago(_ s: Swift.Int) -> Swift.String
+  func s_sharing_live_location(_ s: Swift.String) -> Swift.String
+  var enable_always_location: Swift.String { get }
+  var just_updated: Swift.String { get }
+  func s_sharing_current_location(_ s: Swift.String) -> Swift.String
+  var group_qrcode: Swift.String { get }
+  var reset_qrcode: Swift.String { get }
+  var can_not_join_group: Swift.String { get }
+  var understand: Swift.String { get }
+  var you_cannot_join_this_group_because_this_invitation_link_has_been_reset: Swift.String { get }
+  var reset_group_QRCode: Swift.String { get }
+  var do_you_want_to_reset_the_group_invitation_link: Swift.String { get }
+  var cancel_reset: Swift.String { get }
+  var reset: Swift.String { get }
+  var the_new_QRCode_has_been_created_successfully: Swift.String { get }
+  var back: Swift.String { get }
+  var action_ok: Swift.String { get }
+  var login_request_over_limit: Swift.String { get }
+  var force_update_message: Swift.String { get }
+  var latest_version: Swift.String { get }
+  var login_failed: Swift.String { get }
+  var Login_with_VNDIRECT_account: Swift.String { get }
+  var username: Swift.String { get }
+  var enter_username: Swift.String { get }
+  var enter_password: Swift.String { get }
+  var remember_login_status: Swift.String { get }
+  var login: Swift.String { get }
+  var forgot_password: Swift.String { get }
+  var help: Swift.String { get }
+  var password: Swift.String { get }
+  func popup_request_photos_access(_ appName: Swift.String) -> Swift.String
+  var you_have_no_photo: Swift.String { get }
+  var add_photo: Swift.String { get }
+  var sticker_store: Swift.String { get }
+  var mine: Swift.String { get }
+}
+public class NALocalizationImpl : NALocalization.NALocalizationProtocol {
+  public init(storageIdentifier: Swift.String? = nil)
+  public var text: NALocalization.NAText
+  public var currentLanguage: NALocalization.SupportLanguage {
+    get
+  }
+  public var currentLocale: Foundation.Locale {
+    get
+  }
+  public var languageObserverble: RxSwift.Observable<NALocalization.NAText> {
+    get
+  }
+  public func setCurrentLanguage(newLanguage: NALocalization.SupportLanguage)
+  public func updateStandardStorage(identifier: Swift.String)
+  @objc deinit
+}
+extension NALocalization.SupportLanguage : Swift.Equatable {}
+extension NALocalization.SupportLanguage : Swift.Hashable {}
+extension NALocalization.SupportLanguage : Swift.RawRepresentable {}
