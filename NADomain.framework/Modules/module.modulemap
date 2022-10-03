@@ -6,6 +6,6 @@ framework module NADomain {
 }
 
 module NADomain.Swift {
-  header "NADomain-Swift.h"
-  requires objc
+    header "NADomain-Swift.h"
+    requires objc
 }

@@ -6,6 +6,6 @@ framework module NASocketPlatform {
 }
 
 module NASocketPlatform.Swift {
-  header "NASocketPlatform-Swift.h"
-  requires objc
+    header "NASocketPlatform-Swift.h"
+    requires objc
 }

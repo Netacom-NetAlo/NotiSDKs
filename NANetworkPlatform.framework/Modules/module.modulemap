@@ -6,6 +6,6 @@ framework module NANetworkPlatform {
 }
 
 module NANetworkPlatform.Swift {
-  header "NANetworkPlatform-Swift.h"
-  requires objc
+    header "NANetworkPlatform-Swift.h"
+    requires objc
 }
