@@ -1,0 +1,324 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NACallSDK
+import AVFoundation
+import Foundation
+@_exported import NACallSDK
+import NADomain
+import RxRelay
+import RxSwift
+import Starscream
+import Swift
+import UIKit
+import WebRTC
+import _Concurrency
+public struct IceCandidate : Swift.Codable {
+  public let sdp: Swift.String
+  public let sdpMLineIndex: Swift.Int32
+  public let sdpMid: Swift.String?
+  public init(sdp: Swift.String, sdpMLineIndex: Swift.Int32, sdpMid: Swift.String?)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class WebRTCClient : ObjectiveC.NSObject {
+  public func requestStatistics()
+  public func initAudio()
+  public func startCaptureLocalVideo(renderer: WebRTC.RTCVideoRenderer)
+  public func switchCameraPosition(_ position: AVFoundation.AVCaptureDevice.Position)
+  public func renderRemoteVideo(to renderer: WebRTC.RTCVideoRenderer)
+  public func stopCapture()
+  @objc deinit
+}
+extension NACallSDK.WebRTCClient : WebRTC.RTCPeerConnectionDelegate {
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didChange stateChanged: WebRTC.RTCSignalingState)
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didAdd stream: WebRTC.RTCMediaStream)
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didRemove stream: WebRTC.RTCMediaStream)
+  @objc dynamic public func peerConnectionShouldNegotiate(_ peerConnection: WebRTC.RTCPeerConnection)
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didChange newState: WebRTC.RTCIceConnectionState)
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didChange newState: WebRTC.RTCIceGatheringState)
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didGenerate candidate: WebRTC.RTCIceCandidate)
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didRemove candidates: [WebRTC.RTCIceCandidate])
+  @objc dynamic public func peerConnection(_ peerConnection: WebRTC.RTCPeerConnection, didOpen dataChannel: WebRTC.RTCDataChannel)
+}
+extension NACallSDK.WebRTCClient : WebRTC.RTCDataChannelDelegate {
+  @objc dynamic public func dataChannelDidChangeState(_ dataChannel: WebRTC.RTCDataChannel)
+  @objc dynamic public func dataChannel(_ dataChannel: WebRTC.RTCDataChannel, didReceiveMessageWith buffer: WebRTC.RTCDataBuffer)
+}
+public enum NetaloCallEnviroment {
+  case dev
+  case `default`
+  public static func == (a: NACallSDK.NetaloCallEnviroment, b: NACallSDK.NetaloCallEnviroment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum SdpType : Swift.String, Swift.Codable {
+  case offer, prAnswer, answer
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct SessionDescription : Swift.Codable {
+  public let sdp: Swift.String
+  public let type: NACallSDK.SdpType
+  public init(sdp: Swift.String, type: NACallSDK.SdpType)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct CallRTCState {
+  public var status: NACallSDK.StatusRTC
+  public var rxChatID: Swift.String
+  public init(status: NACallSDK.StatusRTC, rxChatID: Swift.String)
+}
+public enum StatusRTC {
+  case connectVideo
+  case connectAudio
+  case cancelAudio
+  case cancelVideo
+  case cancel
+  case receiveEvent
+  case connectFail
+  case receiveInfo
+  case activeVideo
+  case inactiveVideo
+  case callLog
+  case ringing
+  case connecting
+  case requestVideo
+  case none
+  case busy
+  case statistics(data: [Swift.String : Any])
+}
+public enum TypeCallRTC {
+  case income
+  case outgoing
+  case groupCall
+  public static func == (a: NACallSDK.TypeCallRTC, b: NACallSDK.TypeCallRTC) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct GroupCallState {
+  public var status: NACallSDK.GroupCallStatus
+  public init(status: NACallSDK.GroupCallStatus)
+}
+public enum GroupCallStatus {
+  case createGroupCall(NADomain.NAGroupCall)
+  case joinGroupCall(NADomain.NAGroupCall)
+  case leaveGroupCall
+  case inviteGroupCall
+  case cancel
+  case none
+}
+public enum GroupCallKeys {
+  case create_groupcall
+  case join_groupcall
+  case leave_groupcall
+  case invite_groupcall
+  case ping_groupcall
+  case cancel
+  public var value: Swift.String {
+    get
+  }
+  public static func == (a: NACallSDK.GroupCallKeys, b: NACallSDK.GroupCallKeys) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension WebRTC.RTCIceConnectionState : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension WebRTC.RTCSignalingState : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension WebRTC.RTCIceGatheringState : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension WebRTC.RTCDataChannelState : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public protocol WebSocketProvider : AnyObject {
+  var delegate: NACallSDK.WebSocketProviderDelegate? { get set }
+  var isConnected: Swift.Bool { get }
+  func connect()
+  func disconnect()
+  func send(data: Foundation.Data)
+  func send(msg: Swift.String)
+}
+public protocol WebSocketProviderDelegate : AnyObject {
+  func webSocketDidConnect(_ webSocket: NACallSDK.WebSocketProvider)
+  func webSocketDidDisconnect(_ webSocket: NACallSDK.WebSocketProvider)
+  func webSocket(_ webSocket: NACallSDK.WebSocketProvider, didReceiveData data: Foundation.Data)
+}
+public protocol CallSignalDelegate : AnyObject {
+  func signalClientDidCreateCall(data: NACallSDK.GroupDetailData)
+  func signalClientReceiveCall(receiverID: Swift.String, type: Swift.String)
+  func signalClientReceiveGroupCall(data: NACallSDK.GroupDetailData)
+  func signalClientCancel(groupID: Swift.String)
+}
+public struct DetailData : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct userRTC : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MessageData : Swift.Codable {
+  public init(type: Swift.String, userId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct GroupDetailData : Swift.Codable {
+  public var id: Swift.String
+  public var groupID: Swift.String
+  public var messageID: Swift.String
+  public var token: Swift.String
+  public var type: Swift.String
+  public var invitedUins: [Swift.String]
+  public var invitedUin: Swift.String
+  public init(type: Swift.String, id: Swift.String, groupID: Swift.String, messageID: Swift.String, token: Swift.String, invitedUins: [Swift.String] = [], invitedUin: Swift.String = "")
+  public init(key: NACallSDK.GroupCallKeys, groupCall: NADomain.NAGroupCall)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension NACallSDK.GroupDetailData : Swift.Hashable {
+  public static func == (lhs: NACallSDK.GroupDetailData, rhs: NACallSDK.GroupDetailData) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct GroupMessageData : Swift.Codable {
+  public init(data: NACallSDK.GroupDetailData)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public class SignalingClient {
+  weak public var callDelegate: NACallSDK.CallSignalDelegate?
+  public init(webSocket: NACallSDK.WebSocketProvider, isSkipConnect: Swift.Bool = false)
+  public func connect()
+  public func disconnect()
+  @objc deinit
+}
+extension NACallSDK.SignalingClient : NACallSDK.WebSocketProviderDelegate {
+  public func webSocketDidConnect(_ webSocket: NACallSDK.WebSocketProvider)
+  public func webSocketDidDisconnect(_ webSocket: NACallSDK.WebSocketProvider)
+  public func webSocket(_ webSocket: NACallSDK.WebSocketProvider, didReceiveData data: Foundation.Data)
+}
+public protocol NACallSDKDelegate : AnyObject {
+  func didCancelCall(receiverID: Swift.String, type: Swift.String)
+  func didEndCall(receiverID: Swift.String)
+  func userIsBusy()
+  func notAvailableToAnswer()
+}
+public protocol NAGroupCallSDKDelegate : AnyObject {
+  func didEndGroupCall(groupID: Swift.String, messageID: Swift.String)
+  func didLeaveGroupCall(groupID: Swift.String, messageID: Swift.String)
+  func notAvailableToAnswerGroupCall(groupID: Swift.String)
+}
+public class NACallSDKManager {
+  weak public var delegate: NACallSDK.NACallSDKDelegate?
+  weak public var groupCallDelegate: NACallSDK.NAGroupCallSDKDelegate?
+  public var callRTCState: RxSwift.Observable<NACallSDK.CallRTCState?> {
+    get
+  }
+  public var groupCallState: RxSwift.Observable<NACallSDK.GroupCallState?> {
+    get
+  }
+  public var rtcStats: RxSwift.Observable<NACallSDK.CallRTCState?> {
+    get
+  }
+  public init(env: NACallSDK.NetaloCallEnviroment = .default, groupID: Swift.String, type: Swift.String, receiverID: Swift.String, isBeingCall: Swift.Bool = true, signalingClient: NACallSDK.SignalingClient)
+  public init(env: NACallSDK.NetaloCallEnviroment = .default, groupID: Swift.String, groupName: Swift.String, groupAvatar: Swift.String, signalingClient: NACallSDK.SignalingClient, isBeingCall: Swift.Bool = true, isGroupCall: Swift.Bool = true)
+  public func runNowOrWhenSDKReady(timeout: Foundation.TimeInterval = 5.0, block: ((Swift.Bool) -> ())?)
+  public func login()
+  public func requestStatistics()
+  public func getSignalClient() -> NACallSDK.SignalingClient
+  public func getWebRTCClient() -> NACallSDK.WebRTCClient
+  public func getType() -> Swift.String
+  public func isUserBeingCall() -> Swift.Bool
+  public func callTimeout() -> Swift.Double
+  public func createCall()
+  public func createRTCOffer()
+  public func sendPickedUpEventToOtherDevices()
+  public func createAnswer()
+  public func createRTCAnswer()
+  public func checkAvailable()
+  public func setState(_ state: NACallSDK.CallRTCState)
+  public func requestVideo()
+  public func turnOffVideo()
+  public func turnOnVideo()
+  public func speakerDidTap(isOn: Swift.Bool)
+  public func muteDidTap(isMute: Swift.Bool)
+  public func setAudioStatus(audioSession: AVFAudio.AVAudioSession, isActive: Swift.Bool)
+  public func switchCameraPosition(_ position: AVFoundation.AVCaptureDevice.Position)
+  public func stopCapture()
+  public func cancelCall(_ receiverID: Swift.String? = nil)
+  public func cancelGroupCall(_ messageID: Swift.String = "")
+  public func createVoiceGroupCall()
+  public func createVideoGroupCall()
+  public func leaveGroupCall(messageId: Swift.String)
+  public func joinGroupCall(messageId: Swift.String)
+  public func pingGroupCall(messageId: Swift.String)
+  public func inviteGroupCall(messageId: Swift.String, invitedUin: Swift.String, senderId: Swift.String)
+  public func publishGroupCallState(_ state: NACallSDK.GroupCallState)
+  public func setReceiverID(_ receiverID: Swift.String, fullName: Swift.String)
+  public func clearCallState()
+  public func sendBusyMessage(rxreceiver: Swift.String)
+  public func reportEndCall()
+  public func reportEndGroupCall()
+  public func setGroupCallAvailable(_ isAvailable: Swift.Bool = false)
+  public func setGroupCallConnected(_ isConnected: Swift.Bool = false)
+  @objc deinit
+}
+public enum MessageRTC {
+  case sdp(NACallSDK.SessionDescription)
+  case candidate(NACallSDK.IceCandidate)
+}
+extension NACallSDK.MessageRTC : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(sdp: NACallSDK.SessionDescription)
+  public init(candidate: NACallSDK.IceCandidate)
+}
+public class StarscreamWebSocket : NACallSDK.WebSocketProvider {
+  public var delegate: NACallSDK.WebSocketProviderDelegate?
+  public init(url: Foundation.URL)
+  public func connect()
+  public func disconnect()
+  public func send(data: Foundation.Data)
+  public func send(msg: Swift.String)
+  public var isConnected: Swift.Bool {
+    get
+  }
+  @objc deinit
+}
+extension NACallSDK.StarscreamWebSocket : Starscream.WebSocketDelegate {
+  public func websocketDidConnect(socket: Starscream.WebSocketClient)
+  public func websocketDidDisconnect(socket: Starscream.WebSocketClient, error: Swift.Error?)
+  public func websocketDidReceiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
+  public func websocketDidReceiveData(socket: Starscream.WebSocketClient, data: Foundation.Data)
+}
+extension NACallSDK.NetaloCallEnviroment : Swift.Equatable {}
+extension NACallSDK.NetaloCallEnviroment : Swift.Hashable {}
+extension NACallSDK.SdpType : Swift.Equatable {}
+extension NACallSDK.SdpType : Swift.Hashable {}
+extension NACallSDK.SdpType : Swift.RawRepresentable {}
+extension NACallSDK.TypeCallRTC : Swift.Equatable {}
+extension NACallSDK.TypeCallRTC : Swift.Hashable {}
+extension NACallSDK.GroupCallKeys : Swift.Equatable {}
+extension NACallSDK.GroupCallKeys : Swift.Hashable {}

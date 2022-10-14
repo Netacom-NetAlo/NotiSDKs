@@ -1,0 +1,1428 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NADomain
+import Foundation
+import NACoreUtils
+@_exported import NADomain
+import Swift
+import _Concurrency
+public struct NAIceSdp : Swift.Codable {
+  public static let SDP_TYPE_UNKNOWN: Swift.Int
+  public static let SDP_TYPE_OFFER: Swift.Int
+  public static let SDP_TYPE_ANSWER: Swift.Int
+  public let sdp: Swift.String
+  public let type: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public init(sdp: Swift.String, type: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAAttachment : Swift.Codable {
+  public let id: Swift.String
+  public let name: Swift.String
+  public let thumbnail: Swift.String
+  public let updatedAt: Swift.String
+  public let stickers: [NADomain.NAStickerObject]
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAStickerObject : Swift.Codable {
+  public let id: Swift.String
+  public let name: Swift.String
+  public let categoryId: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAGroupLinkResponse : Swift.Codable {
+  public let result: Swift.Int
+  public let link: Swift.String
+  public func codeCheck() -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAListGroupLinkResponse : Swift.Codable {
+  public let result: Swift.Int
+  public let links: [Swift.String]
+  public func codeCheck() -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAStopCall : Swift.Codable {
+  public let callId: Swift.String
+  public let uin: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public init(callId: Swift.String, uin: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAGroupEvent : Swift.Encodable {
+  public let groupID: Swift.String
+  public let kind: NADomain.NAGroupEventKind
+  public init(groupID: Swift.String, kind: NADomain.NAGroupEventKind)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum NAGroupEventKind : Swift.Encodable {
+  case startTyping
+  case stopTyping
+  case updateMessage(NADomain.NAMessage)
+  case deleteMessage(NADomain.NAMessage)
+  public func encode(to encoder: Swift.Encoder) throws
+  public func type() -> Swift.Int
+}
+public protocol DomainConvertibleType {
+  associatedtype DomainType
+  func asDomain() -> Self.DomainType?
+}
+public class NAPinUnpinMessage : Swift.Codable {
+  public var message: Swift.String
+  public var type: Swift.Int
+  public init(message: Swift.String, type: Swift.Int)
+  public init(message: NADomain.NAMessage)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public class NAPinUnpinMessageResponse : Swift.Codable {
+  public init(pinMessage: NADomain.NAPinUnpinMessage?, unpinMessage: NADomain.NAPinUnpinMessage?)
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public func toString() -> Swift.String
+  @objc deinit
+}
+public struct NAMessage : Swift.Codable {
+  public var groupID: Swift.String, messageID: Swift.String, senderUin: Swift.String, groupAvatar: Swift.String, senderName: Swift.String, senderAvatar: Swift.String, groupName: Swift.String
+  public var status: NADomain.NAMessageStatus
+  public var kind: NADomain.NAMessageKind
+  public var seenUins: [Swift.String], deletedUins: [Swift.String], recipientUins: [Swift.String], mentionedUins: [Swift.String], receivedUins: [Swift.String]
+  public var createdAtMS: Swift.Double, updatedAtMS: Swift.Double
+  public var version: Swift.Int
+  public var isEncrypted: Swift.Bool
+  public var isDecrypted: Swift.Bool
+  public var expiredAt: Swift.Double
+  public var timeToLive: Swift.Double
+  public var mentionedAll: Swift.Bool
+  public var pinnedAt: Swift.String
+  public var orderID: Swift.Int
+  public var isPinned: Swift.Bool {
+    get
+  }
+  public var isMissedCall: Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+  public init(groupID: Swift.String, message: Swift.String, senderName: Swift.String, senderAvatar: Swift.String, senderUin: Swift.String, isEncrypted: Swift.Bool)
+  public init(groupId: Swift.String, kind: NADomain.NAMessageKind, senderName: Swift.String, senderAvatar: Swift.String, senderID: Swift.String = "")
+  public init(groupId: Swift.String, senderId: Swift.String, senderName: Swift.String, senderAvatar: Swift.String)
+  public init(groupID: Swift.String = "", messageID: Swift.String = "", senderUin: Swift.String = "", groupAvatar: Swift.String = "", senderName: Swift.String = "", senderAvatar: Swift.String = "", groupName: Swift.String = "", status: NADomain.NAMessageStatus = .sending, kind: NADomain.NAMessageKind = .unknown, seenUins: [Swift.String] = [], deletedUins: [Swift.String] = [], recipientUins: [Swift.String] = [], mentionedUins: [Swift.String] = [], receivedUins: [Swift.String] = [], createdAtMS: Swift.Double = 0.0, updatedAtMS: Swift.Double = 0.0, version: Swift.Int = 0, isEncrypted: Swift.Bool = false, isDecrypted: Swift.Bool = false, expiredAt: Swift.Double = 0, timeToLive: Swift.Double = 0, mentionedAll: Swift.Bool = false, pinnedAt: Swift.String = "", orderID: Swift.Int = 0, isPinned: Swift.Bool = false, isMissedCall: Swift.Bool = false)
+  public func toString() -> Swift.String
+}
+public struct NAUser : Swift.Codable {
+  public var id: Swift.Int64
+  public var phone: Swift.String
+  public var email: Swift.String
+  public var fullName: Swift.String
+  public var profileId: Swift.String
+  public var session: NADomain.NASession?
+  public var status: NADomain.NAUserStatus?
+  public var _id: Swift.String {
+    get
+  }
+  public var displayServerName: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public init(contact: NADomain.NAContact)
+  public init(localContact: NADomain.NALocalContact)
+  public init(id: Swift.Int64, fullName: Swift.String, phone: Swift.String = "Unknown", email: Swift.String = "", profileId: Swift.String = "", session: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NADomain.NAUser : Swift.Hashable {
+  public static func == (lhs: NADomain.NAUser, rhs: NADomain.NAUser) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct NASession : Swift.Codable {
+  public var token: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum ResultType<T> {
+  public typealias Completion = (NADomain.ResultType<T>) -> Swift.Void
+  case success(T)
+  case failure(NADomain.NAError)
+}
+public class UploadTaskProgress : Swift.Codable {
+  public var progress: Swift.Double
+  public var totalBytesExpectedToSend: Swift.Int64
+  public var totalBytesSent: Swift.Int64
+  public var progressText: Swift.String {
+    get
+  }
+  public init(progress: Swift.Double, totalBytesExpectedToSend: Swift.Int64, totalBytesSent: Swift.Int64)
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public class GenericUploadTask {
+  public var completionHandler: NADomain.ResultType<Foundation.Data>.Completion?
+  public var progressHandler: ((NADomain.UploadTaskProgress) -> Swift.Void)?
+  public var uploadProgress: NADomain.UploadTaskProgress?
+  public var response: Foundation.URLResponse?
+  public var task: Foundation.URLSessionDataTask {
+    get
+  }
+  public var expectedContentLength: Swift.Int64
+  public var buffer: Foundation.Data
+  public init(task: Foundation.URLSessionDataTask)
+  @objc deinit
+  public func cleanUp()
+}
+extension NADomain.GenericUploadTask {
+  public func resume()
+  public func suspend()
+  public func cancel()
+}
+public struct NAJSonKeys {
+  public static let senderId: Swift.String
+  public static let dialogId: Swift.String
+  public static let recieverUserName: Swift.String
+  public static let status: Swift.String
+  public static let seed: Swift.String
+  public static let timeToLive: Swift.String
+  public static let type: Swift.String
+  public static let text: Swift.String
+  public static let originalMessage: Swift.String
+  public static let images: Swift.String
+  public static let audio: Swift.String
+  public static let url: Swift.String
+  public static let duration: Swift.String
+  public static let application_id: Swift.String
+  public static let auth_key: Swift.String
+  public static let nonce: Swift.String
+  public static let timestamp: Swift.String
+  public static let udid: Swift.String
+  public static let compact: Swift.String
+  public static let offset: Swift.String
+  public static let limit: Swift.String
+  public static let force: Swift.String
+  public static let phone: Swift.String
+  public static let name: Swift.String
+  public static let contacts: Swift.String
+  public static let senderAvatar: Swift.String
+  public static let senderName: Swift.String
+  public static let video: Swift.String
+  public static let width: Swift.String
+  public static let height: Swift.String
+  public static let file: Swift.String
+  public static let file_name: Swift.String
+  public static let file_extension: Swift.String
+  public static let size: Swift.String
+  public static let version: Swift.String
+  public static let isEncrypted: Swift.String
+  public static let receivedUins: Swift.String
+  public static let destroy: Swift.String
+  public static let username: Swift.String
+  public static let recover: Swift.String
+  public static let uid: Swift.String
+  public static let token: Swift.String
+  public static let packageName: Swift.String
+  public static let actionType: Swift.String
+  public static let deviceId: Swift.String
+}
+public struct NAEvent : Swift.Codable {
+  public static let EVENT_TYPE_UNKNOWN: Swift.Int
+  public static let EVENT_TYPE_CALL_CANCEL: Swift.Int
+  public static let EVENT_TYPE_CALL_AVAILABLE: Swift.Int
+  public static let EVENT_TYPE_CALL_BUSY: Swift.Int
+  public static let EVENT_TYPE_CALL_RECEIVED_EVENT: Swift.Int
+  public static let EVENT_TYPE_CALL_REQUEST_VIDEO: Swift.Int
+  public static let EVENT_TYPE_CALL_INACTIVE_VIDEO: Swift.Int
+  public static let EVENT_TYPE_CALL_ACTIVE_VIDEO: Swift.Int
+  public static let EVENT_TYPE_CALL_CHECKING_AVAILABLE: Swift.Int
+  public static let EVENT_TYPE_MESSAGING_START_TYPING: Swift.Int
+  public static let EVENT_TYPE_MESSAGING_STOP_TYPING: Swift.Int
+  public static let EVENT_TYPE_CALL_CONNECTING: Swift.Int
+  public let senderUin: Swift.String
+  public let receiverUin: Swift.String
+  public let type: Swift.Int
+  public let data: Swift.String
+  public let groupId: Swift.String
+  public let callId: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public init(senderUin: Swift.String, receiverUin: Swift.String, type: Swift.Int, data: Swift.String, groupId: Swift.String, callId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum NAResult<T> {
+  case success(T)
+  case failure(NADomain.NAError)
+}
+public typealias NACompletion<T> = (NADomain.NAResult<T>) -> ()
+public enum NAError : Swift.Error {
+  case ok
+  case internalError
+  case expired
+  case notExist
+  case invalid
+  case wrongType
+  case parsingError
+  case loginConflict
+  case userNotFound
+  case headerDecodingFailed
+  case wrongSession
+  case duplicate
+  case networkError
+  case unauthorized
+  case badRequest
+  case outdated
+  case resourceNotFoundlError
+  case noData
+  case responseUnsuccessful(message: Swift.String?)
+  case wrongPass
+  case inActive
+  case registered
+  case otpNotMatch
+  case addressbookAlready
+  case invalidPhoneNumber
+  case yourSelf
+  case reachMaxLiveLocation
+  case realmError
+  case groupNotFound
+  case invalidGroup
+  public init(code: Swift.Int)
+  public var code: Swift.Int {
+    get
+  }
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+extension Swift.Error {
+  public var code: Swift.Int {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+public struct NANoResult : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAIceCandidate : Swift.Codable {
+  public let candidate: Swift.String
+  public let sdpMid: Swift.String
+  public let sdpMlineIndex: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public init(candidate: Swift.String, sdpMid: Swift.String, sdpMlineIndex: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum NAContentType {
+  public enum SubType : Swift.String {
+    case png
+    case jpeg
+    case mp4
+    case m4a
+    case pdf
+    case docx
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  case image(NADomain.NAContentType.SubType)
+  case audio(NADomain.NAContentType.SubType)
+  case video(NADomain.NAContentType.SubType)
+  public var value: Swift.String {
+    get
+  }
+  public var subType: Swift.String {
+    get
+  }
+  public var mineType: Swift.String {
+    get
+  }
+}
+public struct NAInputImage {
+  public var data: Foundation.Data
+  public var name: Swift.String
+  public var type: NADomain.NAContentType
+  public var width: Swift.UInt
+  public var height: Swift.UInt
+  public init(data: Foundation.Data, name: Swift.String, type: NADomain.NAContentType, width: Swift.UInt, height: Swift.UInt)
+}
+public struct NAInputAudio {
+  public var data: Foundation.Data
+  public var name: Swift.String
+  public var type: NADomain.NAContentType
+  public init(data: Foundation.Data, name: Swift.String, type: NADomain.NAContentType)
+}
+public struct NAInputFile {
+  public var data: Foundation.Data
+  public var name: Swift.String
+  public var type: Swift.String
+  public var `extension`: Swift.String
+  public var mineType: Swift.String
+  public init(data: Foundation.Data, name: Swift.String, type: Swift.String, extension: Swift.String, mineType: Swift.String)
+}
+public struct NAInputVideo {
+  public var thumb: NADomain.NAInputImage
+  public var name: Swift.String
+  public var data: Foundation.Data
+  public var duration: Swift.UInt
+  public var type: NADomain.NAContentType
+  public init(thumb: NADomain.NAInputImage, name: Swift.String, data: Foundation.Data, duration: Swift.UInt, type: NADomain.NAContentType)
+}
+public struct NAUserStatusResponse : Swift.Codable {
+  public var userStatus: NADomain.NAUserStatus
+  public var userStatusList: [NADomain.NAUserStatus]
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAUserStatus : Swift.Codable {
+  public let uin: Swift.String
+  public let onlineStatus: Swift.Int
+  public let messageStatus: Swift.String
+  public let lastSeenAt: Swift.Double
+  public var status: NADomain.NADefines.OnlineStatus {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public init(uin: Swift.String, onlineStatus: Swift.Int, messageStatus: Swift.String, lastSeenAt: Swift.Double)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NADomain.NAUserStatus : Swift.Hashable {
+  public static func == (lhs: NADomain.NAUserStatus, rhs: NADomain.NAUserStatus) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum SelectType {
+  case select_owner
+  case select_admin
+  case view_admin_member
+  public static func == (a: NADomain.SelectType, b: NADomain.SelectType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct NAAudioResponse : Swift.Codable {
+  public let audio: NADomain.NAAudio
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAAudio : Swift.Codable {
+  public var url: Swift.String
+  public var localUrl: Swift.String
+  public let duration: Swift.Double
+  public init(url: Swift.String, localUrl: Swift.String, duration: Swift.Double)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAImage : Swift.Codable {
+  public let url: Swift.String
+  public let width: Swift.UInt?
+  public let height: Swift.UInt?
+  public let subIndex: Swift.UInt?
+  public init(url: Swift.String, width: Swift.UInt?, height: Swift.UInt?, subIndex: Swift.UInt?)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAVideoResponse : Swift.Codable {
+  public let video: NADomain.NAVideo
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAVideo : Swift.Codable {
+  public let url: Swift.String
+  public var localUrl: Swift.String
+  public let thumbnailUrl: Swift.String
+  public let duration: Swift.Double
+  public let width: Swift.Double
+  public let height: Swift.Double
+  public init(url: Swift.String, localUrl: Swift.String, thumbnailUrl: Swift.String, duration: Swift.Double, width: Swift.Double, height: Swift.Double)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAImageResponse : Swift.Codable {
+  public let images: [NADomain.NAImage]
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAImageURLsResponse : Swift.Codable {
+  public let urls: [Swift.String]
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAFileResponse : Swift.Codable {
+  public let file: NADomain.NAFile
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NASticker : Swift.Codable {
+  public let sticker: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public init(sticker: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAStickerResponse : Swift.Codable {
+  public let sticker: NADomain.NASticker
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAFile : Swift.Codable {
+  public let url: Swift.String
+  public var localUrl: Swift.String
+  public let fileName: Swift.String
+  public let fileExtension: Swift.String
+  public let size: Swift.Double
+  public var fullFileName: Swift.String {
+    get
+  }
+  public var fileSizeString: Swift.String {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public init(url: Swift.String, localUrl: Swift.String, fileName: Swift.String, fileExtension: Swift.String, size: Swift.Double)
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NADomain.NAFile {
+  public var mimeType: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers public class NARecentSearchResult : ObjectiveC.NSObject {
+  public var id: Swift.String
+  public var searchTime: Foundation.Date?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct NACountryCode : Swift.Codable {
+  public let id: Swift.Int
+  public let code: Swift.String
+  public let country: NADomain.NACountry?
+  public static let currentCountryCode: NADomain.NACountryCode
+  public init(from decoder: Swift.Decoder) throws
+  public init()
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NACountry : Swift.Codable {
+  public var id: Swift.Int
+  public var name: Swift.String
+  public var logoURL: Swift.String
+  public var iso2: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public init()
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NADefines {
+  public enum OnlineStatus : Swift.Int {
+    case unknown
+    case online
+    case offline
+    case idle
+    case invisible
+    case away
+    case busy
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum GroupType : Swift.Int {
+    case unknown
+    case privateGroup
+    case group
+    case publicGroup
+    case channel
+    case officialAccount
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum Answer : Swift.Int {
+    case unknown
+    case yes
+    case no
+    case failed
+    case unrecognized
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum IgnoreType : Swift.Int {
+    case unknown
+    case ignore
+    case unignore
+    case get
+    case unrecognized
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum MessageStatus : Swift.Int {
+    case unknown
+    case sent
+    case received
+    case seen
+    case deleted
+    case unrecognized
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum TokenType : Swift.Int {
+    case unknown
+    case fcm
+    case apns
+    case pushkit
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum RegisterType : Swift.Int {
+    case register
+    case unRegister
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum GroupSortType : Swift.Int {
+    case random
+    case byLastMessage
+    case byCreatedAt
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum LiveLocationStatus : Swift.Int {
+    case start
+    case update
+    case stop
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+public struct NAStartCall : Swift.Codable {
+  public static let EVENT_CALL_TYPE: Swift.Int
+  public let groupID: Swift.String
+  public let callID: Swift.String
+  public let event: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public init(groupID: Swift.String, callID: Swift.String, event: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAContact : Swift.Codable {
+  public var id: Swift.Int64?
+  public var phone: Swift.String?
+  public var fullName: Swift.String?
+  public var email: Swift.String?
+  public var profileUrl: Swift.String?
+  public var localContact: NADomain.NALocalContact?
+  public var status: NADomain.NAUserStatus?
+  public var isFriend: Swift.Bool?
+  public var isDeleted: Swift.Bool?
+  public var phoneNumber: Swift.String {
+    get
+  }
+  public var idString: Swift.String {
+    get
+  }
+  public var displayName: Swift.String {
+    get
+  }
+  public init(id: Swift.Int64?, phone: Swift.String?, fullName: Swift.String?, email: Swift.String? = nil, localContact: NADomain.NALocalContact? = nil, status: NADomain.NAUserStatus? = nil, profileUrl: Swift.String, isFriend: Swift.Bool? = nil, isDeleted: Swift.Bool? = nil)
+  public init(user: NADomain.NAUser)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public class NAListContact : Swift.Codable {
+  public init(items: [NADomain.NAContact] = [], total: Swift.Int = 0)
+  public var items: [NADomain.NAContact]
+  public var total: Swift.Int
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+public enum ContactSortType {
+  case sortByName
+  case sortByLastSeen
+  public static func == (a: NADomain.ContactSortType, b: NADomain.ContactSortType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct NASecretChat : Swift.Codable {
+  public init(uin: Swift.String, device_id: Swift.String, identity_key: Swift.String, base_key: Swift.String, one_time_pre_key: Swift.String)
+  public let uin: Swift.String
+  public let device_id: Swift.String
+  public let identity_key: Swift.String
+  public let base_key: Swift.String
+  public let one_time_pre_key: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAStartSecretChat : Swift.Codable {
+  public let group_id: Swift.String
+  public let uin: Swift.String
+  public let device_id: Swift.String
+  public let identity_key: Swift.String
+  public let base_key: Swift.String
+  public let one_time_pre_key: Swift.String
+  public init(group_id: Swift.String, uin: Swift.String, device_id: Swift.String, identity_key: Swift.String, base_key: Swift.String, one_time_pre_key: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NADeleteSecretChat : Swift.Codable {
+  public let group_id: Swift.String
+  public let group_name: Swift.String
+  public let group_avatar: Swift.String
+  public init(groupId: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum NACallEvent : Swift.Encodable {
+  case startCall(NADomain.NACall)
+  case createCall(NADomain.NACall)
+  case answerCall(NADomain.NAAnswerCall)
+  case stopCall(NADomain.NAStopCall)
+  case iceSdp(NADomain.NAIceSdp)
+  case iceCandidate(NADomain.NAIceCandidate)
+  case customEvent(NADomain.NAEvent)
+  case sendEventCall(NADomain.NAStartCall)
+  public func encode(to encoder: Swift.Encoder) throws
+  public func type() -> Swift.String
+  public func toDictionary() -> [Swift.String : Any]
+}
+public struct NALoginEvent : Swift.Codable {
+  public var result: Swift.Int
+  public var uin: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NACall : Swift.Codable {
+  public static let CALL_TYPE_UNKNOWN: Swift.Int
+  public static let CALL_TYPE_PRIVATE: Swift.Int
+  public static let CALL_TYPE_GROUP: Swift.Int
+  public static let MEIDA_TYPE_UNKNOWN: Swift.Int
+  public static let MEDIA_TYPE_AUDIO: Swift.Int
+  public static let MEDIA_TYPE_VIDEO: Swift.Int
+  public static let CALL_STATUS_UNKNOWN: Swift.Int
+  public static let CALL_STATUS_ONGOING: Swift.Int
+  public static let CALL_STATUS_TIMEOUT: Swift.Int
+  public static let CALL_STATUS_FAILED: Swift.Int
+  public let id: Swift.String
+  public let groupID: Swift.String
+  public let mediaType: Swift.Int
+  public let callStatus: Swift.Int
+  public let type: Swift.Int
+  public let callerUin: Swift.String
+  public let calleeUins: [Swift.String]
+  public let acceptedUins: [Swift.String]
+  public let startedAt: Swift.String
+  public let stoppedAt: Swift.String
+  public let answeredAt: Swift.String
+  public let connectedAt: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(id: Swift.String = "", mediaType: Swift.Int, groupID: Swift.String, callerUin: Swift.String, calleeUins: [Swift.String])
+  public init(id: Swift.String, groupID: Swift.String, mediaType: Swift.Int, callStatus: Swift.Int, type: Swift.Int, callerUin: Swift.String, calleeUins: [Swift.String], acceptedUins: [Swift.String], startedAt: Swift.String, stoppedAt: Swift.String, answeredAt: Swift.String, connectedAt: Swift.String)
+  public init?(userInfo: [Swift.AnyHashable : Any])
+  public func toString() -> Swift.String
+}
+public enum CallType : Swift.String {
+  case voice
+  case video
+  public init(intValue: Swift.Int)
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension NADomain.NACall : Swift.Hashable {
+  public static func == (lhs: NADomain.NACall, rhs: NADomain.NACall) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum NACollectionChange<DataType> {
+  case initial([DataType])
+  case update(deletions: NADomain.NADataChange<DataType>, insertions: NADomain.NADataChange<DataType>, modifications: NADomain.NADataChange<DataType>)
+}
+public struct NADataChange<DataType> {
+  public var indices: [Swift.Int]
+  public var data: [DataType]
+  public init(indices: [Swift.Int], data: [DataType])
+}
+indirect public enum NAMessageKind : Swift.Codable {
+  case unknown
+  case text(Swift.String)
+  case images([NADomain.NAImage])
+  case video(NADomain.NAVideo)
+  case call(NADomain.NACall)
+  case audio(NADomain.NAAudio)
+  case reply(Swift.String, NADomain.NAMessage)
+  case firstMessage
+  case groupUpdate(NADomain.NAGroupUpdateType)
+  case leaveGroup(Swift.String)
+  case forward(Swift.String, NADomain.NAMessage)
+  case file(NADomain.NAFile)
+  case sticker(NADomain.NASticker)
+  case screenshot
+  case location(NADomain.NALocation)
+  case liveLocation(NADomain.NALiveLocation)
+  case groupCall(NADomain.NAGroupCall)
+  public var typeInt: Swift.Int {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public func toString() -> Swift.String
+}
+public enum NAMessageType : Swift.Int, Swift.Codable {
+  case unknown
+  case text
+  case call
+  case images
+  case audio
+  case video
+  case firstMessage
+  case groupUpdate
+  case leaveGroup
+  case reply
+  case forward
+  case sticker
+  case file
+  case screenshot
+  case location
+  case liveLocation
+  case groupCall
+  public var typeName: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+indirect public enum NAGroupUpdateType : Swift.Codable {
+  case updateInfo(Swift.String, Swift.String, Swift.String)
+  case addMembers([Swift.String])
+  case removeMember(Swift.String)
+  case changeOwner(Swift.String)
+  case updateMessageDeleteTimer(Swift.Double)
+  case updateGroupBackground(NADomain.NAGroupBackground)
+  case addedAdmins([Swift.String])
+  case deletedAdmins([Swift.String])
+  case pinMessage(NADomain.NAPinUnpinMessage)
+  case unpinMessage(NADomain.NAPinUnpinMessage)
+  case unpinAllMessages(Swift.Bool)
+  case joinGroupWithToken([Swift.String])
+  case groupCall(NADomain.NAGroupCall)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public func toString() -> Swift.String
+}
+public enum NAMessageStatus : Swift.String, Swift.Codable {
+  case sending
+  case sent
+  case received
+  case seen
+  case failed
+  case deleted
+  case unknow
+  public var intValue: Swift.Int {
+    get
+  }
+  public init(intValue: Swift.Int)
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct NAForceUpdate : Swift.Codable {
+  public var forceUpdate: Swift.Bool
+  public var lastestVersion: Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NABlockContactList : Swift.Codable {
+  public let result: Swift.Int
+  public var list: [NADomain.NABlockContact]
+  public func codeCheck() -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NABlockContact : Swift.Codable {
+  public init(uin: Swift.String, group_id: Swift.String)
+  public let uin: Swift.String
+  public let group_id: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NACheckFriend : Swift.Codable {
+  public var isFriend: Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NABlock : Swift.Codable {
+  public var group_id: Swift.String
+  public var blocked_uin: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAResultSyncContact : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAAnswerCall : Swift.Codable {
+  public static let ANSWER_CALL_UNKNOWN: Swift.Int
+  public static let ANSWER_CALL_ACCEPT: Swift.Int
+  public static let ANSWER_CALL_REJECT: Swift.Int
+  public static let ANSWER_CALL_TIMEOUT: Swift.Int
+  public static let ANSWER_CALL_FAILED: Swift.Int
+  public let id: Swift.String
+  public let calleeUin: Swift.String
+  public let type: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public init(id: Swift.String, calleeUin: Swift.String, type: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAStickerList : Swift.Codable {
+  public init(stickers: [NADomain.NAStickerInfo], version: Swift.Int)
+  public let stickers: [NADomain.NAStickerInfo]
+  public let version: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NACurrentStickerIDs : Swift.Codable, Swift.Equatable {
+  public var ids: [Swift.Int]
+  public init(from decoder: Swift.Decoder) throws
+  public init(listIDs: [Swift.Int])
+  public static func == (a: NADomain.NACurrentStickerIDs, b: NADomain.NACurrentStickerIDs) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAUpdateStickerStatus : Swift.Codable, Swift.Equatable {
+  public let message: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (a: NADomain.NAUpdateStickerStatus, b: NADomain.NAUpdateStickerStatus) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum StickerType : Swift.Int {
+  case staticSticker
+  case animatedSticker
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct NAStickerInfo : Swift.Codable {
+  public var id: Swift.Int
+  public var name: Swift.String
+  public var thump: Swift.String
+  public var zip: Swift.String
+  public var isDefault: Swift.Bool
+  public var type: NADomain.StickerType {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(id: Swift.Int, name: Swift.String, thump: Swift.String, zip: Swift.String, isDefault: Swift.Bool, stickerType: Swift.Int)
+}
+extension NADomain.NAStickerInfo : Swift.Hashable {
+  public static func == (lhs: NADomain.NAStickerInfo, rhs: NADomain.NAStickerInfo) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct NAStickerItem {
+  public init(id: Swift.String, name: Swift.String, localUrl: Swift.String, category: NADomain.NAStickerCategory, sentTime: Foundation.Date? = nil)
+  public let id: Swift.String
+  public let name: Swift.String
+  public let localUrl: Swift.String
+  public let category: NADomain.NAStickerCategory
+  public var sentTime: Foundation.Date?
+}
+public struct NAStickerCategory {
+  public init(id: Swift.String, name: Swift.String, thumbnail: Swift.String?, updatedAt: Foundation.Date?, quantity: Swift.Int, type: Swift.Int)
+  public let id: Swift.String
+  public let name: Swift.String
+  public let thumbnail: Swift.String?
+  public let updatedAt: Foundation.Date?
+  public let quantity: Swift.Int
+  public var type: NADomain.StickerType {
+    get
+  }
+}
+public enum NAGroupCallEvent : Swift.Encodable {
+  case createGroupCall(NADomain.NAGroupCall)
+  case joinGroupCall(NADomain.NAGroupCall)
+  case leaveGroupCall(NADomain.NAGroupCall)
+  case inviteGroupCall(NADomain.NAGroupCall)
+  case pingGroupCall(NADomain.NAGroupCall)
+  case stopGroupCall(NADomain.NAGroupCall)
+  public func encode(to encoder: Swift.Encoder) throws
+  public func type() -> Swift.String
+  public func toDictionary() -> [Swift.String : Any]
+}
+public struct NAGroupCallResponse : Swift.Codable {
+  public let call: NADomain.NAGroupCall
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAGroupCall : Swift.Codable {
+  public let id: Swift.String
+  public let groupID: Swift.String
+  public let messageID: Swift.String
+  public let name: Swift.String
+  public let avatarUrl: Swift.String
+  public var senderUin: Swift.String
+  public var invitedUin: Swift.String
+  public let createdAt: Swift.String
+  public let stoppedAt: Swift.String
+  public let updatedAt: Swift.String
+  public let secretID: Swift.String
+  public let privateKey: Swift.String
+  public let publicKey: Swift.String
+  public var invitedUins: [Swift.String]
+  public var joinedUins: [Swift.String]
+  public var leavingUins: [Swift.String]
+  public var activeUins: [Swift.String]
+  public let status: Swift.Int
+  public let type: Swift.Int
+  public var jwtToken: Swift.String
+  public var result: Swift.Int
+  public static let CALL_STATUS_INVITE: Swift.Int
+  public static let CALL_STATUS_ONGOING: Swift.Int
+  public static let CALL_STATUS_FINISHED: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(groupID: Swift.String, messageID: Swift.String, name: Swift.String, avatarUrl: Swift.String)
+  public init(id: Swift.String, groupID: Swift.String, messageID: Swift.String, status: Swift.Int, senderUin: Swift.String, createdAt: Swift.String, invitedUin: Swift.String = "", stoppedAt: Swift.String = "0", invitedUins: [Swift.String] = [], joinedUins: [Swift.String] = [], activeUins: [Swift.String] = [], type: Swift.Int = 0)
+  public init()
+  public init?(userInfo: [Swift.AnyHashable : Any])
+  public init?(invitation: [Swift.AnyHashable : Any])
+  public init?(payload: [Swift.AnyHashable : Any])
+  public init(invitedGroupCall: NADomain.NAInvitedGroupCall)
+}
+public struct NAInvitedGroupCall : Swift.Codable {
+  public let id: Swift.String
+  public let groupID: Swift.String
+  public let messageID: Swift.String
+  public var senderUin: Swift.String
+  public var invitedUin: Swift.String
+  public let type: Swift.Int
+  public let isNotify: Swift.Int
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAJoinGroupCallResponse : Swift.Codable {
+  public let jwtToken: Swift.String
+  public let groupID: Swift.String
+  public let messageID: Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAAppConfigs : Swift.Codable {
+  public let apiEndpoint: Swift.String
+  public let chatEndpoint: Swift.String, turnserverEndpoint: Swift.String
+  public var cdnEndpoint: Swift.String {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NASyncGroupResponse : Swift.Codable {
+  public var updatedList: [NADomain.NAGroup?]
+  public var totalPageCount: Swift.Int
+  public var addedList: [NADomain.NAGroup?]
+  public var deletedList: [NADomain.NAGroup?]
+  public init(updatedList: [NADomain.NAGroup?] = [], totalPageCount: Swift.Int = 0, addedList: [NADomain.NAGroup?] = [], deletedList: [NADomain.NAGroup?] = [])
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAGroupBackground : Swift.Codable {
+  public let id: Swift.Int
+  public var backgroundUrl: Swift.String
+  public var groupID: Swift.String
+  public var isBlur: Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public init(id: Swift.Int, backgroundUrl: Swift.String)
+  public init(id: Swift.Int = 0, backgroundUrl: Swift.String, groupID: Swift.String, isBlur: Swift.Bool)
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension NADomain.NAGroupBackground : Swift.Hashable {
+  public static func == (lhs: NADomain.NAGroupBackground, rhs: NADomain.NAGroupBackground) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct NALocalContact : Swift.Codable {
+  public var name: Swift.String
+  public var phone: Swift.String
+  public var displayName: Swift.String {
+    get
+  }
+  public var phoneNumber: Swift.String {
+    get
+  }
+  public init(name: Swift.String, phone: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAGroup : Swift.Codable {
+  public enum GroupType : Swift.Int {
+    case unknown
+    case privateGroup
+    case group
+    case publicGroup
+    case channel
+    case officalAccount
+    public var isMultiMembers: Swift.Bool {
+      get
+    }
+    public var isGroupCallEnabled: Swift.Bool {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public var occupantsUins: [Swift.String], blockedUins: [Swift.String], mutedUins: [Swift.String]
+  public var receivedList: [Swift.String : Swift.String], seenList: [Swift.String : Swift.String]
+  public var seenUins: [NADomain.NAGroupMessageStatus], receivedUins: [NADomain.NAGroupMessageStatus]
+  public var groupID: Swift.String, createdAt: Swift.String, avatarUrl: Swift.String, description: Swift.String
+  public var type: Swift.Int
+  public var updatedAt: Swift.String, name: Swift.String
+  public var ownerUin: Swift.String, creatorUin: Swift.String
+  public var adminUins: [Swift.String]
+  public var removedUins: [Swift.String]
+  public var lastMessage: NADomain.NAMessage?
+  public var statusList: [NADomain.NAUserStatus]
+  public var pinnedUins: [Swift.String]
+  public var secrets: [NADomain.NASecretChat]
+  public var lastActiveMessages: [NADomain.NALastActiveMessage]
+  public var background: NADomain.NAGroupBackground?
+  public var isMuted: Swift.Bool
+  public var isPinned: Swift.Bool
+  public var isBlur: Swift.Bool
+  public var displayName: Swift.String
+  public var backgroundUrl: Swift.String
+  public var groupType: NADomain.NAGroup.GroupType {
+    get
+  }
+  public var currentGroupCall: NADomain.NAGroupCall?
+  public init(from decoder: Swift.Decoder) throws
+  public func toString() -> Swift.String
+  public init(groupID: Swift.String, ownerUin: Swift.String, occupantsUins: [Swift.String], name: Swift.String, avatarUrl: Swift.String, type: Swift.Int)
+  public init(groupID: Swift.String = "", occupantsUins: [Swift.String] = [], blockedUins: [Swift.String] = [], mutedUins: [Swift.String] = [], receivedList: [Swift.String : Swift.String] = [:], seenList: [Swift.String : Swift.String] = [:], createdAt: Swift.String = "", avatarUrl: Swift.String = "", description: Swift.String = "", type: Swift.Int = 0, updatedAt: Swift.String = "0", name: Swift.String = "", ownerUin: Swift.String = "", creatorUin: Swift.String = "", adminUins: [Swift.String] = [], removedUins: [Swift.String] = [], lastMessage: NADomain.NAMessage? = nil, statusList: [NADomain.NAUserStatus] = [], pinnedUins: [Swift.String] = [], secrets: [NADomain.NASecretChat] = [], lastActiveMessages: [NADomain.NALastActiveMessage] = [], background: NADomain.NAGroupBackground? = nil, isMuted: Swift.Bool = false, isPinned: Swift.Bool = false, isBlur: Swift.Bool = false, displayName: Swift.String = "", backgroundUrl: Swift.String = "", seenUins: [NADomain.NAGroupMessageStatus] = [], receivedUins: [NADomain.NAGroupMessageStatus] = [], currentGroupCall: NADomain.NAGroupCall? = nil)
+  public mutating func updateAllMembers()
+  public mutating func updateOccupantUsers(_removedUins: [Swift.String] = [], addedUins: [Swift.String] = [])
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NALastActiveMessage : Swift.Codable {
+  public let uin: Swift.String
+  public let messageId: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAGroupMessageStatus : Swift.Codable {
+  public let uin: Swift.String, messageID: Swift.String
+  public init(uin: Swift.String, messageID: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NAGroupUpdate : Swift.Codable {
+  public var name: Swift.String, avatarUrl: Swift.String, ownerUin: Swift.String, groupID: Swift.String, description: Swift.String
+  public var removedUins: [Swift.String], addedUins: [Swift.String], blockedAll: [Swift.String], unblockedAll: [Swift.String], addedAdminAll: [Swift.String], deletedAdminAll: [Swift.String]
+  public var background: NADomain.NAGroupBackground?
+  public var pinnedMessage: NADomain.NAMessage?
+  public var unpinnedMessageAll: [NADomain.NAMessage]?
+  public init(from decoder: Swift.Decoder) throws
+  public init()
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NAGroupInfo : Swift.Codable {
+  public let id: Swift.String
+  public var users: [NADomain.NAUser]
+  public let name: Swift.String
+  public let avatarUrl: Swift.String
+  public let group: NADomain.NAGroup
+  public let removedUsers: [NADomain.NAUser]
+  public init(from decoder: Swift.Decoder) throws
+  public init(id: Swift.String, users: [NADomain.NAUser], name: Swift.String, avatarUrl: Swift.String, group: NADomain.NAGroup, removedUsers: [NADomain.NAUser])
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct NALocation : Swift.Codable {
+  public var lat: Swift.Double
+  public var long: Swift.Double
+  public var address: Swift.String
+  public var imageUrl: Swift.String
+  public init(lat: Swift.Double, long: Swift.Double, address: Swift.String, imageUrl: Swift.String)
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NALocationResponse : Swift.Codable {
+  public var location: NADomain.NALocation
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct NALiveLocation : Swift.Codable {
+  public enum Status : Swift.Int {
+    case starting
+    case updating
+    case ended
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public var status: Swift.Int?
+  public var imageUrl: Swift.String?
+  public var address: Swift.String?
+  public var groupID: Swift.String?
+  public var messageID: Swift.String?
+  public var isSOS: Swift.Bool?
+  public var latitude: Swift.Double {
+    get
+    set
+  }
+  public var longitude: Swift.Double {
+    get
+    set
+  }
+  public var duration: Swift.Int {
+    get
+    set
+  }
+  public var startedAt: Swift.Double {
+    get
+    set
+  }
+  public var updatedAt: Swift.Double {
+    get
+    set
+  }
+  public var endedAt: Swift.Double {
+    get
+    set
+  }
+  public var timerDuration: Swift.Double {
+    get
+  }
+  public var timerAgoUpdate: Swift.Double {
+    get
+  }
+  public var senderID: Swift.String?
+  public var altitude: Swift.String?
+  public var version: Swift.Int?
+  public init(latitude: Swift.String, longitude: Swift.String, status: Swift.Int, imageUrl: Swift.String, address: Swift.String, groupID: Swift.String, messageID: Swift.String, duration: Swift.String, startedAt: Swift.String, updatedAt: Swift.String, endedAt: Swift.String, isSOS: Swift.Bool)
+  public init(groupID: Swift.String, messageID: Swift.String, isSOS: Swift.Bool, status: NADomain.NALiveLocation.Status)
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension NADomain.NALiveLocation {
+  public func toString() -> Swift.String
+  public func toDictionary() -> [Swift.String : Any]
+}
+public struct NALiveLocationResponse : Swift.Codable {
+  public var liveLocation: NADomain.NALiveLocation
+  public func toString() -> Swift.String
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum MediaType : Swift.String {
+  case unknown
+  case images
+  case audio
+  case video
+  case file
+  public var intValue: Swift.Int {
+    get
+  }
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct NAMedia : Swift.Codable, Swift.Equatable {
+  public let messageID: Swift.Int
+  public let mediaUid: Swift.String
+  public let groupID: Swift.Int, mediaType: Swift.Int
+  public let attachments: Swift.String
+  public let msgCreateAt: Swift.Double
+  public let senderID: Swift.Int64
+  public let kind: NADomain.NAMediaKind
+  public let total: Swift.Int?
+  public let index: Swift.Int?
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case messageID
+    case mediaUid
+    case groupID
+    case mediaType
+    case attachments, total, index
+    case kind
+    case msgCreateAt
+    case senderID
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(from decoder: Swift.Decoder) throws
+  public static func == (lhs: NADomain.NAMedia, rhs: NADomain.NAMedia) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum NAMediaKind : Swift.Codable {
+  case unknown
+  case images([NADomain.NAImage])
+  case audio(NADomain.NAAudio)
+  case video(NADomain.NAVideo)
+  case file(NADomain.NAFile)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public func toString() -> Swift.String
+}
+public struct NAMediaLibraryModel : Swift.Equatable, Swift.Hashable {
+  public var groupID: Swift.Int
+  public var messageID: Swift.Int
+  public var mediaID: Swift.String
+  public var url: Swift.String
+  public var senderID: Swift.Int64
+  public var createdAt: Swift.Double
+  public var total: Swift.Int
+  public var index: Swift.Int
+  public var createdAtSeconds: Swift.Double {
+    get
+  }
+  public var thumbnailUrl: Swift.String
+  public var width: Swift.Double
+  public var height: Swift.Double
+  public var duration: Swift.Double
+  public var mediaType: Swift.Int
+  public var fileName: Swift.String
+  public var fileExtension: Swift.String
+  public var size: Swift.Double
+  public var fullFileName: Swift.String {
+    get
+  }
+  public var fileSizeString: Swift.String {
+    get
+  }
+  public var sentDate: Foundation.Date {
+    get
+  }
+  public init()
+  public init(media: NADomain.NAMedia)
+  public init(groupID: Swift.Int, messageID: Swift.Int, url: Swift.String, senderID: Swift.Int64, createdAt: Swift.Double, total: Swift.Int, index: Swift.Int)
+  public init(groupID: Swift.Int, messageID: Swift.Int, url: Swift.String, senderID: Swift.Int64, createdAt: Swift.Double, total: Swift.Int, index: Swift.Int, video: NADomain.NAVideo)
+  public init(groupID: Swift.Int, messageID: Swift.Int, url: Swift.String)
+  public static func == (lhs: NADomain.NAMediaLibraryModel, rhs: NADomain.NAMediaLibraryModel) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public func toNAVideo() -> NADomain.NAVideo
+  public func toNAFile() -> NADomain.NAFile
+  public func toNAImage() -> NADomain.NAImage
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension NADomain.NAContentType.SubType : Swift.Equatable {}
+extension NADomain.NAContentType.SubType : Swift.Hashable {}
+extension NADomain.NAContentType.SubType : Swift.RawRepresentable {}
+extension NADomain.SelectType : Swift.Equatable {}
+extension NADomain.SelectType : Swift.Hashable {}
+extension NADomain.NADefines.OnlineStatus : Swift.Equatable {}
+extension NADomain.NADefines.OnlineStatus : Swift.Hashable {}
+extension NADomain.NADefines.OnlineStatus : Swift.RawRepresentable {}
+extension NADomain.NADefines.GroupType : Swift.Equatable {}
+extension NADomain.NADefines.GroupType : Swift.Hashable {}
+extension NADomain.NADefines.GroupType : Swift.RawRepresentable {}
+extension NADomain.NADefines.Answer : Swift.Equatable {}
+extension NADomain.NADefines.Answer : Swift.Hashable {}
+extension NADomain.NADefines.Answer : Swift.RawRepresentable {}
+extension NADomain.NADefines.IgnoreType : Swift.Equatable {}
+extension NADomain.NADefines.IgnoreType : Swift.Hashable {}
+extension NADomain.NADefines.IgnoreType : Swift.RawRepresentable {}
+extension NADomain.NADefines.MessageStatus : Swift.Equatable {}
+extension NADomain.NADefines.MessageStatus : Swift.Hashable {}
+extension NADomain.NADefines.MessageStatus : Swift.RawRepresentable {}
+extension NADomain.NADefines.TokenType : Swift.Equatable {}
+extension NADomain.NADefines.TokenType : Swift.Hashable {}
+extension NADomain.NADefines.TokenType : Swift.RawRepresentable {}
+extension NADomain.NADefines.RegisterType : Swift.Equatable {}
+extension NADomain.NADefines.RegisterType : Swift.Hashable {}
+extension NADomain.NADefines.RegisterType : Swift.RawRepresentable {}
+extension NADomain.NADefines.GroupSortType : Swift.Equatable {}
+extension NADomain.NADefines.GroupSortType : Swift.Hashable {}
+extension NADomain.NADefines.GroupSortType : Swift.RawRepresentable {}
+extension NADomain.NADefines.LiveLocationStatus : Swift.Equatable {}
+extension NADomain.NADefines.LiveLocationStatus : Swift.Hashable {}
+extension NADomain.NADefines.LiveLocationStatus : Swift.RawRepresentable {}
+extension NADomain.ContactSortType : Swift.Equatable {}
+extension NADomain.ContactSortType : Swift.Hashable {}
+extension NADomain.CallType : Swift.Equatable {}
+extension NADomain.CallType : Swift.Hashable {}
+extension NADomain.CallType : Swift.RawRepresentable {}
+extension NADomain.NAMessageType : Swift.Equatable {}
+extension NADomain.NAMessageType : Swift.Hashable {}
+extension NADomain.NAMessageType : Swift.RawRepresentable {}
+extension NADomain.NAMessageStatus : Swift.Equatable {}
+extension NADomain.NAMessageStatus : Swift.Hashable {}
+extension NADomain.NAMessageStatus : Swift.RawRepresentable {}
+extension NADomain.StickerType : Swift.Equatable {}
+extension NADomain.StickerType : Swift.Hashable {}
+extension NADomain.StickerType : Swift.RawRepresentable {}
+extension NADomain.NAGroup.GroupType : Swift.Equatable {}
+extension NADomain.NAGroup.GroupType : Swift.Hashable {}
+extension NADomain.NAGroup.GroupType : Swift.RawRepresentable {}
+extension NADomain.NALiveLocation.Status : Swift.Equatable {}
+extension NADomain.NALiveLocation.Status : Swift.Hashable {}
+extension NADomain.NALiveLocation.Status : Swift.RawRepresentable {}
+extension NADomain.MediaType : Swift.Equatable {}
+extension NADomain.MediaType : Swift.Hashable {}
+extension NADomain.MediaType : Swift.RawRepresentable {}
+extension NADomain.NAMedia.CodingKeys : Swift.Equatable {}
+extension NADomain.NAMedia.CodingKeys : Swift.Hashable {}
+extension NADomain.NAMedia.CodingKeys : Swift.RawRepresentable {}

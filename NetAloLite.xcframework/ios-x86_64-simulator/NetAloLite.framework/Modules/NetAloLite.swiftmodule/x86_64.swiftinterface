@@ -1,0 +1,1172 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NetAloLite
+import AVFoundation
+import AdSupport
+import CallKit
+import CloudKit
+import Contacts
+import CoreLocation
+import Foundation
+import MachO
+import MapKit
+import NACallSDK
+import NACoreUtils
+import NADomain
+import NANetworkPlatform
+import NARealmPlatform
+import NASocketPlatform
+@_exported import NetAloLite
+import Photos
+import PushKit
+import Resolver
+import RxCocoa
+import RxRelay
+import RxSwift
+import Swift
+import UIKit
+import ZIPFoundation
+import _Concurrency
+public enum EnvironmentType : Swift.CaseIterable, Swift.CustomStringConvertible, Swift.Equatable {
+  case custom(Swift.String?)
+  case production
+  case staging
+  case development
+  case testing
+  case local
+  public init?(rawValue: Swift.String)
+  public static var allCases: [NetAloLite.EnvironmentType] {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public static func == (a: NetAloLite.EnvironmentType, b: NetAloLite.EnvironmentType) -> Swift.Bool
+  public typealias AllCases = [NetAloLite.EnvironmentType]
+}
+public protocol CurrentChatRepo : NetAloLite.ChatRepo {
+  func messageObservable(in group: Swift.String) -> RxSwift.Observable<NADomain.NACollectionChange<NADomain.NAMessage>>
+  func fetchMessages(groupId: Swift.String, lastMessageID: Swift.String?, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAMessage]>
+  func markMessagesAsRead(messages: [NADomain.NAMessage], in group: NADomain.NAGroup, isUpdateLastMessage: Swift.Bool)
+  func markMessagesAsReadOnlyLocale(messages: [NADomain.NAMessage], in group: NADomain.NAGroup)
+  func pinnedMessageObservable(in group: Swift.String) -> RxSwift.Observable<NADomain.NACollectionChange<NADomain.NAMessage>>
+  func fetchPinnedMessages(groupId: Swift.String, sortBy type: NARealmPlatform.PinnedMessagesSortType) -> RxSwift.Single<[NADomain.NAMessage]>
+  func removeLocalPinnedMessages(groupId: Swift.String)
+  func saveLocalPinnedMessages(_ messages: [NADomain.NAMessage])
+  func cleanTempPinMessageData()
+  func cleanTempMessageData()
+  func cleanAllTempData()
+}
+public protocol RecentSearchResultRepo {
+  func getTopRecentContacts(numberOfItems: Swift.Int, userId: Swift.String?) -> RxSwift.Single<[NADomain.NAContact]>
+  func getTopRecentSearchResults(numberOfItems: Swift.Int) -> RxSwift.Single<[(NADomain.NAContact?, NADomain.NAGroup?)]>
+  func searchContacts(searchText: Swift.String, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func saveRecentSearchResult(by contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func saveRecentSearchResult(by group: NADomain.NAGroup) -> RxSwift.Single<Swift.Void>
+  func getRecentSearchResultsSortedBySearchTime() -> RxSwift.Single<[NADomain.NARecentSearchResult]>
+  func getRecentSearchResult(byId id: Swift.String) -> RxSwift.Single<NADomain.NARecentSearchResult?>
+  func saveRecentSearchResult(_ recentResult: NADomain.NARecentSearchResult) -> RxSwift.Single<Swift.Void>
+  func delete(_ searchResult: NADomain.NARecentSearchResult) -> RxSwift.Single<Swift.Void>
+  func delete(_ searchResults: [NADomain.NARecentSearchResult]) -> RxSwift.Single<Swift.Void>
+}
+@_hasMissingDesignatedInitializers public class RecentSearchResultRepoImpl : NetAloLite.RecentSearchResultRepo {
+  public func getTopRecentSearchResults(numberOfItems: Swift.Int) -> RxSwift.Single<[(NADomain.NAContact?, NADomain.NAGroup?)]>
+  public func getTopRecentContacts(numberOfItems: Swift.Int, userId: Swift.String?) -> RxSwift.Single<[NADomain.NAContact]>
+  public func searchContacts(searchText: Swift.String, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  public func searchGroup(byName name: Swift.String, contactResults: [NADomain.NAContact]) -> RxSwift.Single<[NADomain.NAGroup]>
+  public func saveRecentSearchResult(by contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  public func saveRecentSearchResult(by group: NADomain.NAGroup) -> RxSwift.Single<Swift.Void>
+  public func getRecentSearchResultsSortedBySearchTime() -> RxSwift.Single<[NADomain.NARecentSearchResult]>
+  public func getRecentSearchResult(byId id: Swift.String) -> RxSwift.Single<NADomain.NARecentSearchResult?>
+  public func saveRecentSearchResult(_ recentResult: NADomain.NARecentSearchResult) -> RxSwift.Single<Swift.Void>
+  public func delete(_ searchResult: NADomain.NARecentSearchResult) -> RxSwift.Single<Swift.Void>
+  public func delete(_ searchResults: [NADomain.NARecentSearchResult]) -> RxSwift.Single<Swift.Void>
+  @objc deinit
+}
+public protocol LogRepo {
+  func write(text: Swift.String)
+  func index(eventType: Swift.Int, userId: Swift.String?, appId: Swift.String, appKey: Swift.String, data: Swift.String)
+  func sendLog(traceid: Swift.String) -> RxSwift.Single<Swift.Void>
+  func saveLog(traceid: Swift.String, data: [Swift.String : Any])
+}
+@_hasMissingDesignatedInitializers public class CKCall {
+  final public let uuid: Foundation.UUID
+  @objc deinit
+}
+public enum SDKPermissionSet : Swift.Int {
+  case contacts
+  case microPhone
+  case camera
+  case notifications
+  case photos
+  case trackUsage
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol ServerConfigType {
+  var serverUrl: Foundation.URL { get }
+  var socketUrl: Foundation.URL { get }
+  var jitsiUrl: Foundation.URL { get }
+  var trackingUrl: Foundation.URL { get }
+  var loggingUrl: Foundation.URL { get }
+  var imageUrl: Foundation.URL { get set }
+  var userProfileUrl: Foundation.URL { get set }
+  var homeUrl: Foundation.URL { get }
+  var storeUrl: Foundation.URL { get }
+  var appGroupIdentifier: Swift.String { get }
+  var databaseIdentifier: Swift.String { get }
+  var databaseVersion: Swift.UInt64 { get }
+  var appConfig: NetAloLite.AppConfig { get }
+  var trackingConfig: NetAloLite.TrackingConfig { get }
+  var featureConfig: NetAloLite.FeatureConfig { get set }
+  var permissions: [NetAloLite.SDKPermissionSet] { get set }
+  var messageVersion: Swift.Int { get }
+  var isCallProduction: Swift.Bool { get }
+  var imageMaxSize: Swift.Double { get }
+  var videoMaxSizeMB: Swift.Double { get }
+  var stickerUrl: Foundation.URL { get }
+}
+public struct AppConfig {
+  public init(authKey: Swift.String, appID: Swift.Int64, accountKey: Swift.String)
+  public let authKey: Swift.String
+  public let appID: Swift.Int64
+  public let accountKey: Swift.String
+}
+public struct TrackingConfig {
+  public let appID: Swift.String
+  public let appKey: Swift.String
+}
+public struct FeatureConfig {
+  public struct UserConfig {
+    public var forceUpdateProfile: Swift.Bool
+    public var allowCustomUsername: Swift.Bool
+    public var allowCustomProfile: Swift.Bool
+    public var allowCustomAlert: Swift.Bool
+    public var allowAddContact: Swift.Bool
+    public var allowBlockContact: Swift.Bool
+    public var allowSetUserProfileUrl: Swift.Bool
+    public var allowEnableLocationFeature: Swift.Bool
+    public var allowTrackingUsingSDK: Swift.Bool
+    public var allowTrackingDuringCall: Swift.Bool
+    public var allowTrackingBadgeNumber: Swift.Bool
+    public var allowCreateGroup: Swift.Bool
+    public var isHiddenEditProfile: Swift.Bool
+    public var allowAddNewContact: Swift.Bool
+    public var allowEditContact: Swift.Bool
+    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingDuringCall: Swift.Bool = false, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, allowEditContact: Swift.Bool)
+  }
+  public struct ChatConfig {
+    public var isVideoCallEnable: Swift.Bool
+    public var isVoiceCallEnable: Swift.Bool
+    public var allowFloatingPersonalCall: Swift.Bool
+    public var isHiddenSecretChat: Swift.Bool
+    public init(isVideoCallEnable: Swift.Bool, isVoiceCallEnable: Swift.Bool, isHiddenSecretChat: Swift.Bool, allowFloatingPersonalCall: Swift.Bool = false)
+  }
+  public var user: NetAloLite.FeatureConfig.UserConfig
+  public var chat: NetAloLite.FeatureConfig.ChatConfig
+  public var isSyncDataInApp: Swift.Bool
+  public var isSyncContactInApp: Swift.Bool
+  public var allowCustomStatusBarStyle: Swift.Bool
+  public var reserverWebDomain: Swift.String?
+  public let allowReferralCode: Swift.Bool
+  public var searchByLike: Swift.Bool
+  public var allowReplaceCountrycode: Swift.Bool
+  public init(user: NetAloLite.FeatureConfig.UserConfig, chat: NetAloLite.FeatureConfig.ChatConfig, isSyncDataInApp: Swift.Bool = false, isSyncDataOnFirstLogin: Swift.Bool = false, allowCustomStatusBarStyle: Swift.Bool = true, reserverWebDomain: Swift.String? = nil, allowReferralCode: Swift.Bool, searchByLike: Swift.Bool, allowReplaceCountrycode: Swift.Bool, isSyncContactInApp: Swift.Bool = false)
+}
+public class ServerConfig : NetAloLite.ServerConfigType {
+  public init(serverUrl: Foundation.URL, socketUrl: Foundation.URL, jitsiUrl: Foundation.URL, trackingUrl: Foundation.URL, loggingUrl: Foundation.URL, imageUrl: Foundation.URL, userProfileUrl: Foundation.URL, homeUrl: Foundation.URL, storeUrl: Foundation.URL, appGroupIdentifier: Swift.String, databaseIdentifier: Swift.String, databaseVersion: Swift.UInt64, appConfig: NetAloLite.AppConfig, trackingConfig: NetAloLite.TrackingConfig, featureConfig: NetAloLite.FeatureConfig, permissions: [NetAloLite.SDKPermissionSet], messageVersion: Swift.Int, isCallProduction: Swift.Bool, imageMaxSize: Swift.Double, videoMaxSizeMB: Swift.Double, environment: NetAloLite.EnvironmentType, stickerUrl: Foundation.URL)
+  public var serverUrl: Foundation.URL
+  public var socketUrl: Foundation.URL
+  public var jitsiUrl: Foundation.URL
+  public var trackingUrl: Foundation.URL
+  public var loggingUrl: Foundation.URL
+  public var imageUrl: Foundation.URL
+  public var userProfileUrl: Foundation.URL
+  public var homeUrl: Foundation.URL
+  public var storeUrl: Foundation.URL
+  public var appGroupIdentifier: Swift.String
+  public var databaseIdentifier: Swift.String
+  public var databaseVersion: Swift.UInt64
+  public var appConfig: NetAloLite.AppConfig
+  public var trackingConfig: NetAloLite.TrackingConfig
+  public var featureConfig: NetAloLite.FeatureConfig
+  public var permissions: [NetAloLite.SDKPermissionSet]
+  public var messageVersion: Swift.Int
+  public var isCallProduction: Swift.Bool
+  public var imageMaxSize: Swift.Double
+  public var videoMaxSizeMB: Swift.Double
+  public var environment: NetAloLite.EnvironmentType
+  public var stickerUrl: Foundation.URL
+  public static let development: NetAloLite.ServerConfig
+  public static let production: NetAloLite.ServerConfig
+  public static let testing: NetAloLite.ServerConfig
+  public static let staging: NetAloLite.ServerConfig
+  @objc deinit
+}
+extension Resolver.MyResolver {
+  public static func regisRepoAndSubServices()
+}
+public enum CallSoundType : Swift.String {
+  case incoming
+  case outgoing
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol SoundRepo {
+  var bundle: Foundation.Bundle? { get set }
+  func play(type: NetAloLite.CallSoundType, isRepeat: Swift.Bool)
+  func stop()
+  func setOutputToSpeaker(isSpeaker: Swift.Bool)
+}
+public enum SyncGroupFrequency : Swift.Double {
+  case normal
+  case rare
+  public init?(rawValue: Swift.Double)
+  public typealias RawValue = Swift.Double
+  public var rawValue: Swift.Double {
+    get
+  }
+}
+public protocol GroupRepo {
+  func getGroup(by groupId: Swift.String) -> RxSwift.Single<NADomain.NAGroup?>
+  func getGroup(by message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAGroup?>
+  func getListGroups(page: Swift.Int, pageSize: Swift.Int) -> RxSwift.Observable<[NADomain.NAGroup]>
+  func getOpponentUser(in group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAUser?>
+  func getOpponentUser(in groupId: Swift.String) -> RxSwift.Single<NADomain.NAUser?>
+  func getOccupants(in group: NADomain.NAGroup, andRemovedUsers isRemovedUsers: Swift.Bool) -> RxSwift.Single<[NADomain.NAUser]>
+  func isCurrentUserGroupOwner(of group: NADomain.NAGroup) -> Swift.Bool
+  func isCurrentUserGroupAdmin(of group: NADomain.NAGroup) -> Swift.Bool
+  func isCurrentUserWithAuthority(of group: NADomain.NAGroup) -> Swift.Bool
+  func displayName(of group: NADomain.NAGroup) -> RxSwift.Observable<Swift.String?>
+  func displayName(of group: NADomain.NAGroup, occupants: [NADomain.NAContact]) -> RxSwift.Observable<Swift.String?>
+  func getUnreadMessageCount(in groupId: Swift.String) -> RxSwift.Single<Swift.Int>
+  func createGroup(group: NADomain.NAGroup, senderName: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func fetchGroup(by occupants: [Swift.String], type: NADomain.NAGroup.GroupType, isSync: Swift.Bool) -> RxSwift.Single<NADomain.NAGroup?>
+  func getDraffMessage(groupId: Swift.String) -> RxSwift.Observable<Swift.String?>
+  func saveDraffMessage(_ message: Swift.String?, groupId: Swift.String)
+  func getMessageDestroyPeriod(in groupId: Swift.String) -> RxSwift.Single<Swift.Double>
+  func updateGroup(group: NADomain.NAGroup, updateType: NADomain.NAGroupUpdateType) -> RxSwift.Single<NADomain.NAGroup>
+  func deleteGroup(with groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  func leaveGroup(with groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  func deleteConversation(with groupID: Swift.String, groupType: NADomain.NAGroup.GroupType) -> RxSwift.Single<Swift.Void>
+  func muteGroup(with group: NADomain.NAGroup) -> RxSwift.Single<Swift.Void>
+  func togglePin(with group: NADomain.NAGroup, isPin: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func createJoinGroupLink(groupID: Swift.String) -> RxSwift.Single<Swift.String>
+  func joinGroupWithLink(_ token: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func disableJoinGroupLink(_ token: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getListGroupLink(groupID: Swift.String, pageIndex: Swift.Int, pageSize: Swift.Int) -> RxSwift.Single<[Swift.String]>
+  func updateBackground(group: NADomain.NAGroup, background: NADomain.NAGroupBackground, changeAll: Swift.Bool) -> RxSwift.Single<NADomain.NAGroupBackground>
+  func getGroupInfo(token: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
+  func moveMembers(sourceGroupId: Swift.String, distGroup: NADomain.NAGroup) -> RxSwift.Single<Swift.Void>
+  func searchGroup(by ownerUser: NADomain.NAUser, searchText: Swift.String) -> RxSwift.Single<[NADomain.NAGroup]>
+  func searchGroup(byName name: Swift.String, contactResults: [NADomain.NAContact]) -> RxSwift.Single<[NADomain.NAGroup]>
+  func getUnreadConversationsAndMissedCalls() -> RxSwift.Single<Swift.Int>
+  func searchGroup(searchText: Swift.String) -> RxSwift.Single<[NADomain.NAGroup]>
+  func updateLocalGroup(_ group: NADomain.NAGroup, saveLastMessage: Swift.Bool)
+  func checkStatusGroupCall(with group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAGroupCall?>
+  func syncGroups(isForcedSync: Swift.Bool, frequency: NetAloLite.SyncGroupFrequency) -> RxSwift.Single<NADomain.NASyncGroupResponse>
+  var isSynced: RxSwift.Observable<Swift.Void> { get }
+}
+extension NetAloLite.GroupRepo {
+  public func getOccupants(in group: NADomain.NAGroup, andRemovedUsers isRemovedUsers: Swift.Bool = false) -> RxSwift.Single<[NADomain.NAUser]>
+  public func fetchGroup(by occupants: [Swift.String], type: NADomain.NAGroup.GroupType, isSync: Swift.Bool = true) -> RxSwift.Single<NADomain.NAGroup?>
+  public func syncGroups(isForcedSync: Swift.Bool, frequency: NetAloLite.SyncGroupFrequency = .normal) -> RxSwift.Single<NADomain.NASyncGroupResponse>
+}
+public enum LocationState {
+  case didStopShareLiveLocation(NADomain.NAMessage)
+  case didReceiveLiveLocationMessage(NADomain.NAMessage, NADomain.NALiveLocation)
+  case none
+}
+public protocol LocationRepo {
+  var didUpdateSharingLocation: RxSwift.Observable<CoreLocation.CLLocation> { get }
+  var didUpdateCurrentLocation: RxSwift.Observable<CoreLocation.CLLocation> { get }
+  var showUsersLocation: RxSwift.Observable<Swift.Bool> { get }
+  var currentLocationRelay: RxRelay.BehaviorRelay<CoreLocation.CLLocation?> { get }
+  var authorizationDenied: RxSwift.PublishSubject<Swift.Void> { get }
+  var isAuthorizeGranted: Swift.Bool { get }
+  var isAlwaysAuthorization: Swift.Bool { get }
+  var isNotDeterminedAuthorization: Swift.Bool { get }
+  func checkLocationServiceEnable(trackingMap: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  func checkRequestAuthorize()
+  func allowShareLocationBackground(_ enable: Swift.Bool)
+  func resetLocation()
+  func stopTrackingLocation()
+  func getAddressFromLocation(with center: CoreLocation.CLLocation) -> RxSwift.Single<Swift.String>
+  func getImageFromLocation(with location: CoreLocation.CLLocation, annotionImgView: UIKit.UIImage, isDarkMode: Swift.Bool) -> RxSwift.Single<UIKit.UIImage>
+  func appendNewShareLiveLocation(_ item: NADomain.NALiveLocation)
+  func removeShareLiveLocation(_ item: NADomain.NALiveLocation)
+  func removeExpiredShareLiveLocations()
+  func stopSharingLiveLocation(location: NADomain.NALiveLocation) -> RxSwift.Single<Swift.Void>
+  func retriveListOfShareLiveLocations() -> [NADomain.NALiveLocation]
+  var locationState: RxSwift.Observable<NetAloLite.LocationState> { get }
+  func setLocationState(_ state: NetAloLite.LocationState)
+  func stopAnySharingLiveLocation(location: NADomain.NALiveLocation) -> RxSwift.Single<Swift.Void>
+  func handleLiveLocationSuccess(message: NADomain.NAMessage)
+}
+@objc @_inheritsConvenienceInitializers public class LocationRepoImpl : ObjectiveC.NSObject, NetAloLite.LocationRepo {
+  public var currentLocationRelay: RxRelay.BehaviorRelay<CoreLocation.CLLocation?>
+  public var authorizationDenied: RxSwift.PublishSubject<Swift.Void>
+  public var didUpdateSharingLocation: RxSwift.Observable<CoreLocation.CLLocation> {
+    get
+  }
+  public var didUpdateCurrentLocation: RxSwift.Observable<CoreLocation.CLLocation> {
+    get
+  }
+  public var locationState: RxSwift.Observable<NetAloLite.LocationState> {
+    get
+  }
+  final public let _showUsersLocation: RxSwift.PublishSubject<Swift.Bool>
+  public var showUsersLocation: RxSwift.Observable<Swift.Bool> {
+    get
+  }
+  public func setLocationState(_ state: NetAloLite.LocationState)
+  public var isAuthorizeGranted: Swift.Bool {
+    get
+  }
+  public var isAlwaysAuthorization: Swift.Bool {
+    get
+  }
+  public var isNotDeterminedAuthorization: Swift.Bool {
+    get
+  }
+  public func checkLocationServiceEnable(trackingMap: Swift.Bool) -> RxSwift.Single<Swift.Bool>
+  public func checkRequestAuthorize()
+  public func allowShareLocationBackground(_ enable: Swift.Bool)
+  public func stopTrackingLocation()
+  public func resetLocation()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension NetAloLite.LocationRepoImpl : CoreLocation.CLLocationManagerDelegate {
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didChangeAuthorization status: CoreLocation.CLAuthorizationStatus)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: Swift.Error)
+  @objc dynamic public func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
+}
+extension NetAloLite.LocationRepoImpl {
+  public func retriveListOfShareLiveLocations() -> [NADomain.NALiveLocation]
+  public func appendNewShareLiveLocation(_ item: NADomain.NALiveLocation)
+  public func removeShareLiveLocation(_ item: NADomain.NALiveLocation)
+  public func removeExpiredShareLiveLocations()
+}
+extension NetAloLite.LocationRepoImpl {
+  public func getAddressFromLocation(with center: CoreLocation.CLLocation) -> RxSwift.Single<Swift.String>
+  public func getImageFromLocation(with location: CoreLocation.CLLocation, annotionImgView: UIKit.UIImage, isDarkMode: Swift.Bool) -> RxSwift.Single<UIKit.UIImage>
+  public func stopAnySharingLiveLocation(location: NADomain.NALiveLocation) -> RxSwift.Single<Swift.Void>
+  public func stopSharingLiveLocation(location: NADomain.NALiveLocation) -> RxSwift.Single<Swift.Void>
+  public func handleLiveLocationSuccess(message: NADomain.NAMessage)
+}
+public struct StickerModel : Swift.Equatable {
+  public let name: NetAloLite.EnumStickers
+  public let key: Swift.String
+  public let path: Swift.String?
+  public init(_name: NetAloLite.EnumStickers, bundle: Foundation.Bundle)
+  public static func == (lhs: NetAloLite.StickerModel, rhs: NetAloLite.StickerModel) -> Swift.Bool
+}
+public enum EnumStickers : Swift.String {
+  case cheeky
+  case cuckoo
+  case frog
+  case starly
+  case tako
+  case foxieZalo
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension NADomain.NALocalContact : Swift.Hashable {
+  public static func == (lhs: NADomain.NALocalContact, rhs: NADomain.NALocalContact) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol HistoryCallRepo {
+  func getListHistoryCall(callType: Swift.String) -> RxSwift.Observable<[NADomain.NACall]>
+  func deleteHistoryCall(id: Swift.String, calls: [NADomain.NACall]) -> RxSwift.Single<Swift.Void>
+}
+@_hasMissingDesignatedInitializers public class HistoryCallRepoImpl : NetAloLite.HistoryCallRepo {
+  public func getListHistoryCall(callType: Swift.String = "") -> RxSwift.Observable<[NADomain.NACall]>
+  public func deleteHistoryCall(id: Swift.String, calls: [NADomain.NACall]) -> RxSwift.Single<Swift.Void>
+  @objc deinit
+}
+public protocol EventRepo : AnyObject {
+  func connectSocketIfNeed()
+  func disconnectSocket()
+  var isSocketConnected: Swift.Bool { get }
+  var socketStateObservable: RxSwift.Observable<Swift.Bool> { get }
+  var socketError: RxSwift.Observable<NADomain.NAError> { get }
+  var newMessage: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> { get }
+  var updatedMessageStatus: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> { get }
+  var removedMessage: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> { get }
+  var updatedMessage: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> { get }
+  var updatedGroup: RxSwift.Observable<(NADomain.NAGroupUpdateType?, NADomain.NAGroup)> { get }
+  var newGroup: RxSwift.Observable<NADomain.NAGroup> { get }
+  var removedGroup: RxSwift.Observable<NADomain.NAGroup> { get }
+  var userStatus: RxSwift.Observable<[NADomain.NAUserStatus]> { get }
+  var newRegisterUser: RxSwift.Observable<(userId: Swift.String, group: NADomain.NAGroup)> { get }
+  var blockedContact: RxSwift.Observable<(blockedId: Swift.String, group: NADomain.NAGroup)> { get }
+  var unBlockedContact: RxSwift.Observable<(unBlockId: Swift.String, group: NADomain.NAGroup)> { get }
+  var typingStatus: RxSwift.Observable<(groupId: Swift.String, isTyping: Swift.Bool)> { get }
+  var pinGroupSuccess: RxSwift.Observable<NADomain.NAGroup> { get }
+  var turnNotification: RxSwift.Observable<NADomain.NAGroup> { get }
+  var pinMessage: RxSwift.Observable<(message: NADomain.NAMessage, group: NADomain.NAGroup)> { get }
+  var unpinAllMessages: RxSwift.Observable<(messages: [NADomain.NAMessage], groupId: Swift.String)> { get }
+  var stopLiveLocation: RxSwift.PublishSubject<NADomain.NAMessage> { get }
+  var groupCallEvent: RxSwift.Observable<NADomain.NAGroupCallEvent> { get }
+  var newContact: RxSwift.Observable<NADomain.NAContact> { get }
+  var deleteContact: RxSwift.Observable<NADomain.NAContact> { get }
+  var uploadVideoProgress: RxSwift.Observable<(groupID: Swift.String, messageID: Swift.String, progress: NADomain.UploadTaskProgress)> { get }
+  var updateContact: RxSwift.Observable<NADomain.NAContact> { get }
+  var updatedGroupCall: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAGroupCall?)> { get }
+  func didReceiveGroupCall(event: NADomain.NAGroupCallEvent)
+}
+public class EventRepoImpl : NetAloLite.EventRepo {
+  public var isSocketConnected: Swift.Bool {
+    get
+  }
+  public var socketStateObservable: RxSwift.Observable<Swift.Bool> {
+    get
+  }
+  public var socketError: RxSwift.Observable<NADomain.NAError> {
+    get
+  }
+  public var newMessage: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> {
+    get
+  }
+  public var updatedMessageStatus: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> {
+    get
+  }
+  public var updatedMessage: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> {
+    get
+  }
+  public var removedMessage: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAMessage)> {
+    get
+  }
+  public var updatedGroup: RxSwift.Observable<(NADomain.NAGroupUpdateType?, NADomain.NAGroup)> {
+    get
+  }
+  public var newGroup: RxSwift.Observable<NADomain.NAGroup> {
+    get
+  }
+  public var removedGroup: RxSwift.Observable<NADomain.NAGroup> {
+    get
+  }
+  public var userStatus: RxSwift.Observable<[NADomain.NAUserStatus]> {
+    get
+  }
+  public var newRegisterUser: RxSwift.Observable<(userId: Swift.String, group: NADomain.NAGroup)> {
+    get
+  }
+  public var pinMessage: RxSwift.Observable<(message: NADomain.NAMessage, group: NADomain.NAGroup)> {
+    get
+  }
+  public var unpinAllMessages: RxSwift.Observable<(messages: [NADomain.NAMessage], groupId: Swift.String)> {
+    get
+  }
+  public var stopLiveLocation: RxSwift.PublishSubject<NADomain.NAMessage>
+  public var blockedContact: RxSwift.Observable<(blockedId: Swift.String, group: NADomain.NAGroup)> {
+    get
+  }
+  public var unBlockedContact: RxSwift.Observable<(unBlockId: Swift.String, group: NADomain.NAGroup)> {
+    get
+  }
+  public var typingStatus: RxSwift.Observable<(groupId: Swift.String, isTyping: Swift.Bool)> {
+    get
+  }
+  public var pinGroupSuccess: RxSwift.Observable<NADomain.NAGroup> {
+    get
+  }
+  public var turnNotification: RxSwift.Observable<NADomain.NAGroup> {
+    get
+  }
+  public var groupCallEvent: RxSwift.Observable<NADomain.NAGroupCallEvent> {
+    get
+  }
+  public var newContact: RxSwift.Observable<NADomain.NAContact> {
+    get
+  }
+  public var deleteContact: RxSwift.Observable<NADomain.NAContact> {
+    get
+  }
+  public var uploadVideoProgress: RxSwift.Observable<(groupID: Swift.String, messageID: Swift.String, progress: NADomain.UploadTaskProgress)> {
+    get
+  }
+  public var updateContact: RxSwift.Observable<NADomain.NAContact> {
+    get
+  }
+  public var updatedGroupCall: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAGroupCall?)> {
+    get
+  }
+  public var reserverWebDomain: RxSwift.Observable<Swift.String?> {
+    get
+  }
+  public init()
+  public func connectSocketIfNeed()
+  public func disconnectSocket()
+  @objc deinit
+}
+extension NetAloLite.EventRepoImpl : NASocketPlatform.NASocketDelegate {
+  public func didConnect()
+  public func didDisconnect()
+  public func didReceiveNewGroup(_ group: NADomain.NAGroup)
+  public func didUpdateGroup(_ group: NADomain.NAGroupUpdate)
+  public func didUpdateUserStatus(_ userStatus: [NADomain.NAUserStatus])
+  public func didReceive(_ message: NADomain.NAMessage)
+  public func didReceiveGroupEvent(_ event: NADomain.NAGroupEvent)
+  public func didReceiveError(_ error: NADomain.NAError)
+  public func didStartSecretChat(info: NADomain.NAStartSecretChat)
+  public func didAcceptSecretChat(info: NADomain.NAStartSecretChat)
+  public func didDeleteSecretChat(info: NADomain.NADeleteSecretChat)
+  public func didDeleteGroup(_ groupID: Swift.String)
+  public func didBlockContact(_ block: NADomain.NABlock)
+  public func didUnblockContact(_ block: NADomain.NABlock)
+  public func didUnpinAllMessage(_ messages: [NADomain.NAMessage], groupID: Swift.String)
+  public func didPinMessage(_ message: NADomain.NAMessage, groupID: Swift.String)
+  public func didReceiveLiveLocationMessage(_ message: NADomain.NAMessage)
+  public func didReceiveGroupCall(event: NADomain.NAGroupCallEvent)
+}
+@_hasMissingDesignatedInitializers public class PlatformCollector {
+  public var platform: Swift.String {
+    get
+  }
+  public var advertiseId: Swift.String {
+    get
+  }
+  public var deviceType: Swift.String {
+    get
+  }
+  public var osVersion: Swift.String {
+    get
+  }
+  public var appVersion: Swift.String? {
+    get
+  }
+  public var language: Swift.String? {
+    get
+  }
+  public var timeZone: Swift.String? {
+    get
+  }
+  public var timeStamp: Swift.Double {
+    get
+  }
+  public var countryCode: Swift.String? {
+    get
+  }
+  public var uuid: Swift.String? {
+    get
+  }
+  public var bundleName: Swift.String? {
+    get
+  }
+  public var cpu64Bits: Swift.Bool {
+    get
+  }
+  public var cpuCount: Swift.Int {
+    get
+  }
+  public var ramSize: Swift.UInt64 {
+    get
+  }
+  public var deviceModel: Swift.String {
+    get
+  }
+  public var bundleIdentifier: Swift.String? {
+    get
+  }
+  public var sdkVersion: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public enum DisplayMapViewType {
+  case normal(group: NADomain.NAGroup? = nil, targetUser: NADomain.NAUser? = nil, mapAuthor: NetAloLite.MapAuthorType)
+  case shareCurrentLocation(group: NADomain.NAGroup? = nil, currentLocation: NADomain.NALocation? = nil, targetUser: NADomain.NAUser?, mapAuthor: NetAloLite.MapAuthorType)
+  case shareLiveLocation(group: NADomain.NAGroup? = nil, liveLocation: NADomain.NALiveLocation? = nil, targetUser: NADomain.NAUser?, mapAuthor: NetAloLite.MapAuthorType)
+}
+public enum MapActionType {
+  case shareCurrentlocation
+  case shareLiveLocation
+  public static func == (a: NetAloLite.MapActionType, b: NetAloLite.MapActionType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum MapAuthorType {
+  case normal
+  case shareCurrentLocation
+  case shareLiveLocation
+  public static func == (a: NetAloLite.MapAuthorType, b: NetAloLite.MapAuthorType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum TimeForShare : Swift.Int {
+  case fifteenMinute
+  case oneHour
+  case eightHours
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct MapActionItem {
+  public var title: Swift.String
+  public var subTitle: Swift.String
+  public var icon: UIKit.UIImage
+  public let actionType: NetAloLite.MapActionType
+  public let authorType: NetAloLite.MapAuthorType
+  public init(title: Swift.String, subTitle: Swift.String, icon: UIKit.UIImage, type: NetAloLite.MapActionType, author: NetAloLite.MapAuthorType)
+}
+extension NetAloLite.MapActionItem : Swift.Hashable {
+  public static func == (lhs: NetAloLite.MapActionItem, rhs: NetAloLite.MapActionItem) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol DeviceRepo {
+  func registerDeviceToken(uin: Swift.Int64, token: Swift.String, bundleId: Swift.String, type: NADomain.NADefines.TokenType, deviceId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func unRegisterDeviceToken(uin: Swift.Int64, token: Swift.String, bundleId: Swift.String, type: NADomain.NADefines.TokenType, deviceId: Swift.String) -> RxSwift.Single<Swift.Void>
+}
+public enum AttachmentsType {
+  case audio(NADomain.NAAudio)
+  case video(NADomain.NAVideo)
+  case file(NADomain.NAFile)
+  case image(Foundation.URL)
+  case unknown
+}
+public protocol AttachmentsRepo {
+  func getLocalVideoURL(for video: NADomain.NAVideo) -> RxSwift.Observable<Foundation.URL?>
+  func getLocalAudioURL(for audio: NADomain.NAAudio) -> RxSwift.Observable<Foundation.URL?>
+  func getLocalFileURL(for file: NADomain.NAFile) -> RxSwift.Observable<Foundation.URL?>
+  func downloadAttachments(url: Swift.String, message: NADomain.NAMessage, attachmentsType: NetAloLite.AttachmentsType) -> RxSwift.Observable<Foundation.URL?>
+  func save(fileName: Swift.String, data: Foundation.Data) -> Foundation.URL?
+}
+@objc @_inheritsConvenienceInitializers final public class AttachmentsRepoImpl : ObjectiveC.NSObject, NetAloLite.AttachmentsRepo {
+  final public func getLocalVideoURL(for video: NADomain.NAVideo) -> RxSwift.Observable<Foundation.URL?>
+  final public func getLocalAudioURL(for audio: NADomain.NAAudio) -> RxSwift.Observable<Foundation.URL?>
+  final public func getLocalFileURL(for file: NADomain.NAFile) -> RxSwift.Observable<Foundation.URL?>
+  final public func downloadAttachments(url: Swift.String, message: NADomain.NAMessage, attachmentsType: NetAloLite.AttachmentsType) -> RxSwift.Observable<Foundation.URL?>
+  final public func save(fileName: Swift.String, data: Foundation.Data) -> Foundation.URL?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol CountryRepo {
+  var countryObservable: RxSwift.Observable<NADomain.NACountryCode> { get }
+  var currentCoutryCode: NADomain.NACountryCode { get set }
+  func getListCountry() -> RxSwift.Single<[NADomain.NACountryCode]>
+}
+public protocol UserRepo {
+  var authObservable: RxSwift.Observable<NADomain.NAUser?> { get }
+  var currentUser: NADomain.NAUser? { get set }
+  var currentStickerIDs: NADomain.NACurrentStickerIDs? { get set }
+  var rememberLoginStatus: Swift.Bool { get set }
+  func login(with username: Swift.String, password: Swift.String, isSave: Swift.Bool) -> RxSwift.Single<NADomain.NAUser?>
+  func confirmOTP(token: Swift.String, otp: Swift.String) -> RxSwift.Single<(code: Swift.Int, userInfo: NADomain.NAUser)>
+  func resendOTP(token: Swift.String) -> RxSwift.Single<NADomain.NASession>
+  func updateInfo(fullName: Swift.String, imageUrl: Swift.String) -> RxSwift.Single<NADomain.NAUser>
+  func logout() -> RxSwift.Single<Swift.Void>
+  func registerFCMToken(token: Swift.String, type: NADomain.NADefines.TokenType) -> RxSwift.Single<Swift.Void>
+  func getUserInfo() -> RxSwift.Single<NADomain.NAUser?>
+  func getUserStatus(_ userID: Swift.String) -> RxSwift.Single<NADomain.NAUserStatus?>
+  func checkApplyReferralCode() -> RxSwift.Single<Swift.Bool>
+  func applyReferralCode(referralCode: Swift.String) -> RxSwift.Single<Swift.Bool>
+}
+public protocol BackgroundRepo {
+  func getListBackground() -> RxSwift.Single<[NADomain.NAGroupBackground]>
+  func getChatBackground(group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAGroupBackground>
+  func deleteChatBackground(groupID: Swift.String)
+  func saveChatBackground(_ background: NADomain.NAGroupBackground)
+}
+@_hasMissingDesignatedInitializers final public class BackgroundRepoImpl : NetAloLite.BackgroundRepo {
+  final public func getListBackground() -> RxSwift.Single<[NADomain.NAGroupBackground]>
+  final public func getChatBackground(group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAGroupBackground>
+  final public func deleteChatBackground(groupID: Swift.String)
+  final public func saveChatBackground(_ background: NADomain.NAGroupBackground)
+  @objc deinit
+}
+public protocol TempDataRepo {
+  func syncData() -> RxSwift.Single<Swift.Void>
+  func save(messages: [NADomain.NAMessage]) -> RxSwift.Single<Swift.Void>
+  func getMessages(groupId: Swift.String?) -> RxSwift.Single<[NADomain.NAMessage]>
+  func saveDeleted(groupId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func getDeletedGroupIds() -> RxSwift.Single<[Swift.String]>
+  func save(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func save(contacts: [NADomain.NAContact]) -> RxSwift.Single<Swift.Void>
+  func getContacts(contactIds: [Swift.Int64]?) -> RxSwift.Single<[NADomain.NAContact]>
+  func save(secretChat: NADomain.NAStartSecretChat) -> RxSwift.Single<Swift.Void>
+  func getSecretChats() -> RxSwift.Single<[NADomain.NAStartSecretChat]>
+  func save(group: NADomain.NAGroup) -> RxSwift.Single<Swift.Void>
+  func getGroupChats() -> RxSwift.Single<[NADomain.NAGroup]>
+  func save(background: NADomain.NAGroupBackground)
+  func getBackground() -> RxSwift.Single<[NADomain.NAGroupBackground]>
+}
+public protocol ObjectFactory {
+  func createMessage(for groupId: Swift.String, from type: NetAloLite.InputMessageType, messageDestroyPeriod: Swift.Double?) -> NADomain.NAMessage
+}
+public enum InputMessageType {
+  case text(text: Swift.String)
+  case reply(text: Swift.String, originMessage: NADomain.NAMessage)
+  case forward(text: Swift.String, originMessage: NADomain.NAMessage)
+  case audio(audio: NADomain.NAAudio)
+  case images(images: [NADomain.NAInputImage])
+  case video(video: NADomain.NAInputVideo, localUrl: Swift.String)
+  case file(file: NADomain.NAFile)
+  case sticker(sticker: NADomain.NAStickerItem)
+  case screenshot
+  case location(location: NADomain.NALocation)
+  case liveLocation(location: NADomain.NALiveLocation)
+  case unknown
+}
+public protocol ChatRepo {
+  func sendTypingStatus(groupId: Swift.String, isTyping: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func sendMessage(with inputMessage: NADomain.NAMessage, saveLocalFirst: Swift.Bool) -> RxSwift.Single<NADomain.NAMessage>
+  func sendImagesMessage(images: [NADomain.NAInputImage], message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAMessage>
+  func sendAudioMessage(audio: NADomain.NAInputAudio, message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAMessage>
+  func sendFileMessage(file: NADomain.NAInputFile, message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAMessage>
+  func sendVideoMessage(video: NADomain.NAInputVideo, message: NADomain.NAMessage) -> RxSwift.Single<NADomain.NAMessage>
+  func sendLocationMessage(message: NADomain.NAMessage, location: NADomain.NALocation, image: NADomain.NAInputImage) -> RxSwift.Single<NADomain.NAMessage>
+  func sendLiveLocationMessage(message: NADomain.NAMessage, liveLocation: NADomain.NALiveLocation, image: NADomain.NAInputImage) -> RxSwift.Single<NADomain.NAMessage>
+  func getListMessage(groupID: Swift.String, lastMessageID: Swift.String?, pageSize: Swift.Int) -> RxSwift.Single<[NADomain.NAMessage]>
+  func updateMessageStatus(message: NADomain.NAMessage, status: NADomain.NAMessageStatus) -> RxSwift.Single<NADomain.NAMessage>
+  func updateMessageStatusOnlyLocale(message: NADomain.NAMessage, status: NADomain.NAMessageStatus) -> RxSwift.Single<NADomain.NAMessage>
+  func deleteMessage(message: NADomain.NAMessage, groupID: Swift.String, isDeleteAll: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func togglePin(message: NADomain.NAMessage, groupID: Swift.String, isPin: Swift.Bool, order: Swift.Int?, sendUpdateMessage: Swift.Bool) -> RxSwift.Single<NADomain.NAMessage>
+  func unpinAllMessages(groupID: Swift.String) -> RxSwift.Single<Swift.Void>
+  func getListPinnedMessage(groupID: Swift.String) -> RxSwift.Single<[NADomain.NAMessage]>
+  func blockContact(blockedID: Swift.String, groupId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func unblockContact(blockedID: Swift.String, groupId: Swift.String) -> RxSwift.Single<Swift.Void>
+  func getBlockContactList() -> RxSwift.Observable<(blockContactList: [NADomain.NABlockContact], contactList: [NADomain.NAContact])>
+  func getMessage(with messageId: Swift.String, groupId: Swift.String?) -> RxSwift.Single<NADomain.NAMessage?>
+}
+public protocol SyncRepo {
+  func syncFirstInit(allStickers: [NetAloLite.StickerModel], defaultStickers: [NetAloLite.StickerModel], excludesStickers: [NetAloLite.StickerModel]) -> RxSwift.Single<Swift.Void>
+  func syncFirstLogin(allStickers: [NetAloLite.StickerModel], defaultStickers: [NetAloLite.StickerModel], excludesStickers: [NetAloLite.StickerModel]) -> RxSwift.Single<Swift.Void>
+  func syncWhenAppActive() -> RxSwift.Single<Swift.Void>
+  func syncGroupsAndUserInfo() -> RxSwift.Single<Swift.Void>
+  func syncWhenLoginSDK(allStickers: [NetAloLite.StickerModel], defaultStickers: [NetAloLite.StickerModel], excludesStickers: [NetAloLite.StickerModel]) -> RxSwift.Single<Swift.Void>
+  func applicationWillTerminate()
+}
+public struct MultiImagePickerConfig {
+  public enum ResultType {
+    case raw
+    case url
+    public static func == (a: NetAloLite.MultiImagePickerConfig.ResultType, b: NetAloLite.MultiImagePickerConfig.ResultType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum AssetMediaType : Swift.Int {
+    case all
+    case image
+    case video
+    public var fetchOptionsPredicate: Foundation.NSPredicate {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public let resultType: NetAloLite.MultiImagePickerConfig.ResultType
+  public let autoDismiss: Swift.Bool
+  public let maxSelections: Swift.Int
+  public let autoDismissOnMaxSelections: Swift.Bool
+  public let showDoneButton: Swift.Bool
+  public let assetMediaType: NetAloLite.MultiImagePickerConfig.AssetMediaType
+  public let isSelectOnly: Swift.Bool
+  public let allowAddGPS: Swift.Bool
+  public init(resultType: NetAloLite.MultiImagePickerConfig.ResultType, autoDismiss: Swift.Bool, maxSelections: Swift.Int, autoDismissOnMaxSelections: Swift.Bool, showDoneButton: Swift.Bool, assetMediaType: NetAloLite.MultiImagePickerConfig.AssetMediaType, isSelectOnly: Swift.Bool = false, allowAddGPS: Swift.Bool = false)
+  public static var `default`: NetAloLite.MultiImagePickerConfig
+  public static var selectOnly: NetAloLite.MultiImagePickerConfig
+  public static var allowAddGPS: NetAloLite.MultiImagePickerConfig
+  public static var selectOnlyImage: NetAloLite.MultiImagePickerConfig
+  public static var selectOnlyVideo: NetAloLite.MultiImagePickerConfig
+}
+public enum SyncContactFrequency : Swift.Double {
+  case normal
+  case rare
+  public init?(rawValue: Swift.Double)
+  public typealias RawValue = Swift.Double
+  public var rawValue: Swift.Double {
+    get
+  }
+}
+public protocol ContactRepo {
+  var isAuthorizeGranted: Swift.Bool { get }
+  var isSyncedContacts: RxSwift.Observable<Swift.Void> { get }
+  func requestAuthorize() -> RxSwift.Single<Swift.Bool>
+  func getAllContacts(excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func getAllContacts(ids: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func getContacts(searchText: Swift.String, sortType: NADomain.ContactSortType, page: Swift.Int, pageSize: Swift.Int, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func searchContacts(searchText: Swift.String, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  func getRegisteredUsers(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAContact]>
+  func syncContactsForFirstLogin() -> RxSwift.Single<Swift.Bool>
+  func syncFullContacts(requestPermission: Swift.Bool, isForceSync: Swift.Bool, frequency: NetAloLite.SyncContactFrequency) -> RxSwift.Single<Swift.Bool>
+  func saveContactToLocal(name: Swift.String, phone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func updateContact(contact: NADomain.NAContact, updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func updateLocalContact(phoneNumber: Swift.String, currentName: Swift.String, updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getContactBy(byId id: Swift.Int64, in group: NADomain.NAGroup?) -> RxSwift.Single<NADomain.NAContact?>
+  func getContact(byPhone phone: Swift.String, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
+  func saveContact(contact: NADomain.NAContact, isFriend: Swift.Bool) -> RxSwift.Single<Swift.Void>
+  func saveFriendContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
+  func saveLocalContact(_ localContact: NADomain.NALocalContact) -> RxSwift.Single<Swift.Void>
+  func getContact(byId id: Swift.Int64?, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
+  func addContactSuccess(contact: NADomain.NAContact?, isChatted: Swift.Bool)
+  func search(by username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func getLocalContact(by phone: Swift.String) -> RxSwift.Single<NADomain.NALocalContact?>
+  func getLocalContacts(requestPermission: Swift.Bool) -> RxSwift.Single<[NADomain.NALocalContact]>
+  func requestServerToAddContact(name: Swift.String, phone: Swift.String) -> RxSwift.Observable<NADomain.NAContact>
+  func handleUpdateContact(of contact: NADomain.NAContact, with updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func checkFriend(targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func addContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func requestAddContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func deleteContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getListUserStatus() -> RxSwift.Single<Swift.Void>
+}
+extension NetAloLite.ContactRepo {
+  public func syncFullContacts(requestPermission: Swift.Bool, isForceSync: Swift.Bool, frequency: NetAloLite.SyncContactFrequency = .normal) -> RxSwift.Single<Swift.Bool>
+  public func getContactBy(byId id: Swift.Int64, in group: NADomain.NAGroup? = nil) -> RxSwift.Single<NADomain.NAContact?>
+}
+public class ContactRepoImpl : NetAloLite.ContactRepo {
+  public var isAuthorizeGranted: Swift.Bool {
+    get
+  }
+  public var isSyncedContacts: RxSwift.Observable<Swift.Void> {
+    get
+  }
+  public init()
+  public func requestAuthorize() -> RxSwift.Single<Swift.Bool>
+  public func handleUpdateContact(of contact: NADomain.NAContact, with updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func getAllContacts(excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  public func getAllContacts(ids: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  public func getContacts(searchText: Swift.String, sortType: NADomain.ContactSortType, page: Swift.Int, pageSize: Swift.Int, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  public func search(by username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  public func searchContacts(searchText: Swift.String, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
+  public func getLocalContact(by phone: Swift.String) -> RxSwift.Single<NADomain.NALocalContact?>
+  public func getLocalContacts(requestPermission: Swift.Bool) -> RxSwift.Single<[NADomain.NALocalContact]>
+  public func getRegisteredUsers(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAContact]>
+  public func syncContactsForFirstLogin() -> RxSwift.Single<Swift.Bool>
+  public func syncFullContacts(requestPermission: Swift.Bool, isForceSync: Swift.Bool, frequency: NetAloLite.SyncContactFrequency) -> RxSwift.Single<Swift.Bool>
+  public func saveContactToLocal(name: Swift.String, phone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func updateContact(contact: NADomain.NAContact, updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func updateLocalContact(phoneNumber: Swift.String, currentName: Swift.String, updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func getContactBy(byId id: Swift.Int64, in group: NADomain.NAGroup? = nil) -> RxSwift.Single<NADomain.NAContact?>
+  public func getContact(byPhone phone: Swift.String, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
+  public func saveContact(contact: NADomain.NAContact, isFriend: Swift.Bool = true) -> RxSwift.Single<Swift.Void>
+  public func saveFriendContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  public func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
+  public func saveLocalContact(_ localContact: NADomain.NALocalContact) -> RxSwift.Single<Swift.Void>
+  public func getContact(byId id: Swift.Int64?, isFriend: Swift.Bool? = nil) -> RxSwift.Single<NADomain.NAContact?>
+  public func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  public func addContactSuccess(contact: NADomain.NAContact?, isChatted: Swift.Bool)
+  public func requestServerToAddContact(name: Swift.String, phone: Swift.String) -> RxSwift.Observable<NADomain.NAContact>
+  public func requestAddContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func addContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func deleteContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func checkFriend(targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func getListUserStatus() -> RxSwift.Single<Swift.Void>
+  @objc deinit
+}
+public enum AppKeys : Swift.String {
+  case user
+  case isFirstLogin
+  case isFirstInstall
+  case isAllowContact
+  case deviceToken
+  case pushToken
+  case uuid
+  case isTempDataSyncing
+  case lastContactSync
+  case lastGroupSync
+  case joinGroupToken
+  case appConfigs
+  case statusApp
+  case userToken
+  case hideForceUpdate
+  case shareLiveLocation
+  case theme
+  case modeBaseOnSystem
+  case isReferralCodeEnabled
+  case currentCountryCode
+  case migratedFromV1
+  case currentStickerIDs
+  case isSavePassword
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public protocol KeyValueStoreType : AnyObject {
+  func set(_ value: Swift.Bool, forKey defaultName: Swift.String)
+  func set(_ value: Swift.Int, forKey defaultName: Swift.String)
+  func set(_ value: Swift.Double, forKey defaultName: Swift.String)
+  func set(_ value: Any?, forKey defaultName: Swift.String)
+  func save<T>(_ value: T?, forKey defaultName: Swift.String) where T : Swift.Decodable, T : Swift.Encodable
+  func bool(forKey defaultName: Swift.String) -> Swift.Bool
+  func data(forKey defaultName: Swift.String) -> Foundation.Data?
+  func dictionary(forKey defaultName: Swift.String) -> [Swift.String : Any]?
+  func integer(forKey defaultName: Swift.String) -> Swift.Int
+  func double(forKey defaultName: Swift.String) -> Swift.Double
+  func object(forKey defaultName: Swift.String) -> Any?
+  func string(forKey defaultName: Swift.String) -> Swift.String?
+  func get<T>(forKey defaultName: Swift.String) -> T? where T : Swift.Decodable, T : Swift.Encodable
+  func get<T>(forArrKey defaultName: Swift.String) -> [T]? where T : Swift.Decodable, T : Swift.Encodable
+  func synchronize() -> Swift.Bool
+  func removeObject(forKey defaultName: Swift.String)
+  func clean()
+  func migrateIfNeed()
+  var user: NADomain.NAUser? { get set }
+  var isFirstLogin: Swift.Bool { get set }
+  var isFirstInstall: Swift.Bool { get set }
+  var isAllowContact: Swift.Bool { get set }
+  var deviceToken: Swift.String? { get set }
+  var pushToken: Swift.String? { get set }
+  var uuid: Swift.String? { get set }
+  var isTempDataSyncing: Swift.Bool { get set }
+  var lastContactSync: Swift.Double { get set }
+  var lastGroupSync: Swift.Double { get set }
+  var joinGroupToken: Swift.String? { get set }
+  var appConfigs: NADomain.NAAppConfigs? { get set }
+  var listOfShareLiveLocation: [NADomain.NALiveLocation]? { get set }
+  var migratedFromV1: Swift.Bool { get set }
+  var currentStickerIDs: NADomain.NACurrentStickerIDs? { get set }
+  var rememberLoginStatus: Swift.Bool { get set }
+}
+extension NetAloLite.KeyValueStoreType {
+  public var user: NADomain.NAUser? {
+    get
+    set
+  }
+  public var isFirstLogin: Swift.Bool {
+    get
+    set
+  }
+  public var isFirstInstall: Swift.Bool {
+    get
+    set
+  }
+  public var isAllowContact: Swift.Bool {
+    get
+    set
+  }
+  public var deviceToken: Swift.String? {
+    get
+    set
+  }
+  public var pushToken: Swift.String? {
+    get
+    set
+  }
+  public var uuid: Swift.String? {
+    get
+    set
+  }
+  public var lastContactSync: Swift.Double {
+    get
+    set
+  }
+  public var isTempDataSyncing: Swift.Bool {
+    get
+    set
+  }
+  public var lastGroupSync: Swift.Double {
+    get
+    set
+  }
+  public var joinGroupToken: Swift.String? {
+    get
+    set
+  }
+  public var appConfigs: NADomain.NAAppConfigs? {
+    get
+    set
+  }
+  public var isReferralCodeEnabled: Swift.Bool? {
+    get
+    set
+  }
+  public var countryCode: NADomain.NACountryCode? {
+    get
+    set
+  }
+  public var listOfShareLiveLocation: [NADomain.NALiveLocation]? {
+    get
+    set
+  }
+  public var isHidePopupForceUpdate: Swift.Bool {
+    get
+    set
+  }
+  public var migratedFromV1: Swift.Bool {
+    get
+    set
+  }
+  public var currentStickerIDs: NADomain.NACurrentStickerIDs? {
+    get
+    set
+  }
+  public var rememberLoginStatus: Swift.Bool {
+    get
+    set
+  }
+}
+extension Foundation.UserDefaults : NetAloLite.KeyValueStoreType {
+  public func save<T>(_ value: T?, forKey defaultName: Swift.String) where T : Swift.Decodable, T : Swift.Encodable
+  public func get<T>(forKey defaultName: Swift.String) -> T? where T : Swift.Decodable, T : Swift.Encodable
+  public func get<T>(forArrKey defaultName: Swift.String) -> [T]? where T : Swift.Decodable, T : Swift.Encodable
+  public func clean()
+  public func migrateIfNeed()
+}
+public protocol StickerRepo {
+  var syncStickersTrigger: RxSwift.PublishSubject<(allStickers: [NetAloLite.StickerModel], defaultStickers: [NetAloLite.StickerModel], excludesStickers: [NetAloLite.StickerModel])> { get }
+  func clean()
+  func getStickerBy(id: Swift.String) -> RxSwift.Observable<NADomain.NAStickerItem?>
+  func getCategories(excludeNames: [Swift.String]) -> RxSwift.Single<[NADomain.NAStickerCategory]>
+  func getStickers(byCategoryName categoryName: Swift.String) -> RxSwift.Single<[NADomain.NAStickerItem]>
+  func getRecentStickers() -> RxSwift.Single<[NADomain.NAStickerItem]>
+  func saveRecentSticker(_ sticker: NADomain.NAStickerItem) -> RxSwift.Single<Swift.Void>
+  func getCurrentStickerToSave() -> RxSwift.Single<Swift.Void>
+  func addCategory(sticker: NADomain.NAStickerInfo) -> RxSwift.Observable<Swift.Void>
+  func removeCategory(sticker: NADomain.NAStickerInfo) -> RxSwift.Observable<Swift.Void>
+  func getCategories(forYou: Swift.Bool) -> RxSwift.Single<[NADomain.NAStickerInfo]>
+  func removeSticker(name: Swift.String) -> RxSwift.Observable<Swift.Void>
+  var stickersOfUser: NADomain.NACurrentStickerIDs? { get set }
+  var stickerCategoriesObservable: RxSwift.Observable<[NADomain.NAStickerCategory]> { get }
+  var currentCategories: [NADomain.NAStickerCategory] { get set }
+}
+final public class StickerRepoImpl : NetAloLite.StickerRepo {
+  final public var stickersOfUser: NADomain.NACurrentStickerIDs? {
+    get
+    set
+  }
+  final public var currentCategories: [NADomain.NAStickerCategory] {
+    get
+    set
+  }
+  final public var stickerCategoriesObservable: RxSwift.Observable<[NADomain.NAStickerCategory]> {
+    get
+  }
+  final public let syncStickersTrigger: RxSwift.PublishSubject<(allStickers: [NetAloLite.StickerModel], defaultStickers: [NetAloLite.StickerModel], excludesStickers: [NetAloLite.StickerModel])>
+  public init()
+  final public func getCurrentStickerToSave() -> RxSwift.Single<Swift.Void>
+  final public func removeCategory(sticker: NADomain.NAStickerInfo) -> RxSwift.Observable<Swift.Void>
+  final public func addCategory(sticker: NADomain.NAStickerInfo) -> RxSwift.Observable<Swift.Void>
+  final public func clean()
+  final public func getCategories(excludeNames: [Swift.String]) -> RxSwift.Single<[NADomain.NAStickerCategory]>
+  final public func getStickers(byCategoryName categoryName: Swift.String) -> RxSwift.Single<[NADomain.NAStickerItem]>
+  final public func getRecentStickers() -> RxSwift.Single<[NADomain.NAStickerItem]>
+  final public func saveRecentSticker(_ sticker: NADomain.NAStickerItem) -> RxSwift.Single<Swift.Void>
+  final public func getCategories(forYou: Swift.Bool) -> RxSwift.Single<[NADomain.NAStickerInfo]>
+  final public func removeSticker(name: Swift.String) -> RxSwift.Observable<Swift.Void>
+  final public func getStickerBy(id: Swift.String) -> RxSwift.Observable<NADomain.NAStickerItem?>
+  @objc deinit
+}
+public protocol MediaRepo {
+  func loadListMedia(type: NADomain.MediaType, offset: Swift.Int, limit: Swift.Int, group: NADomain.NAGroup) -> RxSwift.Single<[NADomain.NAMediaLibraryModel]>
+  func detail(type: NADomain.MediaType, messageID: Swift.String, mediaID: Swift.String, group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAMediaLibraryModel>
+}
+public class SocketIOProvider : NACallSDK.WebSocketProvider {
+  public var delegate: NACallSDK.WebSocketProviderDelegate?
+  public var currentCall: NADomain.NACall?
+  public init()
+  public func connect()
+  public func disconnect()
+  public func send(data: Foundation.Data)
+  public func send(msg: Swift.String)
+  public var isConnected: Swift.Bool {
+    get
+  }
+  public func stopCall()
+  @objc deinit
+}
+extension NetAloLite.SocketIOProvider : NASocketPlatform.NASocketDelegate {
+  public func didConnect()
+  public func didReceiveCall(event: NADomain.NACallEvent)
+  public func didReceiveGroupCall(event: NADomain.NAGroupCallEvent)
+}
+public protocol ForceUpdateRepo {
+  func checkForceUpdateApp(appId: Swift.Int64, platform: Swift.String, version: Swift.String, buildNo: Swift.Int64) -> RxSwift.Single<NADomain.NAForceUpdate>
+}
+public protocol DataTransformer {
+  func transform(message: NADomain.NAMessage, with group: NADomain.NAGroup) -> NADomain.NAMessage
+  func transform(messages: [NADomain.NAMessage], with group: NADomain.NAGroup) -> [NADomain.NAMessage]
+  func transform(group: NADomain.NAGroup) -> NADomain.NAGroup
+  func transform(groups: [NADomain.NAGroup]) -> [NADomain.NAGroup]
+}
+public protocol CallRepo {
+  var switchIncomingObservable: RxSwift.Observable<(type: NADomain.CallType, callSDK: NACallSDK.NACallSDKManager, isAnswer: Swift.Bool, callerID: Swift.String)> { get }
+  var switchOutgoingObservable: RxSwift.Observable<(callSDK: NACallSDK.NACallSDKManager, targetUser: NADomain.NAUser, group: NADomain.NAGroup)> { get }
+  var switchGroupCallObservable: RxSwift.Observable<(callSDK: NACallSDK.NACallSDKManager, group: NADomain.NAGroup, isCreateCall: Swift.Bool, type: NADomain.CallType, messageID: Swift.String)> { get }
+  var didReceiveGroupDetailData: RxSwift.Observable<NACallSDK.GroupDetailData> { get }
+  var isShowFloatingCallVideoView: RxSwift.Observable<(Swift.Bool, NACallSDK.NACallSDKManager?, NADomain.NAContact?, Swift.Bool?)> { get }
+  var switchToPersonalCallView: RxSwift.Observable<Swift.Void> { get }
+  var callkitIcon: RxRelay.BehaviorRelay<Foundation.Data?> { get }
+  func registerCall()
+  func unregisterCall()
+  func recall()
+  func endCall()
+  func cancelCall()
+  func startCall(type: NADomain.CallType, numberPhone: Swift.String) -> RxSwift.Observable<Swift.Void>
+  func updatePushtoken(pushtoken: Swift.String) -> RxSwift.Observable<Swift.Void>
+  func switchIncomingCallScreen(type: NADomain.CallType, isAnswer: Swift.Bool, callerID: Swift.String)
+  func reportOutgoingCall(type: NADomain.CallType, targetUser: NADomain.NAUser, group: NADomain.NAGroup)
+  func reportOutgoingGroupCall(group: NADomain.NAGroup, type: NADomain.CallType)
+  func reportIncomingGroupCall(data: NACallSDK.GroupDetailData)
+  func switchToGroupCallScreen(group: NADomain.NAGroup, type: NADomain.CallType, messageID: Swift.String)
+  func conferenceTerminated(group: NADomain.NAGroup, messageID: Swift.String)
+  func canHandleDeepLink(_ isActive: Swift.Bool)
+  func callWithUUID() -> NetAloLite.CKCall?
+  func saveLogsCall(data: [Swift.String : Any], groupID: Swift.String, userID: Swift.String)
+  func sendLogsCall()
+  var canHandleDeepLink: Swift.Bool { get }
+  func setFloatingCallVideoView(isEnable: Swift.Bool, callSDK: NACallSDK.NACallSDKManager?, contact: NADomain.NAContact?, isShowLocalView: Swift.Bool?)
+  func setSwitchToPersonalCallView()
+}
+extension NetAloLite.SDKPermissionSet : Swift.Equatable {}
+extension NetAloLite.SDKPermissionSet : Swift.Hashable {}
+extension NetAloLite.SDKPermissionSet : Swift.RawRepresentable {}
+extension NetAloLite.CallSoundType : Swift.Equatable {}
+extension NetAloLite.CallSoundType : Swift.Hashable {}
+extension NetAloLite.CallSoundType : Swift.RawRepresentable {}
+extension NetAloLite.SyncGroupFrequency : Swift.Equatable {}
+extension NetAloLite.SyncGroupFrequency : Swift.Hashable {}
+extension NetAloLite.SyncGroupFrequency : Swift.RawRepresentable {}
+extension NetAloLite.EnumStickers : Swift.Equatable {}
+extension NetAloLite.EnumStickers : Swift.Hashable {}
+extension NetAloLite.EnumStickers : Swift.RawRepresentable {}
+extension NetAloLite.MapActionType : Swift.Equatable {}
+extension NetAloLite.MapActionType : Swift.Hashable {}
+extension NetAloLite.MapAuthorType : Swift.Equatable {}
+extension NetAloLite.MapAuthorType : Swift.Hashable {}
+extension NetAloLite.TimeForShare : Swift.Equatable {}
+extension NetAloLite.TimeForShare : Swift.Hashable {}
+extension NetAloLite.TimeForShare : Swift.RawRepresentable {}
+extension NetAloLite.MultiImagePickerConfig.ResultType : Swift.Equatable {}
+extension NetAloLite.MultiImagePickerConfig.ResultType : Swift.Hashable {}
+extension NetAloLite.MultiImagePickerConfig.AssetMediaType : Swift.Equatable {}
+extension NetAloLite.MultiImagePickerConfig.AssetMediaType : Swift.Hashable {}
+extension NetAloLite.MultiImagePickerConfig.AssetMediaType : Swift.RawRepresentable {}
+extension NetAloLite.SyncContactFrequency : Swift.Equatable {}
+extension NetAloLite.SyncContactFrequency : Swift.Hashable {}
+extension NetAloLite.SyncContactFrequency : Swift.RawRepresentable {}
+extension NetAloLite.AppKeys : Swift.Equatable {}
+extension NetAloLite.AppKeys : Swift.Hashable {}
+extension NetAloLite.AppKeys : Swift.RawRepresentable {}

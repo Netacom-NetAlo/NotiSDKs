@@ -1,0 +1,538 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NANetworkPlatform
+import CommonCrypto
+import Foundation
+import NACoreUtils
+import NADomain
+@_exported import NANetworkPlatform
+import RxCocoa
+import RxRelay
+import RxSwift
+import Swift
+import UIKit
+import _Concurrency
+public protocol MediaUseCase {
+  func list(groupID: Swift.String, mediaType: NADomain.MediaType, offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAMedia]>
+  func detail(groupID: Swift.String, mediaType: NADomain.MediaType, messageID: Swift.String, mediaID: Swift.String) -> RxSwift.Single<NADomain.NAMedia>
+}
+@_hasMissingDesignatedInitializers public class XNetworkManager<E> where E : NANetworkPlatform.EndPointType {
+  public func request<T>(expiredSessionProcess: (() -> ())? = nil, target: E, completion: NADomain.NACompletion<T>?) where T : Swift.Decodable, T : Swift.Encodable
+  public func requestRaw<T>(target: E, progressHandler: ((NADomain.UploadTaskProgress) -> Swift.Void)? = nil, completion: NADomain.NACompletion<T>?) where T : Swift.Decodable, T : Swift.Encodable
+  @objc deinit
+}
+public struct JSONParameterEncoder : NANetworkPlatform.ParameterEncoder {
+  public func encode(urlRequest: inout Foundation.URLRequest, with parameters: NANetworkPlatform.Parameters) throws
+}
+public enum CountryCodeEndPoint {
+  case list
+  public static func == (a: NANetworkPlatform.CountryCodeEndPoint, b: NANetworkPlatform.CountryCodeEndPoint) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension NANetworkPlatform.CountryCodeEndPoint : NANetworkPlatform.AuthorizeEndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public typealias Parameters = [Swift.String : Any]
+public protocol ParameterEncoder {
+  func encode(urlRequest: inout Foundation.URLRequest, with parameters: NANetworkPlatform.Parameters) throws
+}
+public enum ParameterEncoding {
+  case urlEncoding
+  case jsonEncoding
+  case urlAndJsonEncoding
+  case multiPartEncoding
+  public func encode(urlRequest: inout Foundation.URLRequest, bodyParameters: NANetworkPlatform.Parameters?, urlParameters: NANetworkPlatform.Parameters?) throws
+  public func encode(urlRequest: inout Foundation.URLRequest, bodyParameters: NANetworkPlatform.MultipartFormData) throws
+  public static func == (a: NANetworkPlatform.ParameterEncoding, b: NANetworkPlatform.ParameterEncoding) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum NetworkError : Swift.String, Swift.Error {
+  case parametersNil
+  case encodingFailed
+  case missingURL
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct FormData : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension Swift.String {
+  public func indexOfCharacter(_ char: Swift.Character) -> Swift.Int?
+}
+public enum MediaEndPoint {
+  case list(groupID: Swift.String, mediaType: NADomain.MediaType, offset: Swift.Int, limit: Swift.Int)
+  case detail(groupID: Swift.String, mediaType: NADomain.MediaType, messageID: Swift.String, mediaID: Swift.String)
+}
+extension NANetworkPlatform.MediaEndPoint : NANetworkPlatform.AuthorizeEndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public typealias HTTPHeaders = [Swift.String : Swift.String]
+public enum HTTPTask {
+  case request
+  case requestParameters(bodyParameters: NANetworkPlatform.Parameters?, bodyEncoding: NANetworkPlatform.ParameterEncoding, urlParameters: NANetworkPlatform.Parameters?)
+  case requestParametersAndHeaders(bodyParameters: NANetworkPlatform.Parameters?, bodyEncoding: NANetworkPlatform.ParameterEncoding, urlParameters: NANetworkPlatform.Parameters?, additionHeaders: NANetworkPlatform.HTTPHeaders?)
+  case requestMultiPart(bodyParameters: NANetworkPlatform.MultipartFormData, bodyEncoding: NANetworkPlatform.ParameterEncoding, urlParameters: NANetworkPlatform.Parameters?, additionHeaders: NANetworkPlatform.HTTPHeaders?)
+}
+public struct XPagingData<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public typealias NetworkRouterCompletion = (_ data: Foundation.Data?, _ response: Foundation.URLResponse?, _ error: Swift.Error?) -> ()
+@_hasMissingDesignatedInitializers public class XLog {
+  public static let TAG: Swift.String
+  public static func print(_ object: Any?, file: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
+  public static func print(tag: Swift.String?, message: Swift.String?, file: Swift.String = #file, function: Swift.String = #function, line: Swift.Int = #line)
+  @objc deinit
+}
+public protocol DeviceUseCase {
+  func registerDeviceToken(uin: Swift.Int64, token: Swift.String, bundleId: Swift.String, type: NADomain.NADefines.TokenType, deviceId: Swift.String, TCToken: Swift.String) -> RxSwift.Single<Swift.Void>
+  func unRegisterDeviceToken(uin: Swift.Int64, token: Swift.String, bundleId: Swift.String, type: NADomain.NADefines.TokenType, deviceId: Swift.String, TCToken: Swift.String) -> RxSwift.Single<Swift.Void>
+}
+public protocol CallUseCase {
+  func list(type: Swift.String, relateID: Swift.String) -> RxSwift.Single<[NADomain.NACall]>
+  func deleteCall(id: Swift.String) -> RxSwift.Single<Swift.Void>
+}
+public enum CallEndPoint {
+  case list(type: Swift.String, relateID: Swift.String)
+  case deleteCall(id: Swift.String)
+}
+extension NANetworkPlatform.CallEndPoint : NANetworkPlatform.AuthorizeEndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public class MultipartFormData {
+  public init(boundary: Swift.String)
+  convenience public init()
+  public func appendPart(string: Swift.String, name: Swift.String) throws
+  public func appendPart(data: Foundation.Data, name: Swift.String, contentType: Swift.String? = nil, filename: Swift.String? = nil)
+  public func appendPart(inputStream: Foundation.InputStream, contentLength: Swift.UInt64, name: Swift.String, contentType: Swift.String? = nil, filename: Swift.String? = nil)
+  @objc deinit
+}
+public struct URLParameterEncoder : NANetworkPlatform.ParameterEncoder {
+  public func encode(urlRequest: inout Foundation.URLRequest, with parameters: NANetworkPlatform.Parameters) throws
+}
+public protocol UseCaseProvider {
+  func setAuthorize(token: Swift.String?, accountKey: Swift.String?)
+  func makeReourceUseCase() -> NANetworkPlatform.ResourceUseCase
+  func makeStickerUsecCase() -> NANetworkPlatform.StickerUseCase
+  func makeContactUseCase() -> NANetworkPlatform.ContactUseCase
+  func makeCallUseCase() -> NANetworkPlatform.CallUseCase
+  func makeGroupUseCase() -> NANetworkPlatform.GroupUseCase
+  func makeUserUseCase() -> NANetworkPlatform.UserUseCase
+  func makeMediaUseCase() -> NANetworkPlatform.MediaUseCase
+  func makeBackgroundUseCase() -> NANetworkPlatform.BackgroundUseCase
+  func makeCountryUseCase() -> NANetworkPlatform.CountryCodeUseCase
+  func makeForceUpdateUseCase() -> NANetworkPlatform.ForceUpdateUseCase
+  func makeLogUseCase() -> NANetworkPlatform.LogUseCase
+  func makeDeviceUseCase() -> NANetworkPlatform.DeviceUseCase
+}
+final public class UseCaseProviderImpl : NANetworkPlatform.UseCaseProvider {
+  public init(config: NANetworkPlatform.BuildConfig)
+  final public func setAuthorize(token: Swift.String?, accountKey: Swift.String?)
+  final public func makeReourceUseCase() -> NANetworkPlatform.ResourceUseCase
+  final public func makeStickerUsecCase() -> NANetworkPlatform.StickerUseCase
+  final public func makeContactUseCase() -> NANetworkPlatform.ContactUseCase
+  final public func makeCallUseCase() -> NANetworkPlatform.CallUseCase
+  final public func makeGroupUseCase() -> NANetworkPlatform.GroupUseCase
+  final public func makeUserUseCase() -> NANetworkPlatform.UserUseCase
+  final public func makeMediaUseCase() -> NANetworkPlatform.MediaUseCase
+  final public func makeForceUpdateUseCase() -> NANetworkPlatform.ForceUpdateUseCase
+  final public func makeBackgroundUseCase() -> NANetworkPlatform.BackgroundUseCase
+  final public func makeCountryUseCase() -> NANetworkPlatform.CountryCodeUseCase
+  final public func makeLogUseCase() -> NANetworkPlatform.LogUseCase
+  final public func makeDeviceUseCase() -> NANetworkPlatform.DeviceUseCase
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class XSerializer {
+  @objc deinit
+}
+public enum SesstionEndpoint {
+  case getSession(timeStamp: Swift.Int, nonce: Swift.Int, authKey: Swift.String, appID: Swift.Int64)
+  case getUserID(tcToken: Swift.String)
+}
+extension NANetworkPlatform.SesstionEndpoint : NANetworkPlatform.EndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+  public var headers: NANetworkPlatform.HTTPHeaders? {
+    get
+  }
+}
+public class XResponse<T> : Swift.Codable where T : Swift.Decodable, T : Swift.Encodable {
+  public var status: Swift.Int
+  public var message: Swift.String
+  public var data: T?
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public typealias XPagingResult<T> = NADomain.NAResult<NANetworkPlatform.XPagingData<T>> where T : Swift.Decodable, T : Swift.Encodable
+public protocol CountryCodeUseCase {
+  func list() -> RxSwift.Single<[NADomain.NACountryCode]>
+}
+public struct NAListCountryCode : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct DataUpload {
+}
+public enum HTTPMethod : Swift.String {
+  case get
+  case post
+  case put
+  case patch
+  case delete
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers open class AsynchronousOperation : Foundation.Operation {
+  @objc override dynamic public var isAsynchronous: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public var isExecuting: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public var isFinished: Swift.Bool {
+    @objc get
+  }
+  public func completeOperation()
+  @objc override dynamic public func start()
+  @objc override dynamic open func main()
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum ContactEndPoint {
+  case registeredUsers(compact: Swift.Int, offset: Swift.Int, limit: Swift.Int)
+  case newAddressBook(name: Swift.String, phone: Swift.String)
+  case search(username: Swift.String)
+  case searchByLike(username: Swift.String)
+  case syncContactToServer(contacts: [NADomain.NALocalContact], force: Swift.Bool)
+  case getAddressBooks(offset: Swift.Int, limit: Swift.Int)
+  case updateContact(NADomain.NAContact)
+  case deleteContact(NADomain.NAContact)
+  case checkFriend(Swift.String)
+}
+extension NANetworkPlatform.ContactEndPoint : NANetworkPlatform.AuthorizeEndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public enum GroupEndPoint {
+  case members(groupID: Swift.String)
+}
+extension NANetworkPlatform.GroupEndPoint : NANetworkPlatform.AuthorizeEndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public protocol LogUseCase {
+  func write(text: Swift.String)
+  func send(eventType: Swift.Int, userId: Swift.String?, appId: Swift.String, appKey: Swift.String, data: Swift.String)
+  func sendLog(level: Swift.String, msg: Swift.String, traceid: Swift.String) -> RxSwift.Single<Swift.Void>
+}
+public protocol StickerUseCase {
+  func getListV2() -> RxSwift.Single<NADomain.NAStickerList>
+  func getCurrentStickerIDs() -> RxSwift.Single<NADomain.NACurrentStickerIDs>
+  func updateStickerOfUser(ids: [Swift.Int]) -> RxSwift.Single<Swift.Void>
+}
+@_hasMissingDesignatedInitializers public class XCache {
+  public func save<T>(object: T, forKey key: Swift.String) where T : Swift.Decodable, T : Swift.Encodable
+  public func save(data: Foundation.Data, forKey key: Swift.String)
+  public func getData<T>(forKey key: Swift.String) -> T? where T : Swift.Decodable, T : Swift.Encodable
+  @objc deinit
+}
+public protocol ForceUpdateUseCase {
+  func checkForceUpdateApp(appId: Swift.Int64, platform: Swift.String, version: Swift.String, buildNo: Swift.Int64) -> RxSwift.Single<NADomain.NAForceUpdate>
+}
+public protocol ContactUseCase {
+  func registeredUsers(compact: Swift.Int, offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<NADomain.NAListContact>
+  func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
+  func search(username: Swift.String) -> RxSwift.Single<NADomain.NAContact>
+  func searchByLike(username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  func getAddressBooksFromServer(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<(Swift.Bool, [NADomain.NALocalContact])>
+  func syncContactsToServer(contacts: [NADomain.NALocalContact]) -> RxSwift.Single<Swift.Bool>
+  func getFullRegisteredUsers(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAContact]>
+  func updateContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Bool>
+  func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func checkFriend(with targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+}
+final public class ContactUseCaseImpl : NANetworkPlatform.ContactUseCase {
+  public init()
+  final public func registeredUsers(compact: Swift.Int, offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<NADomain.NAListContact>
+  final public func getFullRegisteredUsers(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAContact]>
+  final public func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
+  final public func search(username: Swift.String) -> RxSwift.Single<NADomain.NAContact>
+  final public func searchByLike(username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  final public func getAddressBooksFromServer(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<(Swift.Bool, [NADomain.NALocalContact])>
+  final public func syncContactsToServer(contacts: [NADomain.NALocalContact]) -> RxSwift.Single<Swift.Bool>
+  final public func checkFriend(with tagetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  final public func updateContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Bool>
+  final public func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class UploadOperation : NANetworkPlatform.AsynchronousOperation {
+  @objc override dynamic public func main()
+  @objc override dynamic public func cancel()
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers public class DownloadOperation : NANetworkPlatform.AsynchronousOperation {
+  @objc override dynamic public func main()
+  @objc deinit
+}
+public enum LogEndPoint {
+  case index(Swift.String)
+  case tracking(eventType: Swift.Int, userId: Swift.String?, appId: Swift.String, appKey: Swift.String, data: Swift.String)
+  case logging(level: Swift.String, msg: Swift.String, traceid: Swift.String)
+}
+extension NANetworkPlatform.LogEndPoint : NANetworkPlatform.EndPointType {
+  public var headers: NANetworkPlatform.HTTPHeaders? {
+    get
+  }
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public struct BuildConfig {
+  public var baseURL: Foundation.URL
+  public var resourceURL: Foundation.URL
+  public var trackingURL: Foundation.URL
+  public var token: Swift.String?
+  public var accountKey: Swift.String?
+  public var loggingUrl: Foundation.URL
+  public init(baseURL: Foundation.URL, resourceURL: Foundation.URL, trackingURL: Foundation.URL, token: Swift.String? = nil, loggingUrl: Foundation.URL)
+}
+public enum ResourceEndPoint {
+  case download(url: Swift.String)
+  case createDataLocation(name: Swift.String, size: Swift.Int, contentType: Swift.String)
+  case confirmUploadDataSuccess(size: Swift.Int, id: Swift.Int, uid: Swift.String, name: Swift.String, contentType: Swift.String)
+  case uploadData(url: Swift.String, formData: NANetworkPlatform.FormData, dataUpload: NANetworkPlatform.DataUpload)
+}
+extension NANetworkPlatform.ResourceEndPoint : NANetworkPlatform.AuthorizeEndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+  public var timeoutInterval: Swift.Double? {
+    get
+  }
+}
+public protocol GroupUseCase {
+  func getInfo(groupID: Swift.String) -> RxSwift.Single<NADomain.NAGroupInfo>
+}
+public protocol EndPointType {
+  var baseURL: Foundation.URL { get }
+  var path: Swift.String { get }
+  var httpMethod: NANetworkPlatform.HTTPMethod { get }
+  var task: NANetworkPlatform.HTTPTask { get }
+  var headers: NANetworkPlatform.HTTPHeaders? { get }
+  var timeoutInterval: Swift.Double? { get }
+}
+public protocol ResourceUseCase {
+  func uploadData(dataUpload: Foundation.Data, name: Swift.String, contentType: Swift.String, dataType: Swift.String, progressHandler: ((NADomain.UploadTaskProgress) -> Swift.Void)?) -> RxSwift.Single<Swift.String>
+  func createOperation(data: Foundation.Data, name: Swift.String, dataType: Swift.String, contentType: Swift.String, completion: NADomain.NACompletion<Swift.String>?) -> NANetworkPlatform.UploadOperation
+  func downloadData(url: Swift.String) -> RxSwift.Single<Foundation.Data>
+}
+public protocol BackgroundUseCase {
+  func getListBackground() -> RxSwift.Single<[NADomain.NAGroupBackground]>
+}
+public enum TrackingEndPoint {
+  case index(eventType: Swift.Int, userId: Swift.String?, appId: Swift.String, appKey: Swift.String, data: Swift.String)
+}
+extension NANetworkPlatform.TrackingEndPoint : NANetworkPlatform.EndPointType {
+  public var headers: NANetworkPlatform.HTTPHeaders? {
+    get
+  }
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+}
+public protocol UserUseCase {
+  func getToken(appId: Swift.Int64, appKey: Swift.String) -> RxSwift.Single<Swift.String>
+  func login(token: Swift.String, username: Swift.String, password: Swift.String) -> RxSwift.Single<NADomain.NASession>
+  func confirmOTP(token: Swift.String, otp: Swift.String) -> RxSwift.Single<NANetworkPlatform.UserUseCaseImpl.ResultOTP>
+  func resendOTP(token: Swift.String) -> RxSwift.Single<NADomain.NASession>
+  func updateInfo(token: Swift.String, fullname: Swift.String, userID: Swift.Int64, imageUrl: Swift.String) -> RxSwift.Single<Swift.Void>
+  func getInfo(token: Swift.String, userID: Swift.Int64) -> RxSwift.Single<NADomain.NAUser>
+  func getInfo(token: Swift.String) -> RxSwift.Single<NADomain.NAUser>
+  func checkApplyReferralCode(token: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func applyReferralCode(token: Swift.String, referralCode: Swift.String) -> RxSwift.Single<Swift.Void>
+  func logout() -> RxSwift.Single<Swift.Void>
+  func appConfig() -> RxSwift.Single<NADomain.NAAppConfigs>
+}
+@_hasMissingDesignatedInitializers final public class UserUseCaseImpl : NANetworkPlatform.UserUseCase {
+  public struct ResultOTP : Swift.Codable {
+    public var code: Swift.Int
+    public var message: Swift.String
+    public var data: NADomain.NASession?
+    public init(from decoder: Swift.Decoder) throws
+    public func encode(to encoder: Swift.Encoder) throws
+  }
+  final public func getToken(appId: Swift.Int64, appKey: Swift.String) -> RxSwift.Single<Swift.String>
+  final public func login(token: Swift.String, username: Swift.String, password: Swift.String) -> RxSwift.Single<NADomain.NASession>
+  final public func confirmOTP(token: Swift.String, otp: Swift.String) -> RxSwift.Single<NANetworkPlatform.UserUseCaseImpl.ResultOTP>
+  final public func resendOTP(token: Swift.String) -> RxSwift.Single<NADomain.NASession>
+  final public func updateInfo(token: Swift.String, fullname: Swift.String, userID: Swift.Int64, imageUrl: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func getInfo(token: Swift.String, userID: Swift.Int64) -> RxSwift.Single<NADomain.NAUser>
+  final public func getInfo(token: Swift.String) -> RxSwift.Single<NADomain.NAUser>
+  final public func checkApplyReferralCode(token: Swift.String) -> RxSwift.Single<Swift.Bool>
+  final public func applyReferralCode(token: Swift.String, referralCode: Swift.String) -> RxSwift.Single<Swift.Void>
+  final public func logout() -> RxSwift.Single<Swift.Void>
+  final public func appConfig() -> RxSwift.Single<NADomain.NAAppConfigs>
+  @objc deinit
+}
+public protocol AuthorizeEndPointType : NANetworkPlatform.EndPointType {
+}
+extension NANetworkPlatform.AuthorizeEndPointType {
+  public var headers: NANetworkPlatform.HTTPHeaders? {
+    get
+  }
+}
+extension NANetworkPlatform.EndPointType {
+  public var timeoutInterval: Swift.Double? {
+    get
+  }
+}
+public enum UserEndPoint {
+  case login(username: Swift.String, password: Swift.String, tcToken: Swift.String)
+  case register(username: Swift.String, password: Swift.String, token: Swift.String)
+  case resendOTP(token: Swift.String)
+  case createOTP(username: Swift.String)
+  case updatePersonalInfo(userToken: Swift.String, fullname: Swift.String, email: Swift.String, userID: Swift.Int64)
+  case updateImageAccount(userToken: Swift.String, fullname: Swift.String, userID: Swift.Int64, imageUrl: Swift.String)
+  case updateInfo(fullname: Swift.String, phone: Swift.String, email: Swift.String, token: Swift.String, imageUrl: Swift.String, apns: Swift.String, pushToken: Swift.String)
+  case updatePassword(newPass: Swift.String, otp: Swift.String, token: Swift.String)
+  case logout
+  case getInfo(userID: Swift.Int64, userToken: Swift.String)
+  case getInfoBy(userToken: Swift.String)
+  case confirmOTP(token: Swift.String, otp: Swift.String)
+  case resetPassword(phone: Swift.String, token: Swift.String)
+  case confirmResetPass(token: Swift.String, otp: Swift.String)
+  case setPassword(pass: Swift.String, token: Swift.String)
+  case checkApplyReferralCode(token: Swift.String)
+  case applyReferralCode(token: Swift.String, referralCode: Swift.String)
+}
+extension NANetworkPlatform.UserEndPoint : NANetworkPlatform.EndPointType {
+  public var baseURL: Foundation.URL {
+    get
+  }
+  public var path: Swift.String {
+    get
+  }
+  public var httpMethod: NANetworkPlatform.HTTPMethod {
+    get
+  }
+  public var task: NANetworkPlatform.HTTPTask {
+    get
+  }
+  public var headers: NANetworkPlatform.HTTPHeaders? {
+    get
+  }
+}
+extension NANetworkPlatform.CountryCodeEndPoint : Swift.Equatable {}
+extension NANetworkPlatform.CountryCodeEndPoint : Swift.Hashable {}
+extension NANetworkPlatform.ParameterEncoding : Swift.Equatable {}
+extension NANetworkPlatform.ParameterEncoding : Swift.Hashable {}
+extension NANetworkPlatform.NetworkError : Swift.Equatable {}
+extension NANetworkPlatform.NetworkError : Swift.Hashable {}
+extension NANetworkPlatform.NetworkError : Swift.RawRepresentable {}
+extension NANetworkPlatform.HTTPMethod : Swift.Equatable {}
+extension NANetworkPlatform.HTTPMethod : Swift.Hashable {}
+extension NANetworkPlatform.HTTPMethod : Swift.RawRepresentable {}

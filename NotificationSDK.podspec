@@ -10,13 +10,13 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
-  #  These will help people to find your library, and whilst it
+  #  These will help people to find your library, and whilst it 
   #  can feel like a chore to fill in it's definitely to your advantage. The
   #  summary should be tweet-length, and the description more in depth.
   #
 
   spec.name         = "NotificationSDK"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.9"
   spec.summary      = "NotificationSDK is a SDK support for Notification service in extension"
 
   # This description is used to generate tags and improve search results.
@@ -51,10 +51,10 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "Bùi Văn Hiệu" => "buivanhieu2105@gmail.com" }
-  # Or just: spec.author    = "Bùi Văn Hiệu"
-  # spec.authors            = { "Bùi Văn Hiệu" => "buivanhieu2105@gmail.com" }
-  # spec.social_media_url   = "https://twitter.com/Bùi Văn Hiệu"
+  spec.author             = { 'Netacom' => 'help.netacom@gmail.com' }
+  # Or just: spec.author    = "Netacom"
+  # spec.authors            = { "Netacom" => "Netacom" }
+  # spec.social_media_url   = ""
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -84,7 +84,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/hieunetacom/NotificationSDK.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/Netacom-NetAlo/NotiSDKs-iOS.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -135,7 +135,13 @@ Pod::Spec.new do |spec|
   #  you can include multiple dependencies to ensure it works.
 
   # spec.requires_arc = true
-  
-    spec.ios.vendored_frameworks = "NotificationComponent.framework", "NALocalization.framework", "NetAloLite.framework", "NARealmPlatform.framework", "NANetworkPlatform.framework", "NADomain.framework", "NACoreUtils.framework", "NASocketPlatform.framework", "NACallSDK.framework"
     
+    spec.dependency 'RealmSwift', '10.12.0'
+    spec.dependency 'ZIPFoundation', '~> 0.9'
+    spec.dependency 'Socket.IO-Client-Swift', '15.2.0'
+
+    spec.vendored_frameworks = "NotificationComponent.xcframework", "NALocalization.xcframework", "NetAloLite.xcframework", "NARealmPlatform.xcframework", "NANetworkPlatform.xcframework", "NADomain.xcframework", "NACoreUtils.xcframework", "NASocketPlatform.xcframework", "NACallSDK.xcframework", "RxSwift.xcframework", "RxRelay.xcframework", "JitsiMeetSDK.xcframework", "WebRTC.xcframework", "RxCocoa.xcframework", "Localize_Swift.xcframework"
+
+    spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+    spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end

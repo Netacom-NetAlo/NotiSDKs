@@ -1,3 +1,14 @@
+#V9
+
+- Update XCFramework
+
+
+#V8_56
+
+- Update Swift 5.6
+- Fix person call
+
+
 #V8
 
 - Update Swift version
