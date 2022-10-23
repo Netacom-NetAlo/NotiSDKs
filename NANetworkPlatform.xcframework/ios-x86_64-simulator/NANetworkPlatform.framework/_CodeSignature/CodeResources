@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		oF/rCRXlRgzvozWG0caxwUQoIFo=
+		S0iJeWGQmXW8PkddpsC7rexDmaU=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		WR4SnMDhqFVubN9RCICzUZcEJjE=
+		zCKy562vAkoTekflPTn/qi73mSE=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		76th73lDImxiJNlhtke94bQdgPo=
+		RN/JGg0GcQPGHz+CyxXkir8y4R8=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		UwakEbslwwpNCZbSVhbB1/m4WQg=
+		cD2uFCA6Az0sf6Aa+yJDHb/ASIE=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		WR4SnMDhqFVubN9RCICzUZcEJjE=
+		zCKy562vAkoTekflPTn/qi73mSE=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		76th73lDImxiJNlhtke94bQdgPo=
+		RN/JGg0GcQPGHz+CyxXkir8y4R8=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		UwakEbslwwpNCZbSVhbB1/m4WQg=
+		cD2uFCA6Az0sf6Aa+yJDHb/ASIE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,10 +49,6 @@
 	<dict>
 		<key>Headers/NANetworkPlatform-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			O4p8o5qvJIb3g/bnDuiujGAxmwI=
-			</data>
 			<key>hash2</key>
 			<data>
 			+WdLP7d07TMADkZ1E/Zq2dExSNpxaavFC/yUvzof2iA=
@@ -60,10 +56,6 @@
 		</dict>
 		<key>Headers/NANetworkPlatform.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vskbEOPJjPVliHl6zYToGbFLhkE=
-			</data>
 			<key>hash2</key>
 			<data>
 			Ns9i5kSuch6zra1XD8EnNOINe0wOBYpBGPKt0P3yRgk=
@@ -71,76 +63,48 @@
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WR4SnMDhqFVubN9RCICzUZcEJjE=
-			</data>
 			<key>hash2</key>
 			<data>
-			jU44xLtlhMyMJcXgiCHyHkbQWMsJ2Ppp7L5km1SRaLw=
+			Y0hjVaYjcVqiy8JVgIMw7Uy5qZTKJ0uVcPsSCSaxa0M=
 			</data>
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			76th73lDImxiJNlhtke94bQdgPo=
-			</data>
 			<key>hash2</key>
 			<data>
-			P2xfomCujlsKdRB6P5+k0u+l6kX/iL1+XyYTHaX45lo=
+			GuDliYJCzmsTKTmBBWtzRq1rzH4ilbPRuwdaCK1xvg0=
 			</data>
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			UwakEbslwwpNCZbSVhbB1/m4WQg=
-			</data>
 			<key>hash2</key>
 			<data>
-			ePkYHQhKCrZYrBTbjOeMol7ZCZ9Bdsj1bDDNujD2R9A=
+			PA2CW7Qkv/KS+uyR2ykEvf6YZOyFhcxZznWYAzJGlZY=
 			</data>
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WR4SnMDhqFVubN9RCICzUZcEJjE=
-			</data>
 			<key>hash2</key>
 			<data>
-			jU44xLtlhMyMJcXgiCHyHkbQWMsJ2Ppp7L5km1SRaLw=
+			Y0hjVaYjcVqiy8JVgIMw7Uy5qZTKJ0uVcPsSCSaxa0M=
 			</data>
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			76th73lDImxiJNlhtke94bQdgPo=
-			</data>
 			<key>hash2</key>
 			<data>
-			P2xfomCujlsKdRB6P5+k0u+l6kX/iL1+XyYTHaX45lo=
+			GuDliYJCzmsTKTmBBWtzRq1rzH4ilbPRuwdaCK1xvg0=
 			</data>
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			UwakEbslwwpNCZbSVhbB1/m4WQg=
-			</data>
 			<key>hash2</key>
 			<data>
-			ePkYHQhKCrZYrBTbjOeMol7ZCZ9Bdsj1bDDNujD2R9A=
+			PA2CW7Qkv/KS+uyR2ykEvf6YZOyFhcxZznWYAzJGlZY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Lyr85OTAFTxemeYEOL7C4YdY12A=
-			</data>
 			<key>hash2</key>
 			<data>
 			IGDsM4YGZjyWWjxsPsdp5hOfKoxOqyROGyj6/yZNJn4=

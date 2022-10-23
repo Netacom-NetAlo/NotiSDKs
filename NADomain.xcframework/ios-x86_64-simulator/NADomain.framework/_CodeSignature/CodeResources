@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		jyf8Q0oHje/SSGHnfDunPUoiKUE=
+		B2rIjjdMjXgRC3eCjS4qcRXSWZQ=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		fls7bXyviooxSLoNrrzMjML+bKM=
+		fnngyHVgH+ugjfozxUo3dz/yKPg=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		KnNMhE0/ZhC283Wg0+XPaJL7+dA=
+		xnD67VcVS2WRVHzNPdUoL/WdgNo=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		2HhLV4/nz4Ga7Y8SWGCuEsEYUCk=
+		HEVnyrkBqC0rmYOiGTKSiB8q04M=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		fls7bXyviooxSLoNrrzMjML+bKM=
+		fnngyHVgH+ugjfozxUo3dz/yKPg=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		KnNMhE0/ZhC283Wg0+XPaJL7+dA=
+		xnD67VcVS2WRVHzNPdUoL/WdgNo=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		2HhLV4/nz4Ga7Y8SWGCuEsEYUCk=
+		HEVnyrkBqC0rmYOiGTKSiB8q04M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,10 +49,6 @@
 	<dict>
 		<key>Headers/NADomain-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			piG+IAyKllwBedrBv1jcc/Ciujw=
-			</data>
 			<key>hash2</key>
 			<data>
 			u37Ut60ZWS+cOGBpawRB1sCC1+Cvndv7IutS6onVBJY=
@@ -60,10 +56,6 @@
 		</dict>
 		<key>Headers/NADomain.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Iblu0+lR1m373E/cnvJeJvrGQa4=
-			</data>
 			<key>hash2</key>
 			<data>
 			+PbFMg0B8vTZ2koG57V2ctqHi/Fs4/AcM0LAh4AdIco=
@@ -71,76 +63,48 @@
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fls7bXyviooxSLoNrrzMjML+bKM=
-			</data>
 			<key>hash2</key>
 			<data>
-			yTzPx+DWZpdRCwoVIi4jj2qxrAJ9G0woAxuM5lcUz0Q=
+			dAdyOdQvA0SWWdo9CxcbyN0z5GChixbOaJ2Gmy7yo9U=
 			</data>
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			KnNMhE0/ZhC283Wg0+XPaJL7+dA=
-			</data>
 			<key>hash2</key>
 			<data>
-			HHZhjx5SMNni1z1QnzPFyavxdjloPsF5jKjz46mMM/E=
+			+yxVW/vguaSC19WA4RRdWVDk0U29XZSIJArhmEV4DCA=
 			</data>
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2HhLV4/nz4Ga7Y8SWGCuEsEYUCk=
-			</data>
 			<key>hash2</key>
 			<data>
-			G/yG6ZNJtbfkzaYHyRlWUERywjcOQrGT3LVExhBAPbc=
+			njdUYirjKOPLnV8yacyqR7uSYM2wurRCYjD7lgN8IOU=
 			</data>
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fls7bXyviooxSLoNrrzMjML+bKM=
-			</data>
 			<key>hash2</key>
 			<data>
-			yTzPx+DWZpdRCwoVIi4jj2qxrAJ9G0woAxuM5lcUz0Q=
+			dAdyOdQvA0SWWdo9CxcbyN0z5GChixbOaJ2Gmy7yo9U=
 			</data>
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			KnNMhE0/ZhC283Wg0+XPaJL7+dA=
-			</data>
 			<key>hash2</key>
 			<data>
-			HHZhjx5SMNni1z1QnzPFyavxdjloPsF5jKjz46mMM/E=
+			+yxVW/vguaSC19WA4RRdWVDk0U29XZSIJArhmEV4DCA=
 			</data>
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2HhLV4/nz4Ga7Y8SWGCuEsEYUCk=
-			</data>
 			<key>hash2</key>
 			<data>
-			G/yG6ZNJtbfkzaYHyRlWUERywjcOQrGT3LVExhBAPbc=
+			njdUYirjKOPLnV8yacyqR7uSYM2wurRCYjD7lgN8IOU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			miJWIlviPYVQpCTPcpPEQSxHej4=
-			</data>
 			<key>hash2</key>
 			<data>
 			YgRJ1v3AZJECXM0sz5HpQQv8SWsu87t/21i95HJMkaY=

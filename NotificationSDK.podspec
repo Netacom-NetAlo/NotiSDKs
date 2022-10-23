@@ -63,7 +63,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-    spec.platform     = :ios, "10.0"
+    spec.platform     = :ios, "12.0"
     
       spec.pod_target_xcconfig = {
         "SWIFT_VERSION" => "4.2",

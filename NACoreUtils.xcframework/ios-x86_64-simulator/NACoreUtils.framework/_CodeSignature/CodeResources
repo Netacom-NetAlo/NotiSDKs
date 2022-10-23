@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		691/L97KbzYHPXJvBR7KWI3iBUs=
+		NsPdbNlsq7ujbp0t7Zgl8UWecRs=
 		</data>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		gEDY5K0hWwEK0Vecjt/r7IzPieg=
+		QR0NoK2z1evqqKWiWjSCibrrEWc=
 		</data>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		/MxiqgCt/ykzh+r+1PosIa3EVNA=
+		2CIebS9h5/rxbBQX5iN5opL6tIE=
 		</data>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Onil30xNTRExRMuR8AuJFexZK2o=
+		fqrY699crWLdBIWfKPh3S02LC+o=
 		</data>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		gEDY5K0hWwEK0Vecjt/r7IzPieg=
+		QR0NoK2z1evqqKWiWjSCibrrEWc=
 		</data>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		/MxiqgCt/ykzh+r+1PosIa3EVNA=
+		2CIebS9h5/rxbBQX5iN5opL6tIE=
 		</data>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Onil30xNTRExRMuR8AuJFexZK2o=
+		fqrY699crWLdBIWfKPh3S02LC+o=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,10 +49,6 @@
 	<dict>
 		<key>Headers/NACoreUtils-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			8wWuPgWEFmA76HKsu+rVGM9pcEo=
-			</data>
 			<key>hash2</key>
 			<data>
 			3X7vlu+PImxpQP6yg1eS6amwgSYefFrLs9FzAb//Lew=
@@ -60,10 +56,6 @@
 		</dict>
 		<key>Headers/NACoreUtils.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			CMzwJK3CrWu4B9e3j2P+zsv1pOM=
-			</data>
 			<key>hash2</key>
 			<data>
 			G3SWto3vRvPl9t9UfTCmzgB7qyn1YtqNYgLNSHQt7ko=
@@ -71,76 +63,48 @@
 		</dict>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			gEDY5K0hWwEK0Vecjt/r7IzPieg=
-			</data>
 			<key>hash2</key>
 			<data>
-			HLP1ZdZhGobzf9V/5vyH0JGE55TdWDmhAAZT6feos/c=
+			a/PkH8N5SYa5RpYqGiN4x1hvsUGK9u1OoxIIpxkv9LE=
 			</data>
 		</dict>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/MxiqgCt/ykzh+r+1PosIa3EVNA=
-			</data>
 			<key>hash2</key>
 			<data>
-			f5ygni93BhOlOXHXnt3CcSOFNvG8GpC9KYosUqnZjaA=
+			QjL0iWdxMYOwEmH+IWG9qLd6qZeYfZuxa1pl1yFYvjA=
 			</data>
 		</dict>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Onil30xNTRExRMuR8AuJFexZK2o=
-			</data>
 			<key>hash2</key>
 			<data>
-			tel/rKfAuzc4a63Gd80O4aug51LhR5CserHvyaAMBa4=
+			wtsnaDPbMSgos4M8XeIXGM8oFi/36KOr75rWLoWI72s=
 			</data>
 		</dict>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			gEDY5K0hWwEK0Vecjt/r7IzPieg=
-			</data>
 			<key>hash2</key>
 			<data>
-			HLP1ZdZhGobzf9V/5vyH0JGE55TdWDmhAAZT6feos/c=
+			a/PkH8N5SYa5RpYqGiN4x1hvsUGK9u1OoxIIpxkv9LE=
 			</data>
 		</dict>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/MxiqgCt/ykzh+r+1PosIa3EVNA=
-			</data>
 			<key>hash2</key>
 			<data>
-			f5ygni93BhOlOXHXnt3CcSOFNvG8GpC9KYosUqnZjaA=
+			QjL0iWdxMYOwEmH+IWG9qLd6qZeYfZuxa1pl1yFYvjA=
 			</data>
 		</dict>
 		<key>Modules/NACoreUtils.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Onil30xNTRExRMuR8AuJFexZK2o=
-			</data>
 			<key>hash2</key>
 			<data>
-			tel/rKfAuzc4a63Gd80O4aug51LhR5CserHvyaAMBa4=
+			wtsnaDPbMSgos4M8XeIXGM8oFi/36KOr75rWLoWI72s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			nLtxy2yNoq9KBcyuLi0xgnBg5hA=
-			</data>
 			<key>hash2</key>
 			<data>
 			DESMjPvPZakZEdX3vSM9HJR+sRrrg7Ui3Akke3lCO3M=
