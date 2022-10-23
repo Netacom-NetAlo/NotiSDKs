@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		4H5wvyVIBWuJYDft6ck//OPP21o=
+		GfJaeoE97oTQkb5XJI8+DsXiBWU=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		DD3b6Ljd5QUsizfXKuB5PV/QQ/o=
+		npJvOcgE4khyGejZVome/uB8R6g=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		o7+RDnDjngO4tyr1qcwca1lfxwM=
+		JiddkUtqaxKxK8m+NLo04nKs31Y=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		04vHX6s2fSLYn9OOUpI2SPKnqeY=
+		Bci4gyHTFbkQapbLBmv34oCjjLM=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		DD3b6Ljd5QUsizfXKuB5PV/QQ/o=
+		npJvOcgE4khyGejZVome/uB8R6g=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		o7+RDnDjngO4tyr1qcwca1lfxwM=
+		JiddkUtqaxKxK8m+NLo04nKs31Y=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		04vHX6s2fSLYn9OOUpI2SPKnqeY=
+		Bci4gyHTFbkQapbLBmv34oCjjLM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,10 +49,6 @@
 	<dict>
 		<key>Headers/NARealmPlatform-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			zxzV5KVbE5oTKZujPWt6eUBnsn0=
-			</data>
 			<key>hash2</key>
 			<data>
 			43AFhVcYw+BD4bkkYhf6y8v6oq/BlVh/TsMib/GLQWg=
@@ -60,10 +56,6 @@
 		</dict>
 		<key>Headers/NARealmPlatform.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			SUefI0JLVfTpbG1k8OT0UY1eXZ0=
-			</data>
 			<key>hash2</key>
 			<data>
 			UAuOhosnoOsXBZ+UyYiIypx1jmbYVEe4hU+RzzHAx+w=
@@ -71,76 +63,48 @@
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DD3b6Ljd5QUsizfXKuB5PV/QQ/o=
-			</data>
 			<key>hash2</key>
 			<data>
-			H6L7/SmQGrkjwCQeD7QWfGxByxtm99nEjMQtdIbBhmM=
+			B3uEzFlih3ui6p/Z9oupSgiJGgecqaTpncML5+pd9hU=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			o7+RDnDjngO4tyr1qcwca1lfxwM=
-			</data>
 			<key>hash2</key>
 			<data>
-			Nr764Yy6scrn++Od+vej11lCpcYccjkSUZ77bpM/t4s=
+			CU8Uj1w8mtdbNqFhFVijL+jLUxGndXMWkF+JVdM7FPI=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			04vHX6s2fSLYn9OOUpI2SPKnqeY=
-			</data>
 			<key>hash2</key>
 			<data>
-			k29ANCYc46x+cmnaIdr0xFgBgbISQplAXO6UTRCkd3U=
+			wBgM5KAy9664ozqvcI+WPfsfXgXBHEVkbw1NdkzjLkg=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DD3b6Ljd5QUsizfXKuB5PV/QQ/o=
-			</data>
 			<key>hash2</key>
 			<data>
-			H6L7/SmQGrkjwCQeD7QWfGxByxtm99nEjMQtdIbBhmM=
+			B3uEzFlih3ui6p/Z9oupSgiJGgecqaTpncML5+pd9hU=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			o7+RDnDjngO4tyr1qcwca1lfxwM=
-			</data>
 			<key>hash2</key>
 			<data>
-			Nr764Yy6scrn++Od+vej11lCpcYccjkSUZ77bpM/t4s=
+			CU8Uj1w8mtdbNqFhFVijL+jLUxGndXMWkF+JVdM7FPI=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			04vHX6s2fSLYn9OOUpI2SPKnqeY=
-			</data>
 			<key>hash2</key>
 			<data>
-			k29ANCYc46x+cmnaIdr0xFgBgbISQplAXO6UTRCkd3U=
+			wBgM5KAy9664ozqvcI+WPfsfXgXBHEVkbw1NdkzjLkg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+tvtgDT0kFcsO3tosfOF32RCASY=
-			</data>
 			<key>hash2</key>
 			<data>
 			dfCoXTMyDux+Ad6T/JLTdAaF2X8/Fb1WSDS/4HW+uD8=

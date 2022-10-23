@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		wws4HxyntCilS+jwJXDu5+HFtbE=
+		SpT5BCRbqUSFAI+rdIjA7sJfwl4=
 		</data>
 		<key>Localizable.stringsdict</key>
 		<data>
@@ -22,27 +22,27 @@
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1kl74LGEmX7ABFZzZ7vJBEZ65yM=
+		VXgEcOqhhDlBAnDPCzq0FCr7KXE=
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		hiixL/eVRNwASmYkM7PZKYLwb0g=
+		TR7fBJ5J5TiZeNg6t1yi7HHGvBc=
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		U/nmI2Hb2O1nFNdb5wDo/I+X78Y=
+		A95Z+DZhhS94gHI6mYnWkOL+Rn4=
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		1kl74LGEmX7ABFZzZ7vJBEZ65yM=
+		VXgEcOqhhDlBAnDPCzq0FCr7KXE=
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		hiixL/eVRNwASmYkM7PZKYLwb0g=
+		TR7fBJ5J5TiZeNg6t1yi7HHGvBc=
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		U/nmI2Hb2O1nFNdb5wDo/I+X78Y=
+		A95Z+DZhhS94gHI6mYnWkOL+Rn4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -71,10 +71,6 @@
 	<dict>
 		<key>Headers/NALocalization-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			SLUCNVYba4UR76QkKKvvEvn9EBU=
-			</data>
 			<key>hash2</key>
 			<data>
 			QA5yFNBDd1ILpI1bBLY6ycY5IxiWspHU5G+zUU3+glo=
@@ -82,10 +78,6 @@
 		</dict>
 		<key>Headers/NALocalization.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9MOh0JtVAMEFy3oly/zSObJwPJY=
-			</data>
 			<key>hash2</key>
 			<data>
 			m5pkL0gWOsDOOalc+iSGfb0kqnv7pm9VI7Ecfg8amJA=
@@ -93,10 +85,6 @@
 		</dict>
 		<key>Localizable.stringsdict</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xEwuQ0+ReyaCEzURqYKFTtwmOeA=
-			</data>
 			<key>hash2</key>
 			<data>
 			mo/QB7CGmAwmeNUfxdHwNr8zzIWrat5U7MY36PY4tk0=
@@ -104,76 +92,48 @@
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			1kl74LGEmX7ABFZzZ7vJBEZ65yM=
-			</data>
 			<key>hash2</key>
 			<data>
-			5+NWjCK4X5dY8rFcsFR0Re5T+ayDO+LbAjZWyWdQRA8=
+			Rr6KG47t8+Gz+3u+35cXGzBfmgrLU7sAS3ltUGYvNmE=
 			</data>
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hiixL/eVRNwASmYkM7PZKYLwb0g=
-			</data>
 			<key>hash2</key>
 			<data>
-			0aSpfLn3/g3isjiGoemSlCupRiWNqTVaa3k5fmD/IfE=
+			W2Ea9b2FammH4kL7T+B6L7A9ZkCPV65lsveEmDPhVcA=
 			</data>
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			U/nmI2Hb2O1nFNdb5wDo/I+X78Y=
-			</data>
 			<key>hash2</key>
 			<data>
-			vVBh09Wq5vziLwAsrCxx/k7Sry5PyIEHT0Yj1l80ByU=
+			FuXN8z1wckIKKtR8XtkzXPm/IW9wvuvWHXGKHlnocJ8=
 			</data>
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			1kl74LGEmX7ABFZzZ7vJBEZ65yM=
-			</data>
 			<key>hash2</key>
 			<data>
-			5+NWjCK4X5dY8rFcsFR0Re5T+ayDO+LbAjZWyWdQRA8=
+			Rr6KG47t8+Gz+3u+35cXGzBfmgrLU7sAS3ltUGYvNmE=
 			</data>
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hiixL/eVRNwASmYkM7PZKYLwb0g=
-			</data>
 			<key>hash2</key>
 			<data>
-			0aSpfLn3/g3isjiGoemSlCupRiWNqTVaa3k5fmD/IfE=
+			W2Ea9b2FammH4kL7T+B6L7A9ZkCPV65lsveEmDPhVcA=
 			</data>
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			U/nmI2Hb2O1nFNdb5wDo/I+X78Y=
-			</data>
 			<key>hash2</key>
 			<data>
-			vVBh09Wq5vziLwAsrCxx/k7Sry5PyIEHT0Yj1l80ByU=
+			FuXN8z1wckIKKtR8XtkzXPm/IW9wvuvWHXGKHlnocJ8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qw+aQ/22gj6dmB/5aB8PY8JZmZ8=
-			</data>
 			<key>hash2</key>
 			<data>
 			ndbmIllFxYibqtBK1wi8uSZ6l6HXtl9a8KajcztcUSc=
@@ -181,10 +141,6 @@
 		</dict>
 		<key>en.lproj/Localizable.strings</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Q1a/bnuSfSCQBx0RoQ0gshlYDgg=
-			</data>
 			<key>hash2</key>
 			<data>
 			jXd+Aw1uBWj1l6y0F0tZa1HXvG101C0vfquwgGhRD3c=
@@ -194,10 +150,6 @@
 		</dict>
 		<key>vi.lproj/Localizable.strings</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			XxYFE4gztSese7SmrFP8aD0XHRo=
-			</data>
 			<key>hash2</key>
 			<data>
 			BhhoikAIN7xfot2oRz+lPOmkkm684yKmwYxykwmKTjc=

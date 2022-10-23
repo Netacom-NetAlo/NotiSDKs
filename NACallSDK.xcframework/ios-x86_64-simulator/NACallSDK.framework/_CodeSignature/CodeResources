@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZnZ5Py5jlyfBx9S/RhzBHiS90u8=
+		IBMX3QZhGYjSG4AdmJq5ZbLrv1Q=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		5NkJLox6Pk4vZ85JtwJVp49OWIc=
+		p2EAajavAy4zfCT9qVqleXxLRvM=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		hsU81qtxjmMN7CQ3r6xf2YlpH7w=
+		W08DzTMEGgjTeXsjqKtSf93CWHo=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		+83pL7fOyHkZrQWyT0AEpF3GrUg=
+		frIeJwSkOpFcZWKjjIEXrpD7TsQ=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		5NkJLox6Pk4vZ85JtwJVp49OWIc=
+		p2EAajavAy4zfCT9qVqleXxLRvM=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		hsU81qtxjmMN7CQ3r6xf2YlpH7w=
+		W08DzTMEGgjTeXsjqKtSf93CWHo=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		+83pL7fOyHkZrQWyT0AEpF3GrUg=
+		frIeJwSkOpFcZWKjjIEXrpD7TsQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,10 +49,6 @@
 	<dict>
 		<key>Headers/NACallSDK-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			UEjiya8yTQLdldEVGuKnF11VQz8=
-			</data>
 			<key>hash2</key>
 			<data>
 			rjrIkMxYg2VeL+hxanovGzG/cGSzPvBAkYcJa7tyfMM=
@@ -60,10 +56,6 @@
 		</dict>
 		<key>Headers/NACallSDK.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QFAvBGQDOco0JI9cBLAz94nWKCk=
-			</data>
 			<key>hash2</key>
 			<data>
 			Tj4rnLgYq2bcQi3AWnnDzvkdyFbjIZBo/fEwHwyYDp4=
@@ -71,76 +63,48 @@
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5NkJLox6Pk4vZ85JtwJVp49OWIc=
-			</data>
 			<key>hash2</key>
 			<data>
-			PQZvf17lpF9deVP56D8lm2T9vE2KQEsv3iKZWIn3Zxk=
+			CJ6joIu6957zeSEBXVUQPEHQ74S7P4YUrm/9ruzkgSI=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hsU81qtxjmMN7CQ3r6xf2YlpH7w=
-			</data>
 			<key>hash2</key>
 			<data>
-			qu5vC9FkUqwGlKUHs36R/TcjvM18swITIjLfcMEt4GM=
+			FTiiQpLQhbbWrqqlIEQSUbUv8TSazkX7m5lpH2Jjqac=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+83pL7fOyHkZrQWyT0AEpF3GrUg=
-			</data>
 			<key>hash2</key>
 			<data>
-			wnGUaBzrnU9DDJIR7do6zVTzEtr/wXGCzBldpKyv8YA=
+			EdyRJjKEjWlNtbxYHPH+Z17Yb0vEa+FZTtjlkD6EOB4=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			5NkJLox6Pk4vZ85JtwJVp49OWIc=
-			</data>
 			<key>hash2</key>
 			<data>
-			PQZvf17lpF9deVP56D8lm2T9vE2KQEsv3iKZWIn3Zxk=
+			CJ6joIu6957zeSEBXVUQPEHQ74S7P4YUrm/9ruzkgSI=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hsU81qtxjmMN7CQ3r6xf2YlpH7w=
-			</data>
 			<key>hash2</key>
 			<data>
-			qu5vC9FkUqwGlKUHs36R/TcjvM18swITIjLfcMEt4GM=
+			FTiiQpLQhbbWrqqlIEQSUbUv8TSazkX7m5lpH2Jjqac=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+83pL7fOyHkZrQWyT0AEpF3GrUg=
-			</data>
 			<key>hash2</key>
 			<data>
-			wnGUaBzrnU9DDJIR7do6zVTzEtr/wXGCzBldpKyv8YA=
+			EdyRJjKEjWlNtbxYHPH+Z17Yb0vEa+FZTtjlkD6EOB4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			BpTx04IoVWHNKNMDDaBU8vChTgk=
-			</data>
 			<key>hash2</key>
 			<data>
 			jM/Vmjh2BbNl2nG1JZSjOyXhi/t5SmMYHU9Al8Xp4/g=

@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "NotificationSDK"
-  spec.version      = "0.0.9"
+  spec.version      = "0.1.0"
   spec.summary      = "NotificationSDK is a SDK support for Notification service in extension"
 
   # This description is used to generate tags and improve search results.
@@ -63,7 +63,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-    spec.platform     = :ios, "10.0"
+    spec.platform     = :ios, "12.0"
     
       spec.pod_target_xcconfig = {
         "SWIFT_VERSION" => "4.2",
