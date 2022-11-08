@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		S0iJeWGQmXW8PkddpsC7rexDmaU=
+		aU1T1pHmoMgL32qziC7wT96oX78=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		cD2uFCA6Az0sf6Aa+yJDHb/ASIE=
+		p5Hz0dmwB9vhBpz4HfLteAjNEE4=
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		cD2uFCA6Az0sf6Aa+yJDHb/ASIE=
+		p5Hz0dmwB9vhBpz4HfLteAjNEE4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -79,7 +79,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PA2CW7Qkv/KS+uyR2ykEvf6YZOyFhcxZznWYAzJGlZY=
+			NvnHIUkk6d6yTkrGxMQSY/57Ydg4Rf/XtabJeIpyHNY=
 			</data>
 		</dict>
 		<key>Modules/NANetworkPlatform.swiftmodule/x86_64.swiftdoc</key>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PA2CW7Qkv/KS+uyR2ykEvf6YZOyFhcxZznWYAzJGlZY=
+			NvnHIUkk6d6yTkrGxMQSY/57Ydg4Rf/XtabJeIpyHNY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

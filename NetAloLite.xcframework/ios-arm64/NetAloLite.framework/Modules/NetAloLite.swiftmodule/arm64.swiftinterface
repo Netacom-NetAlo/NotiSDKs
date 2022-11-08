@@ -150,13 +150,12 @@ public struct FeatureConfig {
     public var allowSetUserProfileUrl: Swift.Bool
     public var allowEnableLocationFeature: Swift.Bool
     public var allowTrackingUsingSDK: Swift.Bool
-    public var allowTrackingDuringCall: Swift.Bool
     public var allowTrackingBadgeNumber: Swift.Bool
     public var allowCreateGroup: Swift.Bool
     public var isHiddenEditProfile: Swift.Bool
     public var allowAddNewContact: Swift.Bool
     public var allowEditContact: Swift.Bool
-    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingDuringCall: Swift.Bool = false, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, allowEditContact: Swift.Bool)
+    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, allowEditContact: Swift.Bool)
   }
   public struct ChatConfig {
     public var isVideoCallEnable: Swift.Bool
@@ -1139,6 +1138,7 @@ public protocol CallRepo {
   var canHandleDeepLink: Swift.Bool { get }
   func setFloatingCallVideoView(isEnable: Swift.Bool, callSDK: NACallSDK.NACallSDKManager?, contact: NADomain.NAContact?, isShowLocalView: Swift.Bool?)
   func setSwitchToPersonalCallView()
+  func checkCallExisted() -> Swift.Bool
 }
 extension NetAloLite.SDKPermissionSet : Swift.Equatable {}
 extension NetAloLite.SDKPermissionSet : Swift.Hashable {}

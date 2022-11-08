@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		B2rIjjdMjXgRC3eCjS4qcRXSWZQ=
+		d4P+8PW21cw/XM+9sxuzX1fzdqI=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		HEVnyrkBqC0rmYOiGTKSiB8q04M=
+		l/HcveamwSWaQpndQWfo05ypiGw=
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		HEVnyrkBqC0rmYOiGTKSiB8q04M=
+		l/HcveamwSWaQpndQWfo05ypiGw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -79,7 +79,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			njdUYirjKOPLnV8yacyqR7uSYM2wurRCYjD7lgN8IOU=
+			CbmB4lvOoAsdPatbNsM7uhMlu3QUyRai0eiuPE5M6g8=
 			</data>
 		</dict>
 		<key>Modules/NADomain.swiftmodule/x86_64.swiftdoc</key>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			njdUYirjKOPLnV8yacyqR7uSYM2wurRCYjD7lgN8IOU=
+			CbmB4lvOoAsdPatbNsM7uhMlu3QUyRai0eiuPE5M6g8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

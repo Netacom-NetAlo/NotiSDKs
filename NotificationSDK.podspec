@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "NotificationSDK"
-  spec.version      = "0.1.0"
+  spec.version      = "0.1.1"
   spec.summary      = "NotificationSDK is a SDK support for Notification service in extension"
 
   # This description is used to generate tags and improve search results.
@@ -140,7 +140,7 @@ Pod::Spec.new do |spec|
     spec.dependency 'ZIPFoundation', '~> 0.9'
     spec.dependency 'Socket.IO-Client-Swift', '15.2.0'
 
-    spec.vendored_frameworks = "NotificationComponent.xcframework", "NALocalization.xcframework", "NetAloLite.xcframework", "NARealmPlatform.xcframework", "NANetworkPlatform.xcframework", "NADomain.xcframework", "NACoreUtils.xcframework", "NASocketPlatform.xcframework", "NACallSDK.xcframework", "RxSwift.xcframework", "RxRelay.xcframework", "JitsiMeetSDK.xcframework", "WebRTC.xcframework", "RxCocoa.xcframework", "Localize_Swift.xcframework"
+    spec.vendored_frameworks = "NotificationComponent.xcframework", "NALocalization.xcframework", "NetAloLite.xcframework", "NARealmPlatform.xcframework", "NANetworkPlatform.xcframework", "NADomain.xcframework", "NACoreUtils.xcframework", "NASocketPlatform.xcframework", "NACallSDK.xcframework", "RxSwift.xcframework", "RxRelay.xcframework", "JitsiMeetSDK.xcframework", "RxCocoa.xcframework", "Localize_Swift.xcframework"
 
     spec.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     spec.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IBMX3QZhGYjSG4AdmJq5ZbLrv1Q=
+		tFLPQQzFFyYR8CTOWXvZcuQg5MU=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		frIeJwSkOpFcZWKjjIEXrpD7TsQ=
+		G5PpiilL8c0F9Az1f/O5LEPQzJs=
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		frIeJwSkOpFcZWKjjIEXrpD7TsQ=
+		G5PpiilL8c0F9Az1f/O5LEPQzJs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -79,7 +79,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EdyRJjKEjWlNtbxYHPH+Z17Yb0vEa+FZTtjlkD6EOB4=
+			rj6dQQg4MkewN9MGGAfFtLC+1Bf4JBuoxI3vrfYbd/c=
 			</data>
 		</dict>
 		<key>Modules/NACallSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -100,7 +100,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EdyRJjKEjWlNtbxYHPH+Z17Yb0vEa+FZTtjlkD6EOB4=
+			rj6dQQg4MkewN9MGGAfFtLC+1Bf4JBuoxI3vrfYbd/c=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
