@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/NetAloLite-Swift.h</key>
 		<data>
-		qamS1vIKf23bNhIzMNiFh3QxiT8=
+		cQ9lua3oIl/XlgK4MPd1SGzO9YI=
 		</data>
 		<key>Headers/NetAloLite.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		gZTZG5WCi0+C89TJJFX83xNn1sQ=
+		LRHezsGHd9g8PNFGklPLv3qfrHY=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		kL5k0ESbVG5CxJ2QqB0kZ0dbTbk=
+		DC2mwfqiTt3RU5oJZ59yZ0xnLRM=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		gZTZG5WCi0+C89TJJFX83xNn1sQ=
+		LRHezsGHd9g8PNFGklPLv3qfrHY=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		kL5k0ESbVG5CxJ2QqB0kZ0dbTbk=
+		DC2mwfqiTt3RU5oJZ59yZ0xnLRM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LpbLkM2Q0dYLp8u1BEPrMYFwD8N6fxd7ubKNqs6J1sA=
+			KAeIgTDDw1/BxE8HjuwT6YasMfBlTva3zCXQvE6MMbI=
 			</data>
 		</dict>
 		<key>Headers/NetAloLite.h</key>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			j/u+kCEiaMz9vmbInjgKeAJ9Y8dXWWA5co04VlqLzYs=
+			prH6KdQuhvZBIywDSUPqR7a1+qJ+xJUzdTym2febIEg=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DBYsVmKIczgQ//gng8/K7LssNx83lTxmzHDJPWH8kYM=
+			QkZOSUfCTgPE8vdOJQW4QPWW5pIf0DAupGfkgDOznp8=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			j/u+kCEiaMz9vmbInjgKeAJ9Y8dXWWA5co04VlqLzYs=
+			prH6KdQuhvZBIywDSUPqR7a1+qJ+xJUzdTym2febIEg=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DBYsVmKIczgQ//gng8/K7LssNx83lTxmzHDJPWH8kYM=
+			QkZOSUfCTgPE8vdOJQW4QPWW5pIf0DAupGfkgDOznp8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

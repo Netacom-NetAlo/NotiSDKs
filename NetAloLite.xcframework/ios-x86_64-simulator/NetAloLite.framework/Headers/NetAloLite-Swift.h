@@ -232,6 +232,15 @@ SWIFT_CLASS("_TtC10NetAloLite16LocationRepoImpl")
 
 
 
+typedef SWIFT_ENUM(NSInteger, SDKPermissionSet, open) {
+  SDKPermissionSetContacts = 0,
+  SDKPermissionSetMicroPhone = 1,
+  SDKPermissionSetCamera = 2,
+  SDKPermissionSetNotifications = 3,
+  SDKPermissionSetPhotos = 4,
+  SDKPermissionSetTrackUsage = 5,
+};
+
 
 
 #if __has_attribute(external_source_symbol)

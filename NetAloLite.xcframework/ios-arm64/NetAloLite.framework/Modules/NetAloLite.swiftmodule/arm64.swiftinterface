@@ -4,7 +4,6 @@
 import AVFoundation
 import AdSupport
 import CallKit
-import CloudKit
 import Contacts
 import CoreLocation
 import Foundation
@@ -93,8 +92,8 @@ public protocol LogRepo {
   final public let uuid: Foundation.UUID
   @objc deinit
 }
-public enum SDKPermissionSet : Swift.Int {
-  case contacts
+@objc public enum SDKPermissionSet : Swift.Int {
+  case contacts = 0
   case microPhone
   case camera
   case notifications
