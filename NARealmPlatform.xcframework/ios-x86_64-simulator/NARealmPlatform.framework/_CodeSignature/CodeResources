@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		JiddkUtqaxKxK8m+NLo04nKs31Y=
+		vMHUKuHw2fSDIUxPp0F0jRcVUng=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		KvB8q8Lu8htz0ZCjvICgGLkctUQ=
+		YGSjHGQOME46kDJMO9B9bz++WDU=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		JiddkUtqaxKxK8m+NLo04nKs31Y=
+		vMHUKuHw2fSDIUxPp0F0jRcVUng=
 		</data>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		KvB8q8Lu8htz0ZCjvICgGLkctUQ=
+		YGSjHGQOME46kDJMO9B9bz++WDU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CU8Uj1w8mtdbNqFhFVijL+jLUxGndXMWkF+JVdM7FPI=
+			cun2pagzWeo/lFUqqi16/mA0LLL2G/FZo5bVRmUYrg8=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iJcu5BL1bNnDous1plcBYIltpsuAmXD4ILvekR/6Dz4=
+			JjaSWbJ9U00Uzfcud/WjcXqQGkzRsKAH7NyDNJuVghY=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CU8Uj1w8mtdbNqFhFVijL+jLUxGndXMWkF+JVdM7FPI=
+			cun2pagzWeo/lFUqqi16/mA0LLL2G/FZo5bVRmUYrg8=
 			</data>
 		</dict>
 		<key>Modules/NARealmPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iJcu5BL1bNnDous1plcBYIltpsuAmXD4ILvekR/6Dz4=
+			JjaSWbJ9U00Uzfcud/WjcXqQGkzRsKAH7NyDNJuVghY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -258,12 +258,15 @@ public enum HTTPMethod : Swift.String {
 public enum ContactEndPoint {
   case registeredUsers(compact: Swift.Int, offset: Swift.Int, limit: Swift.Int)
   case newAddressBook(name: Swift.String, phone: Swift.String)
-  case search(username: Swift.String)
-  case searchByLike(username: Swift.String)
+  case newAddressBookById(contactId: Swift.Int64)
+  case deleteContactById(contactId: Swift.Int64)
+  case search(phone: Swift.String)
   case syncContactToServer(contacts: [NADomain.NALocalContact], force: Swift.Bool)
   case getAddressBooks(offset: Swift.Int, limit: Swift.Int)
   case updateContact(NADomain.NAContact)
   case deleteContact(NADomain.NAContact)
+  case recoverContact(name: Swift.String, phone: Swift.String)
+  case getDeletedContacts
   case checkFriend(Swift.String)
 }
 extension NANetworkPlatform.ContactEndPoint : NANetworkPlatform.AuthorizeEndPointType {
@@ -319,27 +322,33 @@ public protocol ForceUpdateUseCase {
 public protocol ContactUseCase {
   func registeredUsers(compact: Swift.Int, offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<NADomain.NAListContact>
   func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
-  func search(username: Swift.String) -> RxSwift.Single<NADomain.NAContact>
-  func searchByLike(username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  func search(phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
   func getAddressBooksFromServer(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<(Swift.Bool, [NADomain.NALocalContact])>
   func syncContactsToServer(contacts: [NADomain.NALocalContact]) -> RxSwift.Single<Swift.Bool>
   func getFullRegisteredUsers(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAContact]>
   func updateContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Bool>
   func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func recoverContact(name: Swift.String, phone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getDeletedContacts() -> RxSwift.Single<[NADomain.NALocalContact]>
   func checkFriend(with targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func newAddressBookById(contactId: Swift.Int64) -> RxSwift.Single<NADomain.NAContact>
+  func deleteContactById(contactId: Swift.Int64) -> RxSwift.Single<Swift.Void>
 }
 final public class ContactUseCaseImpl : NANetworkPlatform.ContactUseCase {
   public init()
   final public func registeredUsers(compact: Swift.Int, offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<NADomain.NAListContact>
   final public func getFullRegisteredUsers(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAContact]>
   final public func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
-  final public func search(username: Swift.String) -> RxSwift.Single<NADomain.NAContact>
-  final public func searchByLike(username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  final public func newAddressBookById(contactId: Swift.Int64) -> RxSwift.Single<NADomain.NAContact>
+  final public func deleteContactById(contactId: Swift.Int64) -> RxSwift.Single<Swift.Void>
+  final public func search(phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
   final public func getAddressBooksFromServer(offset: Swift.Int, limit: Swift.Int) -> RxSwift.Single<(Swift.Bool, [NADomain.NALocalContact])>
   final public func syncContactsToServer(contacts: [NADomain.NALocalContact]) -> RxSwift.Single<Swift.Bool>
   final public func checkFriend(with tagetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
   final public func updateContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Bool>
+  final public func recoverContact(name: Swift.String, phone: Swift.String) -> RxSwift.Single<Swift.Bool>
   final public func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  final public func getDeletedContacts() -> RxSwift.Single<[NADomain.NALocalContact]>
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers public class UploadOperation : NANetworkPlatform.AsynchronousOperation {

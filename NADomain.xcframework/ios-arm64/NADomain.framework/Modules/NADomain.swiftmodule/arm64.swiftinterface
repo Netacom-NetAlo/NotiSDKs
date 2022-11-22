@@ -113,6 +113,19 @@ public struct NAMessage : Swift.Codable {
   public init(groupID: Swift.String = "", messageID: Swift.String = "", senderUin: Swift.String = "", groupAvatar: Swift.String = "", senderName: Swift.String = "", senderAvatar: Swift.String = "", groupName: Swift.String = "", status: NADomain.NAMessageStatus = .sending, kind: NADomain.NAMessageKind = .unknown, seenUins: [Swift.String] = [], deletedUins: [Swift.String] = [], recipientUins: [Swift.String] = [], mentionedUins: [Swift.String] = [], receivedUins: [Swift.String] = [], createdAtMS: Swift.Double = 0.0, updatedAtMS: Swift.Double = 0.0, version: Swift.Int = 0, isEncrypted: Swift.Bool = false, isDecrypted: Swift.Bool = false, expiredAt: Swift.Double = 0, timeToLive: Swift.Double = 0, mentionedAll: Swift.Bool = false, pinnedAt: Swift.String = "", orderID: Swift.Int = 0, isPinned: Swift.Bool = false, isMissedCall: Swift.Bool = false)
   public func toString() -> Swift.String
 }
+public enum DeactivedStatus : Swift.Int {
+  case active
+  case deactived
+  case deleted
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension NADomain.DeactivedStatus : Swift.Codable {
+  public init(from decoder: Swift.Decoder) throws
+}
 public struct NAUser : Swift.Codable {
   public var id: Swift.Int64
   public var phone: Swift.String
@@ -121,6 +134,7 @@ public struct NAUser : Swift.Codable {
   public var profileId: Swift.String
   public var session: NADomain.NASession?
   public var status: NADomain.NAUserStatus?
+  public var deactived: NADomain.DeactivedStatus
   public var _id: Swift.String {
     get
   }
@@ -128,7 +142,7 @@ public struct NAUser : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public init(contact: NADomain.NAContact)
   public init(localContact: NADomain.NALocalContact)
-  public init(id: Swift.Int64, fullName: Swift.String, phone: Swift.String = "Unknown", email: Swift.String = "", profileId: Swift.String = "", session: Swift.String? = nil)
+  public init(id: Swift.Int64, fullName: Swift.String, phone: Swift.String = "Unknown", email: Swift.String = "", profileId: Swift.String = "", session: Swift.String? = nil, deactived: Swift.Int = 0, banned: Swift.Bool = false)
   public func encode(to encoder: Swift.Encoder) throws
 }
 extension NADomain.NAUser : Swift.Hashable {
@@ -140,6 +154,11 @@ extension NADomain.NAUser : Swift.Hashable {
 }
 public struct NASession : Swift.Codable {
   public var token: Swift.String
+  public var phoneNumber: Swift.String
+  public var deactived: Swift.Int
+  public var userID: Swift.Int64
+  public var banned: Swift.Bool
+  public var _deactived: NADomain.DeactivedStatus?
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
@@ -225,6 +244,7 @@ public struct NAJSonKeys {
   public static let packageName: Swift.String
   public static let actionType: Swift.String
   public static let deviceId: Swift.String
+  public static let userId: Swift.String
 }
 public struct NAEvent : Swift.Codable {
   public static let EVENT_TYPE_UNKNOWN: Swift.Int
@@ -640,6 +660,7 @@ public struct NAContact : Swift.Codable {
   public var status: NADomain.NAUserStatus?
   public var isFriend: Swift.Bool?
   public var isDeleted: Swift.Bool?
+  public var deactived: NADomain.DeactivedStatus
   public var phoneNumber: Swift.String {
     get
   }
@@ -649,14 +670,21 @@ public struct NAContact : Swift.Codable {
   public var displayName: Swift.String {
     get
   }
-  public init(id: Swift.Int64?, phone: Swift.String?, fullName: Swift.String?, email: Swift.String? = nil, localContact: NADomain.NALocalContact? = nil, status: NADomain.NAUserStatus? = nil, profileUrl: Swift.String, isFriend: Swift.Bool? = nil, isDeleted: Swift.Bool? = nil)
+  public init(from decoder: Swift.Decoder) throws
+  public init(id: Swift.Int64?, phone: Swift.String?, fullName: Swift.String?, email: Swift.String? = nil, localContact: NADomain.NALocalContact? = nil, status: NADomain.NAUserStatus? = nil, profileUrl: Swift.String, isFriend: Swift.Bool? = nil, isDeleted: Swift.Bool? = nil, deactived: Swift.Int = 0)
   public init(user: NADomain.NAUser)
   public func encode(to encoder: Swift.Encoder) throws
-  public init(from decoder: Swift.Decoder) throws
 }
 public class NAListContact : Swift.Codable {
   public init(items: [NADomain.NAContact] = [], total: Swift.Int = 0)
   public var items: [NADomain.NAContact]
+  public var total: Swift.Int
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+  required public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers public class NAListDeletedContact : Swift.Codable {
+  public var contacts: [NADomain.NALocalContact]
   public var total: Swift.Int
   @objc deinit
   public func encode(to encoder: Swift.Encoder) throws
@@ -1368,6 +1396,9 @@ public struct NAMediaLibraryModel : Swift.Equatable, Swift.Hashable {
     get
   }
 }
+extension NADomain.DeactivedStatus : Swift.Equatable {}
+extension NADomain.DeactivedStatus : Swift.Hashable {}
+extension NADomain.DeactivedStatus : Swift.RawRepresentable {}
 extension NADomain.NAContentType.SubType : Swift.Equatable {}
 extension NADomain.NAContentType.SubType : Swift.Hashable {}
 extension NADomain.NAContentType.SubType : Swift.RawRepresentable {}

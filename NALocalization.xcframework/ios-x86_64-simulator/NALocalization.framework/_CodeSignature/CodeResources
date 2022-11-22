@@ -30,7 +30,7 @@
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		1bMt6YD9CcZClJ7JaQTyE76Pa1Q=
+		1OpVjMrqKTnxc+feB2MT8qFLnso=
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		1bMt6YD9CcZClJ7JaQTyE76Pa1Q=
+		1OpVjMrqKTnxc+feB2MT8qFLnso=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -52,7 +52,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Q1a/bnuSfSCQBx0RoQ0gshlYDgg=
+			KkEaO6N+fDK5xUpUVIcoXCH0iXQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -61,7 +61,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XxYFE4gztSese7SmrFP8aD0XHRo=
+			++z84mAGYZMZs6J6NCr2IWYtxC0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -108,7 +108,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BVE8WoS5HyvQVpg9BCVY5FMNS9r45WLboivKFr4Sr7A=
+			TuKnwHh7IB2SoSCxEwvQ0Q/sEIlu9lKiHKQpdrgiqUA=
 			</data>
 		</dict>
 		<key>Modules/NALocalization.swiftmodule/x86_64.swiftdoc</key>
@@ -129,7 +129,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BVE8WoS5HyvQVpg9BCVY5FMNS9r45WLboivKFr4Sr7A=
+			TuKnwHh7IB2SoSCxEwvQ0Q/sEIlu9lKiHKQpdrgiqUA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -143,7 +143,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jXd+Aw1uBWj1l6y0F0tZa1HXvG101C0vfquwgGhRD3c=
+			GjDW4GyCDSdEZk2Mff7rOz7oVSJmBsUHKp2JZHAfDxQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -152,7 +152,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BhhoikAIN7xfot2oRz+lPOmkkm684yKmwYxykwmKTjc=
+			Z3qPpjFhCqE8YEDRNzJg4rG0DHaYnAuhcbp3S6Xsqj8=
 			</data>
 			<key>optional</key>
 			<true/>

@@ -33,11 +33,10 @@ public protocol ContactUseCase {
   func searchContact(byKeyword keyword: Swift.String, excludeIds: [Swift.Int64]?) -> RxSwift.Single<[NADomain.NAContact]>
   func saveContact(contacts: [NADomain.NAContact], overrideFriend: Swift.Bool) -> RxSwift.Single<Swift.Void>
   func saveContact(contact: NADomain.NAContact, isFriend: Swift.Bool) -> RxSwift.Single<Swift.Void>
-  func saveFriendContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func save(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
   func updateUserStatus(userStatus: [NADomain.NAUserStatus]) -> RxSwift.Single<Swift.Void>
   func getContacts(searchText: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
   func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
-  func resetFriendContact(excludeIds: [Swift.Int64]) -> RxSwift.Single<Swift.Void>
 }
 public protocol FileUseCase {
   func save(file: NADomain.NAFile) -> RxSwift.Single<Swift.Void>

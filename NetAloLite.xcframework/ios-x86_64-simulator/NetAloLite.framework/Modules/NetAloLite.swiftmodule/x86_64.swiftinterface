@@ -127,6 +127,7 @@ public protocol ServerConfigType {
   var imageMaxSize: Swift.Double { get }
   var videoMaxSizeMB: Swift.Double { get }
   var stickerUrl: Foundation.URL { get }
+  var deeplinkSchema: Swift.String { get }
 }
 public struct AppConfig {
   public init(authKey: Swift.String, appID: Swift.Int64, accountKey: Swift.String)
@@ -151,10 +152,12 @@ public struct FeatureConfig {
     public var allowTrackingUsingSDK: Swift.Bool
     public var allowTrackingBadgeNumber: Swift.Bool
     public var allowCreateGroup: Swift.Bool
+    public var allowSearchContact: Swift.Bool
     public var isHiddenEditProfile: Swift.Bool
     public var allowAddNewContact: Swift.Bool
-    public var allowEditContact: Swift.Bool
-    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, allowEditContact: Swift.Bool)
+    public var hideContactInfo: Swift.Bool
+    public var allowAddBundleId: Swift.Bool
+    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = true, allowSearchContact: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, hideContactInfo: Swift.Bool = true, allowAddBundleId: Swift.Bool = false)
   }
   public struct ChatConfig {
     public var isVideoCallEnable: Swift.Bool
@@ -175,7 +178,7 @@ public struct FeatureConfig {
   public init(user: NetAloLite.FeatureConfig.UserConfig, chat: NetAloLite.FeatureConfig.ChatConfig, isSyncDataInApp: Swift.Bool = false, isSyncDataOnFirstLogin: Swift.Bool = false, allowCustomStatusBarStyle: Swift.Bool = true, reserverWebDomain: Swift.String? = nil, allowReferralCode: Swift.Bool, searchByLike: Swift.Bool, allowReplaceCountrycode: Swift.Bool, isSyncContactInApp: Swift.Bool = false)
 }
 public class ServerConfig : NetAloLite.ServerConfigType {
-  public init(serverUrl: Foundation.URL, socketUrl: Foundation.URL, jitsiUrl: Foundation.URL, trackingUrl: Foundation.URL, loggingUrl: Foundation.URL, imageUrl: Foundation.URL, userProfileUrl: Foundation.URL, homeUrl: Foundation.URL, storeUrl: Foundation.URL, appGroupIdentifier: Swift.String, databaseIdentifier: Swift.String, databaseVersion: Swift.UInt64, appConfig: NetAloLite.AppConfig, trackingConfig: NetAloLite.TrackingConfig, featureConfig: NetAloLite.FeatureConfig, permissions: [NetAloLite.SDKPermissionSet], messageVersion: Swift.Int, isCallProduction: Swift.Bool, imageMaxSize: Swift.Double, videoMaxSizeMB: Swift.Double, environment: NetAloLite.EnvironmentType, stickerUrl: Foundation.URL)
+  public init(serverUrl: Foundation.URL, socketUrl: Foundation.URL, jitsiUrl: Foundation.URL, trackingUrl: Foundation.URL, loggingUrl: Foundation.URL, imageUrl: Foundation.URL, userProfileUrl: Foundation.URL, homeUrl: Foundation.URL, storeUrl: Foundation.URL, appGroupIdentifier: Swift.String, databaseIdentifier: Swift.String, databaseVersion: Swift.UInt64, appConfig: NetAloLite.AppConfig, trackingConfig: NetAloLite.TrackingConfig, featureConfig: NetAloLite.FeatureConfig, permissions: [NetAloLite.SDKPermissionSet], messageVersion: Swift.Int, isCallProduction: Swift.Bool, imageMaxSize: Swift.Double, videoMaxSizeMB: Swift.Double, environment: NetAloLite.EnvironmentType, stickerUrl: Foundation.URL, deeplinkSchema: Swift.String)
   public var serverUrl: Foundation.URL
   public var socketUrl: Foundation.URL
   public var jitsiUrl: Foundation.URL
@@ -198,6 +201,7 @@ public class ServerConfig : NetAloLite.ServerConfigType {
   public var videoMaxSizeMB: Swift.Double
   public var environment: NetAloLite.EnvironmentType
   public var stickerUrl: Foundation.URL
+  public var deeplinkSchema: Swift.String
   public static let development: NetAloLite.ServerConfig
   public static let production: NetAloLite.ServerConfig
   public static let testing: NetAloLite.ServerConfig
@@ -821,21 +825,23 @@ public protocol ContactRepo {
   func getContactBy(byId id: Swift.Int64, in group: NADomain.NAGroup?) -> RxSwift.Single<NADomain.NAContact?>
   func getContact(byPhone phone: Swift.String, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
   func saveContact(contact: NADomain.NAContact, isFriend: Swift.Bool) -> RxSwift.Single<Swift.Void>
-  func saveFriendContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func save(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func saveDeactiveContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
   func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
   func saveLocalContact(_ localContact: NADomain.NALocalContact) -> RxSwift.Single<Swift.Void>
   func getContact(byId id: Swift.Int64?, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
   func addContactSuccess(contact: NADomain.NAContact?, isChatted: Swift.Bool)
-  func search(by username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  func search(by phone: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
   func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  func recoverContact(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact?>
   func getLocalContact(by phone: Swift.String) -> RxSwift.Single<NADomain.NALocalContact?>
   func getLocalContacts(requestPermission: Swift.Bool) -> RxSwift.Single<[NADomain.NALocalContact]>
-  func requestServerToAddContact(name: Swift.String, phone: Swift.String) -> RxSwift.Observable<NADomain.NAContact>
+  func requestToAddContact(name: Swift.String, phone: Swift.String) -> RxSwift.Observable<NADomain.NAContact>
   func handleUpdateContact(of contact: NADomain.NAContact, with updatedName: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func getDeletetedContacts() -> RxSwift.Single<[NADomain.NALocalContact]>
   func checkFriend(targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
-  func addContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
-  func requestAddContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
-  func deleteContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  func addContactById(contactId: Swift.Int64) -> RxSwift.Single<Swift.Bool>
+  func deleteContactById(contactId: Swift.Int64) -> RxSwift.Single<Swift.Bool>
   func getListUserStatus() -> RxSwift.Single<Swift.Void>
 }
 extension NetAloLite.ContactRepo {
@@ -855,7 +861,7 @@ public class ContactRepoImpl : NetAloLite.ContactRepo {
   public func getAllContacts(excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
   public func getAllContacts(ids: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
   public func getContacts(searchText: Swift.String, sortType: NADomain.ContactSortType, page: Swift.Int, pageSize: Swift.Int, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
-  public func search(by username: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
+  public func search(by phone: Swift.String) -> RxSwift.Single<[NADomain.NAContact]>
   public func searchContacts(searchText: Swift.String, excludeIds: [Swift.Int64]) -> RxSwift.Single<[NADomain.NAContact]>
   public func getLocalContact(by phone: Swift.String) -> RxSwift.Single<NADomain.NALocalContact?>
   public func getLocalContacts(requestPermission: Swift.Bool) -> RxSwift.Single<[NADomain.NALocalContact]>
@@ -868,16 +874,18 @@ public class ContactRepoImpl : NetAloLite.ContactRepo {
   public func getContactBy(byId id: Swift.Int64, in group: NADomain.NAGroup? = nil) -> RxSwift.Single<NADomain.NAContact?>
   public func getContact(byPhone phone: Swift.String, isFriend: Swift.Bool?) -> RxSwift.Single<NADomain.NAContact?>
   public func saveContact(contact: NADomain.NAContact, isFriend: Swift.Bool = true) -> RxSwift.Single<Swift.Void>
-  public func saveFriendContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  public func save(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
+  public func saveDeactiveContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
   public func newAddressBook(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact>
   public func saveLocalContact(_ localContact: NADomain.NALocalContact) -> RxSwift.Single<Swift.Void>
   public func getContact(byId id: Swift.Int64?, isFriend: Swift.Bool? = nil) -> RxSwift.Single<NADomain.NAContact?>
   public func deleteContact(contact: NADomain.NAContact) -> RxSwift.Single<Swift.Void>
   public func addContactSuccess(contact: NADomain.NAContact?, isChatted: Swift.Bool)
-  public func requestServerToAddContact(name: Swift.String, phone: Swift.String) -> RxSwift.Observable<NADomain.NAContact>
-  public func requestAddContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
-  public func addContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
-  public func deleteContactSDK(targetName: Swift.String, targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
+  public func getDeletetedContacts() -> RxSwift.Single<[NADomain.NALocalContact]>
+  public func recoverContact(name: Swift.String, phone: Swift.String) -> RxSwift.Single<NADomain.NAContact?>
+  public func requestToAddContact(name: Swift.String, phone: Swift.String) -> RxSwift.Observable<NADomain.NAContact>
+  public func addContactById(contactId: Swift.Int64) -> RxSwift.Single<Swift.Bool>
+  public func deleteContactById(contactId: Swift.Int64) -> RxSwift.Single<Swift.Bool>
   public func checkFriend(targetPhone: Swift.String) -> RxSwift.Single<Swift.Bool>
   public func getListUserStatus() -> RxSwift.Single<Swift.Void>
   @objc deinit
