@@ -300,6 +300,7 @@ public struct NTGroup : Swift.Codable {
   public var lastActiveMessages: [NADomain.NALastActiveMessage]
   public var background: NADomain.NAGroupBackground?
   public var currentGroupCall: NADomain.NAGroupCall?
+  public var unreadCount: Swift.Int
   public init(from decoder: Swift.Decoder) throws
   public func toString() -> Swift.String
   public func encode(to encoder: Swift.Encoder) throws

@@ -47,7 +47,7 @@ public protocol CurrentChatRepo : NetAloLite.ChatRepo {
   func messageObservable(in group: Swift.String) -> RxSwift.Observable<NADomain.NACollectionChange<NADomain.NAMessage>>
   func fetchMessages(groupId: Swift.String, lastMessageID: Swift.String?, limit: Swift.Int) -> RxSwift.Single<[NADomain.NAMessage]>
   func markMessagesAsRead(messages: [NADomain.NAMessage], in group: NADomain.NAGroup, isUpdateLastMessage: Swift.Bool)
-  func markMessagesAsReadOnlyLocale(messages: [NADomain.NAMessage], in group: NADomain.NAGroup)
+  func markMessagesAsRead(group: NADomain.NAGroup) -> RxSwift.Single<Swift.Void>
   func pinnedMessageObservable(in group: Swift.String) -> RxSwift.Observable<NADomain.NACollectionChange<NADomain.NAMessage>>
   func fetchPinnedMessages(groupId: Swift.String, sortBy type: NARealmPlatform.PinnedMessagesSortType) -> RxSwift.Single<[NADomain.NAMessage]>
   func removeLocalPinnedMessages(groupId: Swift.String)
@@ -145,6 +145,7 @@ public struct FeatureConfig {
     public var allowCustomProfile: Swift.Bool
     public var allowCustomAlert: Swift.Bool
     public var allowAddContact: Swift.Bool
+    public var allowAddGroupMember: Swift.Bool
     public var allowBlockContact: Swift.Bool
     public var allowSetUserProfileUrl: Swift.Bool
     public var allowEnableLocationFeature: Swift.Bool
@@ -155,14 +156,15 @@ public struct FeatureConfig {
     public var isHiddenEditProfile: Swift.Bool
     public var allowAddNewContact: Swift.Bool
     public var hideContactInfo: Swift.Bool
-    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, allowSearchContact: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, hideContactInfo: Swift.Bool = true)
+    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowAddGroupMember: Swift.Bool = false, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, allowSearchContact: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, hideContactInfo: Swift.Bool = true)
   }
   public struct ChatConfig {
     public var isVideoCallEnable: Swift.Bool
     public var isVoiceCallEnable: Swift.Bool
+    public var isGroupCallEnable: Swift.Bool
     public var allowFloatingPersonalCall: Swift.Bool
     public var isHiddenSecretChat: Swift.Bool
-    public init(isVideoCallEnable: Swift.Bool, isVoiceCallEnable: Swift.Bool, isHiddenSecretChat: Swift.Bool, allowFloatingPersonalCall: Swift.Bool = false)
+    public init(isVideoCallEnable: Swift.Bool, isVoiceCallEnable: Swift.Bool, isGroupCallEnable: Swift.Bool = false, isHiddenSecretChat: Swift.Bool, allowFloatingPersonalCall: Swift.Bool = false)
   }
   public var user: NetAloLite.FeatureConfig.UserConfig
   public var chat: NetAloLite.FeatureConfig.ChatConfig

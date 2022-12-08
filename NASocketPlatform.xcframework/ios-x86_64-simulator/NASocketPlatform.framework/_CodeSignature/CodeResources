@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		yZ0Al6cHR/9NhkV1AbHn/lEKVKY=
+		7Gzb6F2/V3w5ChEaYivekZD/HYc=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		wefgfbLPvWbrPdIYQPTCPh0HMHw=
+		VbNUS/MQo6Hn9TVECksv4zGyYUk=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		yZ0Al6cHR/9NhkV1AbHn/lEKVKY=
+		7Gzb6F2/V3w5ChEaYivekZD/HYc=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		wefgfbLPvWbrPdIYQPTCPh0HMHw=
+		VbNUS/MQo6Hn9TVECksv4zGyYUk=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -72,14 +72,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6ozux5w9CpcjskxzvrkCo75UFmGVNEnVHRn9pqcsuzM=
+			wxd3bbLbiv1fXcNNBFyt0U9h7oNTDpQoFOl9rlRT2ts=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k+7cwoUnTiyk8SQtjq3u70pc5+tnki6/8bGtNJkZGZY=
+			c5yoZMqn8Yhgd0qaJw/VPgTS0yH+agFrCcoQlkam2es=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftdoc</key>
@@ -93,14 +93,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6ozux5w9CpcjskxzvrkCo75UFmGVNEnVHRn9pqcsuzM=
+			wxd3bbLbiv1fXcNNBFyt0U9h7oNTDpQoFOl9rlRT2ts=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k+7cwoUnTiyk8SQtjq3u70pc5+tnki6/8bGtNJkZGZY=
+			c5yoZMqn8Yhgd0qaJw/VPgTS0yH+agFrCcoQlkam2es=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

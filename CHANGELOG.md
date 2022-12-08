@@ -1,3 +1,29 @@
+#V14
+
+- [Fix] Fix bugs
+- [Fix] Remove add member
+
+
+#V13
+
+- [Fix] Config to allow creating group/ search in VND-SDK
+- [Fix] Config edit contact profile
+- [Fix] Clean code.
+- [Imp] Update config for Reactnative
+- [Fix] Hide username + button call/chat in contact detail
+
+
+#V12
+
+- [Fix] - Config for ReactNative
+
+
+#V14
+
+- [Fix] Fix bugs
+- [Fix] Remove add member
+
+
 #V13
 
 - [Fix] Config to allow creating group/ search in VND-SDK
@@ -31,12 +57,6 @@
 #V8_56
 
 - Update Swift 5.6
-- Fix person call
-
-
-#V8
-
-- Update Swift version
 - Fix person call
 
 

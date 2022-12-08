@@ -1141,10 +1141,11 @@ public struct NAGroup : Swift.Codable {
     get
   }
   public var currentGroupCall: NADomain.NAGroupCall?
+  public var unreadCount: Swift.Int
   public init(from decoder: Swift.Decoder) throws
   public func toString() -> Swift.String
   public init(groupID: Swift.String, ownerUin: Swift.String, occupantsUins: [Swift.String], name: Swift.String, avatarUrl: Swift.String, type: Swift.Int)
-  public init(groupID: Swift.String = "", occupantsUins: [Swift.String] = [], blockedUins: [Swift.String] = [], mutedUins: [Swift.String] = [], receivedList: [Swift.String : Swift.String] = [:], seenList: [Swift.String : Swift.String] = [:], createdAt: Swift.String = "", avatarUrl: Swift.String = "", description: Swift.String = "", type: Swift.Int = 0, updatedAt: Swift.String = "0", name: Swift.String = "", ownerUin: Swift.String = "", creatorUin: Swift.String = "", adminUins: [Swift.String] = [], removedUins: [Swift.String] = [], lastMessage: NADomain.NAMessage? = nil, statusList: [NADomain.NAUserStatus] = [], pinnedUins: [Swift.String] = [], secrets: [NADomain.NASecretChat] = [], lastActiveMessages: [NADomain.NALastActiveMessage] = [], background: NADomain.NAGroupBackground? = nil, isMuted: Swift.Bool = false, isPinned: Swift.Bool = false, isBlur: Swift.Bool = false, displayName: Swift.String = "", backgroundUrl: Swift.String = "", seenUins: [NADomain.NAGroupMessageStatus] = [], receivedUins: [NADomain.NAGroupMessageStatus] = [], currentGroupCall: NADomain.NAGroupCall? = nil)
+  public init(groupID: Swift.String = "", occupantsUins: [Swift.String] = [], blockedUins: [Swift.String] = [], mutedUins: [Swift.String] = [], receivedList: [Swift.String : Swift.String] = [:], seenList: [Swift.String : Swift.String] = [:], createdAt: Swift.String = "", avatarUrl: Swift.String = "", description: Swift.String = "", type: Swift.Int = 0, updatedAt: Swift.String = "0", name: Swift.String = "", ownerUin: Swift.String = "", creatorUin: Swift.String = "", adminUins: [Swift.String] = [], removedUins: [Swift.String] = [], lastMessage: NADomain.NAMessage? = nil, statusList: [NADomain.NAUserStatus] = [], pinnedUins: [Swift.String] = [], secrets: [NADomain.NASecretChat] = [], lastActiveMessages: [NADomain.NALastActiveMessage] = [], background: NADomain.NAGroupBackground? = nil, isMuted: Swift.Bool = false, isPinned: Swift.Bool = false, isBlur: Swift.Bool = false, displayName: Swift.String = "", backgroundUrl: Swift.String = "", seenUins: [NADomain.NAGroupMessageStatus] = [], receivedUins: [NADomain.NAGroupMessageStatus] = [], currentGroupCall: NADomain.NAGroupCall? = nil, unreadCount: Swift.Int = 0)
   public mutating func updateAllMembers()
   public mutating func updateOccupantUsers(_removedUins: [Swift.String] = [], addedUins: [Swift.String] = [])
   public func encode(to encoder: Swift.Encoder) throws
@@ -1177,7 +1178,7 @@ public struct NAGroupInfo : Swift.Codable {
   public let name: Swift.String
   public let avatarUrl: Swift.String
   public let group: NADomain.NAGroup
-  public let removedUsers: [NADomain.NAUser]
+  public var removedUsers: [NADomain.NAUser]
   public init(from decoder: Swift.Decoder) throws
   public init(id: Swift.String, users: [NADomain.NAUser], name: Swift.String, avatarUrl: Swift.String, group: NADomain.NAGroup, removedUsers: [NADomain.NAUser])
   public func encode(to encoder: Swift.Encoder) throws
