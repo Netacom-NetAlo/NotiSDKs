@@ -296,6 +296,7 @@ public protocol MessageUseCase {
   func deleteMessages(from groupId: Swift.String)
   func getMessageBy(id: Swift.String) -> RxSwift.Single<NADomain.NAMessage?>
   func getUnreadMessageCount(groupId: Swift.String, currentUserId: Swift.String) -> RxSwift.Single<Swift.Int>
+  func getUnreadMessage(groupId: Swift.String, currentUserId: Swift.String) -> RxSwift.Single<[NADomain.NAMessage]>
   @discardableResult
   func updateMessageStatus(message: NADomain.NAMessage, status: NADomain.NAMessageStatus) -> RxSwift.Single<[NADomain.NAMessage]>
   func getMessages(dialogID: Swift.String, page: Swift.Int, pageSize: Swift.Int, from messageId: Swift.String?) -> RxSwift.Single<[NADomain.NAMessage]>

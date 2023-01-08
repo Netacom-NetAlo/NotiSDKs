@@ -175,7 +175,8 @@ public struct FeatureConfig {
   public let allowReferralCode: Swift.Bool
   public var searchByLike: Swift.Bool
   public var allowReplaceCountrycode: Swift.Bool
-  public init(user: NetAloLite.FeatureConfig.UserConfig, chat: NetAloLite.FeatureConfig.ChatConfig, isSyncDataInApp: Swift.Bool = false, isSyncDataOnFirstLogin: Swift.Bool = false, allowCustomStatusBarStyle: Swift.Bool = true, reserverWebDomain: Swift.String? = nil, allowReferralCode: Swift.Bool, searchByLike: Swift.Bool, allowReplaceCountrycode: Swift.Bool, isSyncContactInApp: Swift.Bool = false)
+  public var allowShowMentionMarker: Swift.Bool
+  public init(user: NetAloLite.FeatureConfig.UserConfig, chat: NetAloLite.FeatureConfig.ChatConfig, isSyncDataInApp: Swift.Bool = false, isSyncDataOnFirstLogin: Swift.Bool = false, allowCustomStatusBarStyle: Swift.Bool = true, reserverWebDomain: Swift.String? = nil, allowReferralCode: Swift.Bool, searchByLike: Swift.Bool, allowReplaceCountrycode: Swift.Bool, isSyncContactInApp: Swift.Bool = false, allowShowMentionMarker: Swift.Bool = false)
 }
 public class ServerConfig : NetAloLite.ServerConfigType {
   public init(serverUrl: Foundation.URL, socketUrl: Foundation.URL, jitsiUrl: Foundation.URL, trackingUrl: Foundation.URL, loggingUrl: Foundation.URL, imageUrl: Foundation.URL, userProfileUrl: Foundation.URL, homeUrl: Foundation.URL, storeUrl: Foundation.URL, appGroupIdentifier: Swift.String, databaseIdentifier: Swift.String, databaseVersion: Swift.UInt64, appConfig: NetAloLite.AppConfig, trackingConfig: NetAloLite.TrackingConfig, featureConfig: NetAloLite.FeatureConfig, permissions: [NetAloLite.SDKPermissionSet], messageVersion: Swift.Int, isCallProduction: Swift.Bool, imageMaxSize: Swift.Double, videoMaxSizeMB: Swift.Double, environment: NetAloLite.EnvironmentType, stickerUrl: Foundation.URL)
@@ -219,11 +220,23 @@ public enum CallSoundType : Swift.String {
     get
   }
 }
+public enum SoundType {
+  case call
+  case recorder
+  case player
+  public static func == (a: NetAloLite.SoundType, b: NetAloLite.SoundType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public protocol SoundRepo {
   var bundle: Foundation.Bundle? { get set }
   func play(type: NetAloLite.CallSoundType, isRepeat: Swift.Bool)
   func stop()
   func setOutputToSpeaker(isSpeaker: Swift.Bool)
+  func checkRecordPermission() -> RxSwift.Observable<Swift.Bool>
+  func configureAudioSession(type: NetAloLite.SoundType)
 }
 public enum SyncGroupFrequency : Swift.Double {
   case normal
@@ -247,6 +260,7 @@ public protocol GroupRepo {
   func displayName(of group: NADomain.NAGroup) -> RxSwift.Observable<Swift.String?>
   func displayName(of group: NADomain.NAGroup, occupants: [NADomain.NAContact]) -> RxSwift.Observable<Swift.String?>
   func getUnreadMessageCount(in groupId: Swift.String) -> RxSwift.Single<Swift.Int>
+  func getUnreadMessage(in groupId: Swift.String) -> RxSwift.Single<[NADomain.NAMessage]>
   func createGroup(group: NADomain.NAGroup, senderName: Swift.String) -> RxSwift.Single<NADomain.NAGroup>
   func fetchGroup(by occupants: [Swift.String], type: NADomain.NAGroup.GroupType, isSync: Swift.Bool) -> RxSwift.Single<NADomain.NAGroup?>
   func getDraffMessage(groupId: Swift.String) -> RxSwift.Observable<Swift.String?>
@@ -1148,6 +1162,8 @@ extension NetAloLite.SDKPermissionSet : Swift.RawRepresentable {}
 extension NetAloLite.CallSoundType : Swift.Equatable {}
 extension NetAloLite.CallSoundType : Swift.Hashable {}
 extension NetAloLite.CallSoundType : Swift.RawRepresentable {}
+extension NetAloLite.SoundType : Swift.Equatable {}
+extension NetAloLite.SoundType : Swift.Hashable {}
 extension NetAloLite.SyncGroupFrequency : Swift.Equatable {}
 extension NetAloLite.SyncGroupFrequency : Swift.Hashable {}
 extension NetAloLite.SyncGroupFrequency : Swift.RawRepresentable {}
