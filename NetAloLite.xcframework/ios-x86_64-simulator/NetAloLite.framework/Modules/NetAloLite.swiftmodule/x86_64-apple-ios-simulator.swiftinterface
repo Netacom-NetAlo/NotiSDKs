@@ -156,7 +156,8 @@ public struct FeatureConfig {
     public var isHiddenEditProfile: Swift.Bool
     public var allowAddNewContact: Swift.Bool
     public var hideContactInfo: Swift.Bool
-    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowAddGroupMember: Swift.Bool = false, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, allowSearchContact: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, hideContactInfo: Swift.Bool = true)
+    public var allowNotificationExtension: Swift.Bool
+    public init(forceUpdateProfile: Swift.Bool, allowCustomUsername: Swift.Bool, allowCustomProfile: Swift.Bool, allowCustomAlert: Swift.Bool, allowAddContact: Swift.Bool, allowAddGroupMember: Swift.Bool = false, allowBlockContact: Swift.Bool, allowSetUserProfileUrl: Swift.Bool, allowEnableLocationFeature: Swift.Bool, allowTrackingUsingSDK: Swift.Bool, allowTrackingBadgeNumber: Swift.Bool = false, allowCreateGroup: Swift.Bool = false, allowSearchContact: Swift.Bool = false, isHiddenEditProfile: Swift.Bool, allowAddNewContact: Swift.Bool, hideContactInfo: Swift.Bool = true, allowNotificationExtension: Swift.Bool = false)
   }
   public struct ChatConfig {
     public var isVideoCallEnable: Swift.Bool
@@ -442,6 +443,7 @@ public protocol EventRepo : AnyObject {
   var updateContact: RxSwift.Observable<NADomain.NAContact> { get }
   var updatedGroupCall: RxSwift.Observable<(NADomain.NAGroup, NADomain.NAGroupCall?)> { get }
   func didReceiveGroupCall(event: NADomain.NAGroupCallEvent)
+  func didReceive(_ message: NADomain.NAMessage)
 }
 public class EventRepoImpl : NetAloLite.EventRepo {
   public var isSocketConnected: Swift.Bool {

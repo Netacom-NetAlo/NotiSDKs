@@ -21,10 +21,12 @@ public protocol NotificationComponentProtocol {
   func expired(oldContent: UserNotifications.UNMutableNotificationContent) -> UserNotifications.UNNotificationContent
   func convert(message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
   func convert(group: NADomain.NAGroup, message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
+  func convert(userInfo: [Swift.AnyHashable : Any]) -> NADomain.NAMessage?
 }
 public class NotificationComponentImpl : NotificationComponent.NotificationComponentProtocol {
   public init(enviroment: NetAloLite.EnvironmentType? = nil, appGroupId: Swift.String? = nil)
   public func initialize()
+  public func convert(userInfo: [Swift.AnyHashable : Any]) -> NADomain.NAMessage?
   public func replace(oldContent: UserNotifications.UNMutableNotificationContent) -> RxSwift.Single<UserNotifications.UNNotificationContent>
   public func expired(oldContent: UserNotifications.UNMutableNotificationContent) -> UserNotifications.UNNotificationContent
   public func convert(message: NADomain.NAMessage) -> RxSwift.Single<UserNotifications.UNNotificationContent>
