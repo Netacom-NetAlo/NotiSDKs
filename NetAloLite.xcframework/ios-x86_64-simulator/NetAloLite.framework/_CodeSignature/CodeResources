@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		5El1WISAiN8E3WcVddp04IHa984=
+		4p/bSDCZFUoQNQqw6fIMvYESBJo=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1vHaL4/yAE/ns5XBEel8ag+ccJ4=
+		pdQbnoOYQVlcMT+HGv1csrc5/IE=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		2g3zf2SYTibVZVyccz+lQ2iY1tM=
+		oaCyqppCTfvIhinnwRLpKVu9mRs=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		kZjxPK/WfpNFmRQep6M6lcSm+Ao=
+		hR2GIzrx8xj6vaNhznfUJO6Xd4c=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		1vHaL4/yAE/ns5XBEel8ag+ccJ4=
+		pdQbnoOYQVlcMT+HGv1csrc5/IE=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		2g3zf2SYTibVZVyccz+lQ2iY1tM=
+		oaCyqppCTfvIhinnwRLpKVu9mRs=
 		</data>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		kZjxPK/WfpNFmRQep6M6lcSm+Ao=
+		hR2GIzrx8xj6vaNhznfUJO6Xd4c=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -65,42 +65,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oUoA3TVss7h44V+FGTFuBIVOpuIC0vYVEHblNFEEeEk=
+			9K12wJjG20LOh2sqZTQr++qlzB7mPokDMCJsY7+UwIU=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AoHTsZQdluDUjwDs8N4dPdn7fI45tWHgpkHAkvo0h10=
+			FNtph17bXqQhx61Rv3e/DcMwm/ZXbwrKXDwVKB21Oqk=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			e/nDo/yLmrjlWHCYASToVroBA8Ept9eAlQAdGAZZqvE=
+			kqiQzqBkELT+WJUNB07HxxJKOXnoZH1D5Nii8tZbetc=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oUoA3TVss7h44V+FGTFuBIVOpuIC0vYVEHblNFEEeEk=
+			9K12wJjG20LOh2sqZTQr++qlzB7mPokDMCJsY7+UwIU=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AoHTsZQdluDUjwDs8N4dPdn7fI45tWHgpkHAkvo0h10=
+			FNtph17bXqQhx61Rv3e/DcMwm/ZXbwrKXDwVKB21Oqk=
 			</data>
 		</dict>
 		<key>Modules/NetAloLite.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			e/nDo/yLmrjlWHCYASToVroBA8Ept9eAlQAdGAZZqvE=
+			kqiQzqBkELT+WJUNB07HxxJKOXnoZH1D5Nii8tZbetc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

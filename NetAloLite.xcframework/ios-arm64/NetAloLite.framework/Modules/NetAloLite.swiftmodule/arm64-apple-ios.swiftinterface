@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
-// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NetAloLite
+// swift-module-flags: -target arm64-apple-ios14.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NetAloLite
 import AVFoundation
 import AdSupport
 import CallKit
@@ -283,6 +283,7 @@ public protocol GroupRepo {
   func searchGroup(by ownerUser: NADomain.NAUser, searchText: Swift.String) -> RxSwift.Single<[NADomain.NAGroup]>
   func searchGroup(byName name: Swift.String, contactResults: [NADomain.NAContact]) -> RxSwift.Single<[NADomain.NAGroup]>
   func getUnreadConversationsAndMissedCalls() -> RxSwift.Single<Swift.Int>
+  func getUnreadConversationsAndMissedCalls(messages: [NADomain.NAMessage]) -> RxSwift.Single<Swift.Int>
   func searchGroup(searchText: Swift.String) -> RxSwift.Single<[NADomain.NAGroup]>
   func updateLocalGroup(_ group: NADomain.NAGroup, saveLastMessage: Swift.Bool)
   func checkStatusGroupCall(with group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAGroupCall?>

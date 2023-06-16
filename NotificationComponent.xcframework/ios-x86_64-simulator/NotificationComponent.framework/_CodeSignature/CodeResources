@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		pQNzO/x6RCqn8OXufmPk1dJPsqU=
+		e7Ukhm/AZiTe7YnOSWQYPqVPM90=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		dKUMxeqX25L83i7tOySL4efDHRM=
+		Fp9Xw7pdBiI6e3jweCOxR/YrV30=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		usUMOkeLtBDbGL4mll//YB52Yzs=
+		S9VHJfj4RUnaW3jMA4IMijeBiJQ=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		vHM+aPTuPmHMd9kNB54QBUz83kU=
+		z9LlzKoTgQWKTlL/TVnSdKfQiyg=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		dKUMxeqX25L83i7tOySL4efDHRM=
+		Fp9Xw7pdBiI6e3jweCOxR/YrV30=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		usUMOkeLtBDbGL4mll//YB52Yzs=
+		S9VHJfj4RUnaW3jMA4IMijeBiJQ=
 		</data>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		vHM+aPTuPmHMd9kNB54QBUz83kU=
+		z9LlzKoTgQWKTlL/TVnSdKfQiyg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -65,42 +65,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8Q/kUZ8adie/ZOxhYsOheP2yjp9F8x26+WS1V0NqfSQ=
+			PmctfLHIBUozbJX/tyHQJZvubq035H59IgAkBItjkIg=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k6O29VlHjkk59fYI5qm8El5tJ/aLlz2d2/YQPAbbxU0=
+			GkECTLtA72k5/PgLDzGS2uw9uHI3UxD8gcxg2Ah6JIo=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EjgGmeJoF1DIdeMmeoeRjWbbXk7XeMncuchC/sNEIeM=
+			HHYxSR7W8p0M4znyuPzBKcajETIWs8gwnRpC1sRIur4=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8Q/kUZ8adie/ZOxhYsOheP2yjp9F8x26+WS1V0NqfSQ=
+			PmctfLHIBUozbJX/tyHQJZvubq035H59IgAkBItjkIg=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			k6O29VlHjkk59fYI5qm8El5tJ/aLlz2d2/YQPAbbxU0=
+			GkECTLtA72k5/PgLDzGS2uw9uHI3UxD8gcxg2Ah6JIo=
 			</data>
 		</dict>
 		<key>Modules/NotificationComponent.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EjgGmeJoF1DIdeMmeoeRjWbbXk7XeMncuchC/sNEIeM=
+			HHYxSR7W8p0M4znyuPzBKcajETIWs8gwnRpC1sRIur4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
