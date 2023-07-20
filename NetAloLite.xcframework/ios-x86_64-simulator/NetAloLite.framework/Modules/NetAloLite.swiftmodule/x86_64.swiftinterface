@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
-// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NetAloLite
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name NetAloLite
 import AVFoundation
 import AdSupport
 import CallKit
@@ -167,8 +167,14 @@ public struct FeatureConfig {
     public var isHiddenSecretChat: Swift.Bool
     public init(isVideoCallEnable: Swift.Bool, isVoiceCallEnable: Swift.Bool, isGroupCallEnable: Swift.Bool = false, isHiddenSecretChat: Swift.Bool, allowFloatingPersonalCall: Swift.Bool = false)
   }
+  public struct StickerConfig {
+    public var isStore: Swift.Bool
+    public var isSortFirstDefault: Swift.Bool
+    public init(isStore: Swift.Bool, isSortFirstDefault: Swift.Bool)
+  }
   public var user: NetAloLite.FeatureConfig.UserConfig
   public var chat: NetAloLite.FeatureConfig.ChatConfig
+  public var sticker: NetAloLite.FeatureConfig.StickerConfig
   public var isSyncDataInApp: Swift.Bool
   public var isSyncContactInApp: Swift.Bool
   public var allowCustomStatusBarStyle: Swift.Bool
@@ -177,7 +183,7 @@ public struct FeatureConfig {
   public var searchByLike: Swift.Bool
   public var allowReplaceCountrycode: Swift.Bool
   public var allowShowMentionMarker: Swift.Bool
-  public init(user: NetAloLite.FeatureConfig.UserConfig, chat: NetAloLite.FeatureConfig.ChatConfig, isSyncDataInApp: Swift.Bool = false, isSyncDataOnFirstLogin: Swift.Bool = false, allowCustomStatusBarStyle: Swift.Bool = true, reserverWebDomain: Swift.String? = nil, allowReferralCode: Swift.Bool, searchByLike: Swift.Bool, allowReplaceCountrycode: Swift.Bool, isSyncContactInApp: Swift.Bool = false, allowShowMentionMarker: Swift.Bool = false)
+  public init(user: NetAloLite.FeatureConfig.UserConfig, chat: NetAloLite.FeatureConfig.ChatConfig, sticker: NetAloLite.FeatureConfig.StickerConfig = StickerConfig(isStore: true, isSortFirstDefault: true), isSyncDataInApp: Swift.Bool = false, isSyncDataOnFirstLogin: Swift.Bool = false, allowCustomStatusBarStyle: Swift.Bool = true, reserverWebDomain: Swift.String? = nil, allowReferralCode: Swift.Bool, searchByLike: Swift.Bool, allowReplaceCountrycode: Swift.Bool, isSyncContactInApp: Swift.Bool = false, allowShowMentionMarker: Swift.Bool = false)
 }
 public class ServerConfig : NetAloLite.ServerConfigType {
   public init(serverUrl: Foundation.URL, socketUrl: Foundation.URL, jitsiUrl: Foundation.URL, trackingUrl: Foundation.URL, loggingUrl: Foundation.URL, imageUrl: Foundation.URL, userProfileUrl: Foundation.URL, homeUrl: Foundation.URL, storeUrl: Foundation.URL, appGroupIdentifier: Swift.String, databaseIdentifier: Swift.String, databaseVersion: Swift.UInt64, appConfig: NetAloLite.AppConfig, trackingConfig: NetAloLite.TrackingConfig, featureConfig: NetAloLite.FeatureConfig, permissions: [NetAloLite.SDKPermissionSet], messageVersion: Swift.Int, isCallProduction: Swift.Bool, imageMaxSize: Swift.Double, videoMaxSizeMB: Swift.Double, environment: NetAloLite.EnvironmentType, stickerUrl: Foundation.URL)
@@ -289,6 +295,7 @@ public protocol GroupRepo {
   func checkStatusGroupCall(with group: NADomain.NAGroup) -> RxSwift.Single<NADomain.NAGroupCall?>
   func syncGroups(isForcedSync: Swift.Bool, frequency: NetAloLite.SyncGroupFrequency) -> RxSwift.Single<NADomain.NASyncGroupResponse>
   var isSynced: RxSwift.Observable<Swift.Void> { get }
+  func saveGroup(_ group: NADomain.NAGroup, saveLastMessage: Swift.Bool)
 }
 extension NetAloLite.GroupRepo {
   public func getOccupants(in group: NADomain.NAGroup, andRemovedUsers isRemovedUsers: Swift.Bool = false) -> RxSwift.Single<[NADomain.NAUser]>
@@ -698,6 +705,7 @@ public protocol UserRepo {
   func logout() -> RxSwift.Single<Swift.Void>
   func registerFCMToken(token: Swift.String, type: NADomain.NADefines.TokenType) -> RxSwift.Single<Swift.Void>
   func getUserInfo() -> RxSwift.Single<NADomain.NAUser?>
+  func checkUserAvailable(with token: Swift.String) -> RxSwift.Single<NADomain.NAUser?>
   func getUserStatus(_ userID: Swift.String) -> RxSwift.Single<NADomain.NAUserStatus?>
   func checkApplyReferralCode() -> RxSwift.Single<Swift.Bool>
   func applyReferralCode(referralCode: Swift.String) -> RxSwift.Single<Swift.Bool>

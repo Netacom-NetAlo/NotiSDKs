@@ -14,31 +14,31 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		sArciFhHoLxW4E7JrgePBYWm00A=
+		xAzNE2DqmKT0I9V4M0OYMeuovL0=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		7oAMS5qQw6eccLd0CLAoytD+H5g=
+		LxPtcDWIW/8N5xngngp7JUFwo5s=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		8t7DKFLVsC23B+tiAUuT2/vKqDo=
+		7Gzb6F2/V3w5ChEaYivekZD/HYc=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		8IMdRdjDrV09QDCyg+pRYSdkJUY=
+		enpAjXfABCoF647Q3/2QiV4+D1I=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		7oAMS5qQw6eccLd0CLAoytD+H5g=
+		LxPtcDWIW/8N5xngngp7JUFwo5s=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		8t7DKFLVsC23B+tiAUuT2/vKqDo=
+		7Gzb6F2/V3w5ChEaYivekZD/HYc=
 		</data>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		8IMdRdjDrV09QDCyg+pRYSdkJUY=
+		enpAjXfABCoF647Q3/2QiV4+D1I=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -65,42 +65,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i5EKlJGRN6o0uElVgD2eUyZPTaUGiy7bawIunO5fXmU=
+			dPSwGlMvRNZwhKbTpbZNPuwNf/9EGF+FMFPbPwHG1bI=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oJTgnAuOnpniX4JWf6y9leRHe0RClu4AxR9ChfnKfg0=
+			wxd3bbLbiv1fXcNNBFyt0U9h7oNTDpQoFOl9rlRT2ts=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jF4bWqNXm/bIhlATWwWmv0BeRGpA+Xq3IRRTBkMdHgk=
+			JSZDdTTq59UuoKvJJ4mjOXgvur49XCNXZjB9ljhkz+Q=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			i5EKlJGRN6o0uElVgD2eUyZPTaUGiy7bawIunO5fXmU=
+			dPSwGlMvRNZwhKbTpbZNPuwNf/9EGF+FMFPbPwHG1bI=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oJTgnAuOnpniX4JWf6y9leRHe0RClu4AxR9ChfnKfg0=
+			wxd3bbLbiv1fXcNNBFyt0U9h7oNTDpQoFOl9rlRT2ts=
 			</data>
 		</dict>
 		<key>Modules/NASocketPlatform.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jF4bWqNXm/bIhlATWwWmv0BeRGpA+Xq3IRRTBkMdHgk=
+			JSZDdTTq59UuoKvJJ4mjOXgvur49XCNXZjB9ljhkz+Q=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
