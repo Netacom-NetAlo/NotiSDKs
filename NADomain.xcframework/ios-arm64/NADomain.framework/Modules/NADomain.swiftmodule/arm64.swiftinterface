@@ -257,7 +257,7 @@ public typealias NACompletion<T> = (NADomain.NAResult<T>) -> ()
 public enum NAError : Swift.Error {
   case ok
   case internalError
-  case expired
+  case sessionExpired
   case notExist
   case invalid
   case wrongType
