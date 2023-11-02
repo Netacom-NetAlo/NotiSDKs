@@ -1166,6 +1166,8 @@ public protocol CallRepo {
   func setFloatingCallVideoView(isEnable: Swift.Bool, callSDK: NACallSDK.NACallSDKManager?, contact: NADomain.NAContact?, isShowLocalView: Swift.Bool?)
   func setSwitchToPersonalCallView()
   func checkCallExisted() -> Swift.Bool
+  func updateVoipToken(didUpdate pushCredentials: PushKit.PKPushCredentials)
+  func didRecieveCall(didReceiveIncomingPushWith payload: PushKit.PKPushPayload)
 }
 extension NetAloLite.SDKPermissionSet : Swift.Equatable {}
 extension NetAloLite.SDKPermissionSet : Swift.Hashable {}
